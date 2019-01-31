@@ -1,0 +1,270 @@
+
+<!doctype html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module genFeatures</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>genFeatures</strong></big></big> (version 1.4.1, 18 August 2004)</font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:///M|/projects/genesis-python/1.4.1/genfeatures.py">m:\projects\genesis-python\1.4.1\genfeatures.py</a></font></td></tr></table>
+    <p><tt>Modules&nbsp;for&nbsp;joining&nbsp;Genesis&nbsp;2000&nbsp;scripting&nbsp;and&nbsp;the&nbsp;Python&nbsp;scripting&nbsp;language.<br>
+&nbsp;<br>
+NEED:&nbsp;genClasses.py&nbsp;and&nbsp;genCommands.py<br>
+&nbsp;<br>
+THIS&nbsp;MODULE&nbsp;*REQUIRES*&nbsp;ITSELF&nbsp;TO&nbsp;BE&nbsp;EMBEDDED&nbsp;IN&nbsp;CLASSES&nbsp;FROM&nbsp;THE&nbsp;genCommands.py&nbsp;<br>
+and&nbsp;genClasses.py&nbsp;MODULES&nbsp;-&nbsp;IT&nbsp;WILL&nbsp;NOT&nbsp;WORK&nbsp;ON&nbsp;ITS&nbsp;OWN!!!<br>
+&nbsp;<br>
+This&nbsp;module&nbsp;is&nbsp;used&nbsp;to&nbsp;define&nbsp;features.&nbsp;&nbsp;It&nbsp;provides&nbsp;classes&nbsp;to&nbsp;represent&nbsp;Genesis<br>
+features.&nbsp;&nbsp;Currently&nbsp;can&nbsp;represent&nbsp;<a href="#Pad">Pad</a>,&nbsp;<a href="#Line">Line</a>,&nbsp;<a href="#Arc">Arc</a>,&nbsp;<a href="#Text">Text</a>,&nbsp;and&nbsp;<a href="#Barcode">Barcode</a>&nbsp;-&nbsp;no&nbsp;surface<br>
+support&nbsp;yet.&nbsp;&nbsp;Slower,&nbsp;of&nbsp;course,&nbsp;than&nbsp;the&nbsp;DFM&nbsp;environment,&nbsp;but&nbsp;great&nbsp;for&nbsp;small&nbsp;jobs.<br>
+functionality&nbsp;over&nbsp;and&nbsp;above&nbsp;the&nbsp;basic&nbsp;Genesis&nbsp;commands.&nbsp;<br>
+&nbsp;<br>
+SEE&nbsp;parseFeatureInfo&nbsp;method&nbsp;in&nbsp;class&nbsp;Genesis,&nbsp;module&nbsp;genClasses<br>
+SEE&nbsp;featOut&nbsp;and&nbsp;featSelOut&nbsp;methods&nbsp;in&nbsp;class&nbsp;LayerCmds&nbsp;in&nbsp;genCommands</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#fffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="math.html">math</a><br>
+<a href="os.html">os</a><br>
+</td><td width="25%" valign=top><a href="string.html">string</a><br>
+<a href="sys.html">sys</a><br>
+</td><td width="25%" valign=top><a href="time.html">time</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="genFeatures.html#Feature">Feature</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="genFeatures.html#Arc">Arc</a>
+</font></dt><dt><font face="helvetica, arial"><a href="genFeatures.html#Barcode">Barcode</a>
+</font></dt><dt><font face="helvetica, arial"><a href="genFeatures.html#Line">Line</a>
+</font></dt><dt><font face="helvetica, arial"><a href="genFeatures.html#Pad">Pad</a>
+</font></dt><dt><font face="helvetica, arial"><a href="genFeatures.html#Text">Text</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Arc">class <strong>Arc</strong></a>(<a href="genFeatures.html#Feature">Feature</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>This&nbsp;class&nbsp;defines&nbsp;an&nbsp;object&nbsp;which&nbsp;describes&nbsp;an&nbsp;<a href="#Arc">Arc</a>.&nbsp;&nbsp;It&nbsp;is&nbsp;subclassed&nbsp;<br>
+from&nbsp;<a href="#Feature">Feature</a>.&nbsp;&nbsp;It&nbsp;gets&nbsp;passed&nbsp;the&nbsp;line&nbsp;from&nbsp;the&nbsp;INFO&nbsp;command&nbsp;(-d&nbsp;FEATURES)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Variables&nbsp;in&nbsp;<a href="#Arc">Arc</a>&nbsp;(access&nbsp;by&nbsp;class.&lt;var&gt;)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xs,&nbsp;ys,&nbsp;xe,&nbsp;ye&nbsp;-&nbsp;start&nbsp;and&nbsp;end&nbsp;points<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xc,&nbsp;yc&nbsp;-&nbsp;center&nbsp;of&nbsp;arc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;symbol&nbsp;-&nbsp;Symbol&nbsp;used&nbsp;in&nbsp;drawing&nbsp;line<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;polarity&nbsp;-&nbsp;Polarity&nbsp;of&nbsp;line<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dcode&nbsp;-&nbsp;dcode&nbsp;of&nbsp;symbol&nbsp;used<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;direction&nbsp;-&nbsp;clockwise/counterclockwise<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Arc-__init__"><strong>__init__</strong></a>(self, line)</dt></dl>
+
+<dl><dt><a name="Arc-parse"><strong>parse</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="genFeatures.html#Feature">Feature</a>:<br>
+<dl><dt><a name="Arc-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Arc-getAttrs"><strong>getAttrs</strong></a>(self)</dt><dd><tt>Gets&nbsp;atributes&nbsp;of&nbsp;self&nbsp;by&nbsp;parsing&nbsp;the&nbsp;line&nbsp;passed<br>
+leaves&nbsp;self.<strong>line</strong>&nbsp;intact&nbsp;except&nbsp;that&nbsp;everything&nbsp;after&nbsp;';'&nbsp;is&nbsp;gone.</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Barcode">class <strong>Barcode</strong></a>(<a href="genFeatures.html#Feature">Feature</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>This&nbsp;class&nbsp;defines&nbsp;an&nbsp;object&nbsp;which&nbsp;describes&nbsp;a&nbsp;<a href="#Barcode">Barcode</a>.&nbsp;&nbsp;It&nbsp;is&nbsp;subclassed&nbsp;<br>
+from&nbsp;<a href="#Feature">Feature</a>.&nbsp;&nbsp;It&nbsp;gets&nbsp;passed&nbsp;the&nbsp;line&nbsp;from&nbsp;the&nbsp;INFO&nbsp;command&nbsp;(-d&nbsp;FEATURES)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Variables&nbsp;in&nbsp;<a href="#Barcode">Barcode</a>&nbsp;<a href="#Feature">Feature</a>&nbsp;(access&nbsp;by&nbsp;class.&lt;var&gt;)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x,&nbsp;y&nbsp;-&nbsp;location<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;barcode&nbsp;-&nbsp;barcode&nbsp;type<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font&nbsp;-&nbsp;font&nbsp;name&nbsp;for&nbsp;under&nbsp;code<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;polarity&nbsp;-&nbsp;Polarity&nbsp;of&nbsp;line<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rotation&nbsp;-&nbsp;rotation&nbsp;in&nbsp;degrees<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;constant&nbsp;-&nbsp;Don't&nbsp;know<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;width&nbsp;-&nbsp;mils&nbsp;of&nbsp;code&nbsp;in&nbsp;x&nbsp;direction<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;heigt&nbsp;-&nbsp;mils&nbsp;of&nbsp;code&nbsp;in&nbsp;the&nbsp;y&nbsp;direction<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;full_ascii&nbsp;-&nbsp;don't&nbsp;know<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cksum&nbsp;-&nbsp;checksum?<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;invert_bg&nbsp;-&nbsp;invert&nbsp;the&nbsp;barcode&nbsp;yes/no<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;add_text&nbsp;-&nbsp;add&nbsp;text&nbsp;to&nbsp;bottom&nbsp;of&nbsp;code&nbsp;yes/no<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text_loc&nbsp;-&nbsp;top/bot&nbsp;of&nbsp;the&nbsp;code<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text&nbsp;-&nbsp;text&nbsp;encoded&nbsp;in&nbsp;the&nbsp;barcode<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Barcode-__init__"><strong>__init__</strong></a>(self, line)</dt></dl>
+
+<dl><dt><a name="Barcode-parse"><strong>parse</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="genFeatures.html#Feature">Feature</a>:<br>
+<dl><dt><a name="Barcode-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Barcode-getAttrs"><strong>getAttrs</strong></a>(self)</dt><dd><tt>Gets&nbsp;atributes&nbsp;of&nbsp;self&nbsp;by&nbsp;parsing&nbsp;the&nbsp;line&nbsp;passed<br>
+leaves&nbsp;self.<strong>line</strong>&nbsp;intact&nbsp;except&nbsp;that&nbsp;everything&nbsp;after&nbsp;';'&nbsp;is&nbsp;gone.</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Feature">class <strong>Feature</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>This&nbsp;class&nbsp;defines&nbsp;an&nbsp;object&nbsp;which&nbsp;describes&nbsp;an&nbsp;individual&nbsp;feature.<br>
+Gets&nbsp;passed&nbsp;in&nbsp;the&nbsp;line&nbsp;from&nbsp;the&nbsp;INFO&nbsp;command&nbsp;(-d&nbsp;FEATURES)<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Feature-__init__"><strong>__init__</strong></a>(self, line)</dt></dl>
+
+<dl><dt><a name="Feature-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Feature-getAttrs"><strong>getAttrs</strong></a>(self)</dt><dd><tt>Gets&nbsp;atributes&nbsp;of&nbsp;self&nbsp;by&nbsp;parsing&nbsp;the&nbsp;line&nbsp;passed<br>
+leaves&nbsp;self.<strong>line</strong>&nbsp;intact&nbsp;except&nbsp;that&nbsp;everything&nbsp;after&nbsp;';'&nbsp;is&nbsp;gone.</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Line">class <strong>Line</strong></a>(<a href="genFeatures.html#Feature">Feature</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>This&nbsp;class&nbsp;defines&nbsp;an&nbsp;object&nbsp;which&nbsp;describes&nbsp;a&nbsp;<a href="#Line">Line</a>.&nbsp;&nbsp;It&nbsp;is&nbsp;subclassed&nbsp;<br>
+from&nbsp;<a href="#Feature">Feature</a>.&nbsp;&nbsp;It&nbsp;gets&nbsp;passed&nbsp;the&nbsp;line&nbsp;from&nbsp;the&nbsp;INFO&nbsp;command&nbsp;(-d&nbsp;FEATURES)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Variables&nbsp;in&nbsp;<a href="#Line">Line</a>&nbsp;(access&nbsp;by&nbsp;class.&lt;var&gt;)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xs,&nbsp;ys,&nbsp;xe,&nbsp;ye&nbsp;-&nbsp;start&nbsp;and&nbsp;end&nbsp;points<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;symbol&nbsp;-&nbsp;Symbol&nbsp;used&nbsp;in&nbsp;drawing&nbsp;line<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;polarity&nbsp;-&nbsp;Polarity&nbsp;of&nbsp;line<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dcode&nbsp;-&nbsp;dcode&nbsp;of&nbsp;symbol&nbsp;used<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;len&nbsp;-&nbsp;length&nbsp;of&nbsp;the&nbsp;line<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Line-__init__"><strong>__init__</strong></a>(self, line)</dt></dl>
+
+<dl><dt><a name="Line-parse"><strong>parse</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="genFeatures.html#Feature">Feature</a>:<br>
+<dl><dt><a name="Line-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Line-getAttrs"><strong>getAttrs</strong></a>(self)</dt><dd><tt>Gets&nbsp;atributes&nbsp;of&nbsp;self&nbsp;by&nbsp;parsing&nbsp;the&nbsp;line&nbsp;passed<br>
+leaves&nbsp;self.<strong>line</strong>&nbsp;intact&nbsp;except&nbsp;that&nbsp;everything&nbsp;after&nbsp;';'&nbsp;is&nbsp;gone.</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Pad">class <strong>Pad</strong></a>(<a href="genFeatures.html#Feature">Feature</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>This&nbsp;class&nbsp;defines&nbsp;an&nbsp;object&nbsp;which&nbsp;describes&nbsp;a&nbsp;<a href="#Pad">Pad</a>.&nbsp;&nbsp;It&nbsp;is&nbsp;subclassed&nbsp;<br>
+from&nbsp;<a href="#Feature">Feature</a>.&nbsp;&nbsp;It&nbsp;gets&nbsp;passed&nbsp;the&nbsp;line&nbsp;from&nbsp;the&nbsp;INFO&nbsp;command&nbsp;(-d&nbsp;FEATURES)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Variables&nbsp;in&nbsp;<a href="#Pad">Pad</a>&nbsp;(access&nbsp;by&nbsp;class.&lt;var&gt;)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x,&nbsp;y&nbsp;-&nbsp;location<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;symbol&nbsp;-&nbsp;Symbol&nbsp;used&nbsp;in&nbsp;drawing&nbsp;line<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;polarity&nbsp;-&nbsp;Polarity&nbsp;of&nbsp;line<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dcode&nbsp;-&nbsp;dcode&nbsp;of&nbsp;symbol&nbsp;used<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rotation&nbsp;-&nbsp;rotation&nbsp;in&nbsp;degrees&nbsp;of&nbsp;<a href="#Pad">Pad</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mirror&nbsp;-&nbsp;yes&nbsp;if&nbsp;mirrored<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Pad-__init__"><strong>__init__</strong></a>(self, line)</dt></dl>
+
+<dl><dt><a name="Pad-parse"><strong>parse</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="genFeatures.html#Feature">Feature</a>:<br>
+<dl><dt><a name="Pad-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Pad-getAttrs"><strong>getAttrs</strong></a>(self)</dt><dd><tt>Gets&nbsp;atributes&nbsp;of&nbsp;self&nbsp;by&nbsp;parsing&nbsp;the&nbsp;line&nbsp;passed<br>
+leaves&nbsp;self.<strong>line</strong>&nbsp;intact&nbsp;except&nbsp;that&nbsp;everything&nbsp;after&nbsp;';'&nbsp;is&nbsp;gone.</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Text">class <strong>Text</strong></a>(<a href="genFeatures.html#Feature">Feature</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>This&nbsp;class&nbsp;defines&nbsp;an&nbsp;object&nbsp;which&nbsp;describes&nbsp;a&nbsp;<a href="#Text">Text</a>&nbsp;feature.&nbsp;&nbsp;It&nbsp;is&nbsp;subclassed&nbsp;<br>
+from&nbsp;<a href="#Feature">Feature</a>.&nbsp;&nbsp;It&nbsp;gets&nbsp;passed&nbsp;the&nbsp;line&nbsp;from&nbsp;the&nbsp;INFO&nbsp;command&nbsp;(-d&nbsp;FEATURES)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Variables&nbsp;in&nbsp;<a href="#Text">Text</a>&nbsp;<a href="#Feature">Feature</a>&nbsp;(access&nbsp;by&nbsp;class.&lt;var&gt;)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x,&nbsp;y&nbsp;-&nbsp;location<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font&nbsp;-&nbsp;font&nbsp;name<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;polarity&nbsp;-&nbsp;Polarity&nbsp;of&nbsp;line<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rotation&nbsp;-&nbsp;rotation&nbsp;in&nbsp;degrees<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mirror&nbsp;-&nbsp;yes/no&nbsp;is&nbsp;it&nbsp;mirrored<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xsize&nbsp;-&nbsp;mils&nbsp;of&nbsp;letter&nbsp;in&nbsp;x&nbsp;direction<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ysize&nbsp;-&nbsp;mils&nbsp;of&nbsp;a&nbsp;letter&nbsp;in&nbsp;the&nbsp;y&nbsp;direction<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wfactor&nbsp;-&nbsp;scaling&nbsp;factor&nbsp;or&nbsp;width&nbsp;factor&nbsp;larger&nbsp;=&nbsp;thicker&nbsp;lines<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text&nbsp;-&nbsp;the&nbsp;text&nbsp;in&nbsp;the&nbsp;object<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;version&nbsp;-&nbsp;not&nbsp;quite&nbsp;sure&nbsp;what&nbsp;the&nbsp;version&nbsp;means<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Text-__init__"><strong>__init__</strong></a>(self, line)</dt></dl>
+
+<dl><dt><a name="Text-parse"><strong>parse</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="genFeatures.html#Feature">Feature</a>:<br>
+<dl><dt><a name="Text-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Text-getAttrs"><strong>getAttrs</strong></a>(self)</dt><dd><tt>Gets&nbsp;atributes&nbsp;of&nbsp;self&nbsp;by&nbsp;parsing&nbsp;the&nbsp;line&nbsp;passed<br>
+leaves&nbsp;self.<strong>line</strong>&nbsp;intact&nbsp;except&nbsp;that&nbsp;everything&nbsp;after&nbsp;';'&nbsp;is&nbsp;gone.</tt></dd></dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-create"><strong>create</strong></a>(line)</dt><dd><tt>Part&nbsp;of&nbsp;the&nbsp;module&nbsp;-&nbsp;creates&nbsp;a&nbsp;class&nbsp;for&nbsp;the&nbsp;given&nbsp;line&nbsp;of&nbsp;the&nbsp;input&nbsp;file<br>
+line&nbsp;-&nbsp;line&nbsp;of&nbsp;text&nbsp;from&nbsp;output&nbsp;file</tt></dd></dl>
+ <dl><dt><a name="-parse"><strong>parse</strong></a>(lines)</dt><dd><tt>Part&nbsp;of&nbsp;the&nbsp;module&nbsp;-&nbsp;parses&nbsp;the&nbsp;lines&nbsp;from&nbsp;an&nbsp;input&nbsp;file&nbsp;and&nbsp;submits&nbsp;lines&nbsp;to&nbsp;create<br>
+features.&nbsp;&nbsp;Adds&nbsp;the&nbsp;features&nbsp;to&nbsp;a&nbsp;featureList.&nbsp;&nbsp;Not&nbsp;used&nbsp;by&nbsp;any&nbsp;of&nbsp;the&nbsp;classes&nbsp;-&nbsp;not&nbsp;<br>
+necessary&nbsp;to&nbsp;use&nbsp;module</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__author__</strong> = 'Mike J. Hopkins'<br>
+<strong>__credits__</strong> = ' Daniel R. Gowans, for contributions to content.... an excellent scripting interface to Genesis 2000'<br>
+<strong>__date__</strong> = '18 August 2004'<br>
+<strong>__version__</strong> = '$Revision: 1.4.1 $'<br>
+<strong>example_data</strong> = "<font color="#c040c0">\n</font>### Layer - 01sp features data ###<font color="#c040c0">\n</font>#L 11.575 16...' 1;.nomenclature,.canned_text,.drill=non_plated<font color="#c040c0">\n</font>"</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#7799ee">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Author</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#7799ee"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Mike&nbsp;J.&nbsp;Hopkins</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#7799ee">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Credits</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#7799ee"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">&nbsp;Daniel&nbsp;R.&nbsp;Gowans,&nbsp;for&nbsp;contributions&nbsp;to&nbsp;content.<br>
+Frontline&nbsp;PCB,&nbsp;for&nbsp;an&nbsp;excellent&nbsp;scripting&nbsp;interface&nbsp;to&nbsp;Genesis&nbsp;2000</td></tr></table>
+</body></html>

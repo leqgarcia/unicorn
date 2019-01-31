@@ -1,0 +1,1345 @@
+
+<!doctype html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module genClasses</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>genClasses</strong></big></big> (version 1.4.1, 18 August 2004)</font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:///M|/projects/genesis-python/1.4.1/genclasses.py">m:\projects\genesis-python\1.4.1\genclasses.py</a></font></td></tr></table>
+    <p><tt>Modules&nbsp;for&nbsp;joining&nbsp;<a href="#Genesis">Genesis</a>&nbsp;2000&nbsp;scripting&nbsp;and&nbsp;the&nbsp;Python&nbsp;scripting&nbsp;language.<br>
+&nbsp;<br>
+This&nbsp;module&nbsp;has&nbsp;several&nbsp;companion&nbsp;modules.&nbsp;&nbsp;These&nbsp;companion&nbsp;modules&nbsp;provide&nbsp;added<br>
+functionality&nbsp;over&nbsp;and&nbsp;above&nbsp;the&nbsp;basic&nbsp;<a href="#Genesis">Genesis</a>&nbsp;commands.&nbsp;&nbsp;This&nbsp;module&nbsp;holds&nbsp;several<br>
+classes&nbsp;used&nbsp;to&nbsp;abstract&nbsp;the&nbsp;interface&nbsp;with&nbsp;<a href="#Genesis">Genesis</a>&nbsp;2000,&nbsp;making&nbsp;scripting&nbsp;in&nbsp;<br>
+Python&nbsp;faster&nbsp;and&nbsp;easier.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#fffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="genCommands.html">genCommands</a><br>
+<a href="genFeatures.html">genFeatures</a><br>
+</td><td width="25%" valign=top><a href="math.html">math</a><br>
+<a href="os.html">os</a><br>
+</td><td width="25%" valign=top><a href="re.html">re</a><br>
+<a href="string.html">string</a><br>
+</td><td width="25%" valign=top><a href="sys.html">sys</a><br>
+<a href="time.html">time</a><br>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="genClasses.html#Empty">Empty</a>
+</font></dt><dt><font face="helvetica, arial"><a href="genClasses.html#ExtraStuff">ExtraStuff</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="genClasses.html#Layer">Layer</a>(<a href="genClasses.html#ExtraStuff">ExtraStuff</a>, <a href="genCommands.html#LayerCmds">genCommands.LayerCmds</a>)
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="genClasses.html#Genesis">Genesis</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="genClasses.html#Checklist">Checklist</a>
+</font></dt><dt><font face="helvetica, arial"><a href="genClasses.html#Form">Form</a>
+</font></dt><dt><font face="helvetica, arial"><a href="genClasses.html#Job">Job</a>(<a href="genClasses.html#Genesis">Genesis</a>, <a href="genClasses.html#ExtraStuff">ExtraStuff</a>, <a href="genCommands.html#JobCmds">genCommands.JobCmds</a>)
+</font></dt><dt><font face="helvetica, arial"><a href="genClasses.html#Matrix">Matrix</a>(<a href="genClasses.html#Genesis">Genesis</a>, <a href="genCommands.html#MatrixCmds">genCommands.MatrixCmds</a>)
+</font></dt><dt><font face="helvetica, arial"><a href="genClasses.html#Step">Step</a>(<a href="genClasses.html#Genesis">Genesis</a>, <a href="genClasses.html#ExtraStuff">ExtraStuff</a>, <a href="genCommands.html#StepCmds">genCommands.StepCmds</a>)
+</font></dt><dt><font face="helvetica, arial"><a href="genClasses.html#Top">Top</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="genClasses.html#MatrixCellInfo">MatrixCellInfo</a>
+</font></dt></dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Checklist">class <strong>Checklist</strong></a>(<a href="genClasses.html#Genesis">Genesis</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>This&nbsp;class&nbsp;defines&nbsp;a&nbsp;checklist&nbsp;instance.&nbsp;Each&nbsp;checklist&nbsp;is&nbsp;automatically<br>
+instantiated&nbsp;as&nbsp;a&nbsp;member&nbsp;of&nbsp;the&nbsp;{step}.checks&nbsp;dictionary&nbsp;when<br>
+the&nbsp;{step}.checks&nbsp;attribute&nbsp;is&nbsp;accessed.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Checklist-__init__"><strong>__init__</strong></a>(self, step, name)</dt></dl>
+
+<dl><dt><a name="Checklist-close"><strong>close</strong></a>(self)</dt><dd><tt>Close&nbsp;the&nbsp;checklist</tt></dd></dl>
+
+<dl><dt><a name="Checklist-hide"><strong>hide</strong></a>(self)</dt><dd><tt>hides&nbsp;checklist.&nbsp;&nbsp;It&nbsp;stays&nbsp;open,&nbsp;but&nbsp;isn't&nbsp;visible</tt></dd></dl>
+
+<dl><dt><a name="Checklist-open"><strong>open</strong></a>(self)</dt><dd><tt>Opens&nbsp;checklist,&nbsp;but&nbsp;doesn't&nbsp;show&nbsp;it</tt></dd></dl>
+
+<dl><dt><a name="Checklist-run"><strong>run</strong></a>(self, params<font color="#909090">=''</font>)</dt><dd><tt>Runs&nbsp;a&nbsp;checklist&nbsp;on&nbsp;all&nbsp;actions.<br>
+params&nbsp;-&nbsp;optional&nbsp;string&nbsp;(defaults&nbsp;to&nbsp;empty)&nbsp;&lt;NOT&nbsp;IMPLEMENTED&nbsp;YET&gt;</tt></dd></dl>
+
+<dl><dt><a name="Checklist-show"><strong>show</strong></a>(self)</dt><dd><tt>Show&nbsp;the&nbsp;checklist</tt></dd></dl>
+
+<dl><dt><a name="Checklist-update"><strong>update</strong></a>(self, action<font color="#909090">=1</font>, params<font color="#909090">={}</font>)</dt><dd><tt>Update&nbsp;checklist&nbsp;parameters,&nbsp;and&nbsp;specify&nbsp;action&nbsp;to&nbsp;which&nbsp;updates&nbsp;apply<br>
+params&nbsp;-&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;parameters.&nbsp;&nbsp;Key&nbsp;is&nbsp;parameter&nbsp;name&nbsp;and&nbsp;value&nbsp;is<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parameter&nbsp;values&nbsp;assigned&nbsp;to&nbsp;parameter</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="genClasses.html#Genesis">Genesis</a>:<br>
+<dl><dt><a name="Checklist-AUX"><strong>AUX</strong></a>(self, args)</dt><dd><tt><a href="#Genesis">Genesis</a>&nbsp;AUX&nbsp;command&nbsp;-&nbsp;returns&nbsp;STATUS.&nbsp;&nbsp;Sets&nbsp;class&nbsp;variables&nbsp;READANS&nbsp;<br>
+and&nbsp;COMANS,&nbsp;returns&nbsp;STATUS<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;args&nbsp;-&nbsp;string&nbsp;containing&nbsp;arguments</tt></dd></dl>
+
+<dl><dt><a name="Checklist-COM"><strong>COM</strong></a>(self, args)</dt><dd><tt><a href="#Genesis">Genesis</a>&nbsp;COM&nbsp;command&nbsp;-&nbsp;all&nbsp;important&nbsp;command&nbsp;to&nbsp;issue&nbsp;script&nbsp;commands&nbsp;-&nbsp;returns&nbsp;STATUS<br>
+and&nbsp;sets&nbsp;READANS&nbsp;as&nbsp;the&nbsp;command&nbsp;response&nbsp;raw&nbsp;input.&nbsp;&nbsp;COMANS&nbsp;is&nbsp;the&nbsp;parsed&nbsp;READANS.&nbsp;&nbsp;These&nbsp;are<br>
+class&nbsp;variables<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;args&nbsp;-&nbsp;string&nbsp;containing&nbsp;arguments&nbsp;for&nbsp;COM&nbsp;command&nbsp;(everything&nbsp;after&nbsp;COM)</tt></dd></dl>
+
+<dl><dt><a name="Checklist-DISP_INFO"><strong>DISP_INFO</strong></a>(self, args)</dt><dd><tt>This&nbsp;is&nbsp;similar&nbsp;to&nbsp;the&nbsp;DO_INFO&nbsp;but&nbsp;is&nbsp;run&nbsp;in&nbsp;'display'&nbsp;mode&nbsp;and&nbsp;is&nbsp;parsed&nbsp;differently&nbsp;<br>
+-&nbsp;this&nbsp;method&nbsp;is&nbsp;not&nbsp;complete</tt></dd></dl>
+
+<dl><dt><a name="Checklist-DO_INFO"><strong>DO_INFO</strong></a>(self, args)</dt><dd><tt>This&nbsp;is&nbsp;the&nbsp;command&nbsp;COM&nbsp;info,...&nbsp;&nbsp;returns&nbsp;a&nbsp;dictionary&nbsp;with&nbsp;all&nbsp;the&nbsp;information&nbsp;in&nbsp;the&nbsp;<br>
+output&nbsp;file&nbsp;from&nbsp;the&nbsp;info&nbsp;command.&nbsp;&nbsp;Each&nbsp;array&nbsp;of&nbsp;information&nbsp;is&nbsp;accessed&nbsp;by&nbsp;a&nbsp;key&nbsp;to&nbsp;the<br>
+dictionary&nbsp;that&nbsp;is&nbsp;returned.&nbsp;LIMITATION:&nbsp;Any&nbsp;string&nbsp;resembling&nbsp;a&nbsp;number&nbsp;will&nbsp;be&nbsp;converted<br>
+to&nbsp;a&nbsp;number.&nbsp;&nbsp;This&nbsp;means&nbsp;that&nbsp;a&nbsp;layer&nbsp;with&nbsp;the&nbsp;name&nbsp;'1.'&nbsp;or&nbsp;'1'&nbsp;will&nbsp;be&nbsp;returned&nbsp;later&nbsp;as<br>
+the&nbsp;float&nbsp;1.0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;args&nbsp;-&nbsp;arguments&nbsp;to&nbsp;the&nbsp;info&nbsp;command&nbsp;as&nbsp;a&nbsp;string</tt></dd></dl>
+
+<dl><dt><a name="Checklist-INFO"><strong>INFO</strong></a>(self, args)</dt><dd><tt>This&nbsp;is&nbsp;similar&nbsp;to&nbsp;the&nbsp;<a href="#Genesis">Genesis</a>&nbsp;command&nbsp;<a href="#Checklist-COM">COM</a>(info,...)&nbsp;Returns&nbsp;list&nbsp;of&nbsp;strings&nbsp;which<br>
+are&nbsp;lines&nbsp;from&nbsp;the&nbsp;output&nbsp;file<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;args&nbsp;-&nbsp;string&nbsp;containing&nbsp;all&nbsp;the&nbsp;arguments&nbsp;to&nbsp;the&nbsp;info&nbsp;command&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(that&nbsp;would&nbsp;be&nbsp;after&nbsp;the&nbsp;info,_*_)</tt></dd></dl>
+
+<dl><dt><a name="Checklist-MOUSE"><strong>MOUSE</strong></a>(self, msg, mode<font color="#909090">='p'</font>)</dt><dd><tt><a href="#Genesis">Genesis</a>&nbsp;MOUSE&nbsp;command&nbsp;-&nbsp;pauses&nbsp;to&nbsp;allow&nbsp;user&nbsp;to&nbsp;select&nbsp;a&nbsp;location&nbsp;with&nbsp;the&nbsp;mouse&nbsp;-&nbsp;<br>
+returns&nbsp;STATUS&nbsp;as&nbsp;integer.&nbsp;&nbsp;Sets&nbsp;class&nbsp;variables&nbsp;READANS&nbsp;and&nbsp;MOUSEANS&nbsp;to&nbsp;mouse&nbsp;location<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg&nbsp;-&nbsp;message&nbsp;to&nbsp;put&nbsp;in&nbsp;dialog&nbsp;box<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mode&nbsp;-&nbsp;set&nbsp;to&nbsp;character&nbsp;'p'&nbsp;or&nbsp;'r'&nbsp;&nbsp;p&nbsp;means&nbsp;to&nbsp;return&nbsp;a&nbsp;point,&nbsp;and&nbsp;r&nbsp;a&nbsp;rectangle&nbsp;(two&nbsp;points)</tt></dd></dl>
+
+<dl><dt><a name="Checklist-PAUSE"><strong>PAUSE</strong></a>(self, msg)</dt><dd><tt><a href="#Genesis">Genesis</a>&nbsp;PAUSE&nbsp;command&nbsp;-&nbsp;pauses&nbsp;script&nbsp;with&nbsp;box,&nbsp;and&nbsp;allows&nbsp;user&nbsp;to&nbsp;interact&nbsp;with&nbsp;<br>
+<a href="#Genesis">Genesis</a>&nbsp;before&nbsp;continuing&nbsp;-&nbsp;returns&nbsp;STATUS&nbsp;(as&nbsp;integer),&nbsp;sets&nbsp;class&nbsp;variables<br>
+READANS&nbsp;and&nbsp;PAUSANS<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg&nbsp;-&nbsp;string&nbsp;containing&nbsp;message&nbsp;to&nbsp;put&nbsp;in&nbsp;pause&nbsp;dialog&nbsp;box</tt></dd></dl>
+
+<dl><dt><a name="Checklist-SU_OFF"><strong>SU_OFF</strong></a>(self)</dt><dd><tt><a href="#Genesis">Genesis</a>&nbsp;SU_OFF&nbsp;command&nbsp;-&nbsp;eq&nbsp;to&nbsp;running&nbsp;SU_OFF&nbsp;in&nbsp;csh</tt></dd></dl>
+
+<dl><dt><a name="Checklist-SU_ON"><strong>SU_ON</strong></a>(self)</dt><dd><tt>The&nbsp;<a href="#Genesis">Genesis</a>&nbsp;SU_ON&nbsp;command&nbsp;-&nbsp;eq.&nbsp;to&nbsp;running&nbsp;SU_ON&nbsp;in&nbsp;csh</tt></dd></dl>
+
+<dl><dt><a name="Checklist-VOF"><strong>VOF</strong></a>(self)</dt><dd><tt><a href="#Genesis">Genesis</a>&nbsp;VOF&nbsp;command&nbsp;-&nbsp;turns&nbsp;on&nbsp;script&nbsp;halting&nbsp;on&nbsp;errors&nbsp;-&nbsp;eq&nbsp;to&nbsp;running&nbsp;VOF&nbsp;in&nbsp;csh</tt></dd></dl>
+
+<dl><dt><a name="Checklist-VON"><strong>VON</strong></a>(self)</dt><dd><tt><a href="#Genesis">Genesis</a>&nbsp;VON&nbsp;command&nbsp;-&nbsp;turns&nbsp;off&nbsp;script&nbsp;halting&nbsp;on&nbsp;errors-&nbsp;eq&nbsp;to&nbsp;running&nbsp;VON&nbsp;in&nbsp;csh</tt></dd></dl>
+
+<dl><dt><a name="Checklist-__del__"><strong>__del__</strong></a>(self)</dt><dd><tt>Called&nbsp;when&nbsp;class&nbsp;is&nbsp;cleaned&nbsp;up&nbsp;by&nbsp;python</tt></dd></dl>
+
+<dl><dt><a name="Checklist-blank"><strong>blank</strong></a>(self)</dt><dd><tt>Cleans&nbsp;out&nbsp;the&nbsp;return&nbsp;values</tt></dd></dl>
+
+<dl><dt><a name="Checklist-clean"><strong>clean</strong></a>(self, strip_me, badchars)</dt><dd><tt>Internal&nbsp;-&nbsp;strips&nbsp;a&nbsp;string&nbsp;(strip_me)&nbsp;of&nbsp;given&nbsp;(badchars)&nbsp;on&nbsp;either&nbsp;edge&nbsp;-&nbsp;used&nbsp;in&nbsp;parsing</tt></dd></dl>
+
+<dl><dt><a name="Checklist-convertToNumber"><strong>convertToNumber</strong></a>(self, value)</dt><dd><tt>Utility&nbsp;function&nbsp;-&nbsp;converts&nbsp;string&nbsp;to&nbsp;a&nbsp;number&nbsp;returns&nbsp;integer&nbsp;if&nbsp;<br>
+possible&nbsp;-&nbsp;otherwise&nbsp;returns&nbsp;a&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value&nbsp;-&nbsp;string&nbsp;to&nbsp;be&nbsp;converted</tt></dd></dl>
+
+<dl><dt><a name="Checklist-dbutil"><strong>dbutil</strong></a>(self, *args)</dt><dd><tt>Runs&nbsp;the&nbsp;dbutil&nbsp;command&nbsp;with&nbsp;the&nbsp;specified&nbsp;arguments&nbsp;-&nbsp;returns&nbsp;lines&nbsp;from&nbsp;the&nbsp;response&nbsp;as<br>
+array&nbsp;of&nbsp;strings<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;args&nbsp;-&nbsp;arguments&nbsp;for&nbsp;dbutil&nbsp;command</tt></dd></dl>
+
+<dl><dt><a name="Checklist-error"><strong>error</strong></a>(self, msg, severity<font color="#909090">=0</font>)</dt><dd><tt>Basic&nbsp;error&nbsp;handler<br>
+msg&nbsp;-&nbsp;string&nbsp;containing&nbsp;error&nbsp;message<br>
+severity&nbsp;-&nbsp;integer.&nbsp;&nbsp;If&nbsp;greater&nbsp;than&nbsp;one&nbsp;script&nbsp;exits</tt></dd></dl>
+
+<dl><dt><a name="Checklist-normalize"><strong>normalize</strong></a>(self)</dt><dd><tt>Normalize&nbsp;the&nbsp;path&nbsp;to&nbsp;GENESIS_EDIR,&nbsp;and&nbsp;make&nbsp;sure&nbsp;the&nbsp;environment&nbsp;is&nbsp;set</tt></dd></dl>
+
+<dl><dt><a name="Checklist-parseDispInfo"><strong>parseDispInfo</strong></a>(self, infoList)</dt><dd><tt>Parses&nbsp;output&nbsp;from&nbsp;info&nbsp;command&nbsp;that&nbsp;was&nbsp;run&nbsp;in&nbsp;display&nbsp;mode.&nbsp;Incomplete</tt></dd></dl>
+
+<dl><dt><a name="Checklist-parseFeatureInfo"><strong>parseFeatureInfo</strong></a>(self, infoList)</dt><dd><tt>Internal&nbsp;-&nbsp;Parses&nbsp;output&nbsp;from&nbsp;the&nbsp;info&nbsp;command&nbsp;when&nbsp;it&nbsp;writes&nbsp;out&nbsp;features.&nbsp;&nbsp;Uses&nbsp;the&nbsp;genFeatures.py<br>
+module&nbsp;and&nbsp;parses&nbsp;the&nbsp;information&nbsp;from&nbsp;this&nbsp;command&nbsp;(-d&nbsp;FEATURES)&nbsp;into&nbsp;class&nbsp;objects.</tt></dd></dl>
+
+<dl><dt><a name="Checklist-parseInfo"><strong>parseInfo</strong></a>(self, infoList)</dt><dd><tt>Internal&nbsp;-&nbsp;parses&nbsp;the&nbsp;output&nbsp;from&nbsp;the&nbsp;info&nbsp;command&nbsp;into&nbsp;a&nbsp;dictionary&nbsp;-&nbsp;returns&nbsp;dictionary</tt></dd></dl>
+
+<dl><dt><a name="Checklist-printFeatureDict"><strong>printFeatureDict</strong></a>(self, features_dict)</dt><dd><tt>Used&nbsp;for&nbsp;debugging&nbsp;purposes,&nbsp;this&nbsp;prints&nbsp;out&nbsp;a&nbsp;dictionary&nbsp;created&nbsp;with&nbsp;the&nbsp;parseFeatureInfo&nbsp;command<br>
+features_dict&nbsp;-&nbsp;dictionary&nbsp;returned&nbsp;by&nbsp;method&nbsp;parseFeatureInfo</tt></dd></dl>
+
+<dl><dt><a name="Checklist-sendCmd"><strong>sendCmd</strong></a>(self, cmd, args<font color="#909090">=''</font>)</dt><dd><tt>Send&nbsp;a&nbsp;command&nbsp;to&nbsp;STDOUT&nbsp;-&nbsp;This&nbsp;is&nbsp;where&nbsp;<a href="#Genesis">Genesis</a>&nbsp;will&nbsp;<br>
+see&nbsp;a&nbsp;command&nbsp;-&nbsp;used&nbsp;by&nbsp;CMD,&nbsp;DO_INFO,&nbsp;etc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cmd&nbsp;-&nbsp;the&nbsp;command&nbsp;root&nbsp;in&nbsp;CSH&nbsp;script&nbsp;form<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;args&nbsp;-&nbsp;any&nbsp;arguments&nbsp;to&nbsp;the&nbsp;initial&nbsp;command&nbsp;CMD&nbsp;xxx...</tt></dd></dl>
+
+<dl><dt><a name="Checklist-write"><strong>write</strong></a>(self, msg)</dt><dd><tt>Very&nbsp;basic&nbsp;output&nbsp;writer<br>
+msg&nbsp;-&nbsp;string&nbsp;to&nbsp;write&nbsp;to&nbsp;STDOUT</tt></dd></dl>
+
+<hr>
+Data and other attributes inherited from <a href="genClasses.html#Genesis">Genesis</a>:<br>
+<dl><dt><strong>colors</strong> = {'hex': {'document': '9BDBDB', 'drill': '9BB4BF', 'mixed': 'F2E086', 'power_ground': 'DBAD00', 'rout': 'D8D8D8', 'signal': 'FCC64D', 'silk_screen': 'FFFFFF', 'solder_mask': '00A57C', 'solder_paste': 'FFFFCE'}, 'rgb': {'document': (155, 219, 219), 'drill': (155, 180, 191), 'mixed': (242, 224, 134), 'power_ground': (219, 173, 0), 'rout': (216, 216, 216), 'signal': (252, 198, 55), 'silk_screen': (255, 255, 255), 'solder_mask': (0, 165, 124), 'solder_paste': (255, 255, 206)}}</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Empty">class <strong>Empty</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>This&nbsp;class&nbsp;defines&nbsp;a&nbsp;generic&nbsp;class&nbsp;constructor.<br>
+it&nbsp;is&nbsp;used&nbsp;to&nbsp;create&nbsp;"empty"&nbsp;objects,&nbsp;to&nbsp;which&nbsp;attributes&nbsp;may&nbsp;be&nbsp;assigned.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Empty-__init__"><strong>__init__</strong></a>(self)</dt></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="ExtraStuff">class <strong>ExtraStuff</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Class&nbsp;definition&nbsp;designed&nbsp;to&nbsp;provide&nbsp;some&nbsp;additional&nbsp;functionality<br>
+to&nbsp;<a href="#Job">Job</a>,&nbsp;<a href="#Step">Step</a>,&nbsp;and&nbsp;<a href="#Layer">Layer</a>&nbsp;objects.&nbsp;&nbsp;And,&nbsp;just&nbsp;to&nbsp;make&nbsp;it&nbsp;confusing<br>
+by&nbsp;implementing&nbsp;multiple-inheritence&nbsp;;)<br>
+method&nbsp;to&nbsp;retrieve&nbsp;<a href="#Genesis">Genesis</a>&nbsp;attributes&nbsp;listed&nbsp;as&nbsp;the&nbsp;given&nbsp;name<br>
+Returns&nbsp;None&nbsp;if&nbsp;the&nbsp;<a href="#Genesis">Genesis</a>&nbsp;object&nbsp;does&nbsp;not&nbsp;have&nbsp;the&nbsp;attribute<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="ExtraStuff-getGenesisAttr"><strong>getGenesisAttr</strong></a>(self, name)</dt><dd><tt>Retrieve&nbsp;string&nbsp;associated&nbsp;with&nbsp;a&nbsp;certain&nbsp;attribute</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Form">class <strong>Form</strong></a>(<a href="genClasses.html#Genesis">Genesis</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Defines&nbsp;a&nbsp;form&nbsp;instance.&nbsp;&nbsp;It&nbsp;is&nbsp;automatically&nbsp;instantiated&nbsp;as&nbsp;a&nbsp;member<br>
+of&nbsp;the&nbsp;job.forms&nbsp;dictionary&nbsp;when&nbsp;the&nbsp;job.forms&nbsp;attribute&nbsp;is&nbsp;accessed.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Form-__init__"><strong>__init__</strong></a>(self, job, name)</dt></dl>
+
+<dl><dt><a name="Form-close"><strong>close</strong></a>(self)</dt><dd><tt>Closes&nbsp;the&nbsp;form</tt></dd></dl>
+
+<dl><dt><a name="Form-color"><strong>color</strong></a>(self, element, color)</dt><dd><tt>change&nbsp;an&nbsp;element&nbsp;to&nbsp;another&nbsp;color<br>
+element:&nbsp;Element&nbsp;Name<br>
+color:&nbsp;six&nbsp;digit&nbsp;color&nbsp;code&nbsp;(RRGGBB)</tt></dd></dl>
+
+<dl><dt><a name="Form-delete"><strong>delete</strong></a>(self)</dt><dd><tt>Deletes&nbsp;this&nbsp;form</tt></dd></dl>
+
+<dl><dt><a name="Form-open"><strong>open</strong></a>(self)</dt><dd><tt>Opens&nbsp;and&nbsp;shows&nbsp;the&nbsp;form</tt></dd></dl>
+
+<dl><dt><a name="Form-read"><strong>read</strong></a>(self, field)</dt><dd><tt>Reads&nbsp;a&nbsp;form&nbsp;element,&nbsp;with&nbsp;opt_name&nbsp;set&nbsp;to&nbsp;no&nbsp;(i.e.&nbsp;gives&nbsp;selected&nbsp;column&nbsp;for&nbsp;options,&nbsp;not&nbsp;option&nbsp;name)<br>
+field&nbsp;-&nbsp;string&nbsp;containing&nbsp;name&nbsp;of&nbsp;form&nbsp;element&nbsp;to&nbsp;read</tt></dd></dl>
+
+<dl><dt><a name="Form-readOpt"><strong>readOpt</strong></a>(self, field)</dt><dd><tt>Reads&nbsp;a&nbsp;form&nbsp;element&nbsp;with&nbsp;opt_name&nbsp;set&nbsp;to&nbsp;yes&nbsp;(i.e.&nbsp;gives&nbsp;option&nbsp;value,&nbsp;not&nbsp;which&nbsp;column)<br>
+field&nbsp;-&nbsp;string&nbsp;containing&nbsp;name&nbsp;of&nbsp;form&nbsp;element&nbsp;to&nbsp;read</tt></dd></dl>
+
+<dl><dt><a name="Form-visibility"><strong>visibility</strong></a>(self, field, mode)</dt><dd><tt>Changes&nbsp;an&nbsp;elements&nbsp;visibility<br>
+field&nbsp;-&nbsp;element&nbsp;name<br>
+mode&nbsp;-&nbsp;mode&nbsp;(sensitve,unsensitive,hide,unhide)</tt></dd></dl>
+
+<dl><dt><a name="Form-write"><strong>write</strong></a>(self, field, value, color<font color="#909090">=''</font>)</dt><dd><tt>write&nbsp;value&nbsp;into&nbsp;field&nbsp;<br>
+field&nbsp;-&nbsp;string&nbsp;with&nbsp;name&nbsp;of&nbsp;form&nbsp;element<br>
+value&nbsp;-&nbsp;value&nbsp;to&nbsp;put&nbsp;there&nbsp;(for&nbsp;radio,etc,&nbsp;put&nbsp;col&nbsp;#&nbsp;)<br>
+color&nbsp;(optional)&nbsp;-&nbsp;six&nbsp;digit&nbsp;color&nbsp;code</tt></dd></dl>
+
+<dl><dt><a name="Form-writeFile"><strong>writeFile</strong></a>(self, fileName, color<font color="#909090">=''</font>)</dt><dd><tt>write&nbsp;sets&nbsp;of&nbsp;values&nbsp;into&nbsp;elements.&nbsp;&nbsp;Read&nbsp;information&nbsp;from&nbsp;file.&nbsp;&nbsp;Doesn't&nbsp;use&nbsp;option&nbsp;names<br>
+file&nbsp;-&nbsp;file&nbsp;containing&nbsp;element/value&nbsp;pairs&nbsp;see&nbsp;<a href="#Genesis">Genesis</a>&nbsp;Docs&nbsp;for&nbsp;edit_form_list<br>
+color&nbsp;-&nbsp;optional&nbsp;-&nbsp;color&nbsp;for&nbsp;changed&nbsp;elements&nbsp;(I&nbsp;think)</tt></dd></dl>
+
+<dl><dt><a name="Form-writeFileOpt"><strong>writeFileOpt</strong></a>(self, fileName, color<font color="#909090">=''</font>)</dt><dd><tt>write&nbsp;sets&nbsp;of&nbsp;values&nbsp;into&nbsp;elements.&nbsp;&nbsp;Read&nbsp;information&nbsp;from&nbsp;file.&nbsp;&nbsp;Uses&nbsp;option&nbsp;names<br>
+file&nbsp;-&nbsp;file&nbsp;containing&nbsp;element/value&nbsp;pairs&nbsp;see&nbsp;<a href="#Genesis">Genesis</a>&nbsp;Docs&nbsp;for&nbsp;edit_form_list<br>
+color&nbsp;-&nbsp;optional&nbsp;-&nbsp;color&nbsp;for&nbsp;changed&nbsp;elements&nbsp;(I&nbsp;think)</tt></dd></dl>
+
+<dl><dt><a name="Form-writeOpt"><strong>writeOpt</strong></a>(self, field, value, color<font color="#909090">=''</font>)</dt><dd><tt>write&nbsp;value&nbsp;into&nbsp;field&nbsp;,&nbsp;using&nbsp;option&nbsp;name<br>
+field&nbsp;-&nbsp;string&nbsp;with&nbsp;name&nbsp;of&nbsp;form&nbsp;element<br>
+value&nbsp;-&nbsp;value&nbsp;to&nbsp;put&nbsp;there&nbsp;(for&nbsp;radio,etc,&nbsp;put&nbsp;value,&nbsp;not&nbsp;col#)<br>
+color&nbsp;(optional)&nbsp;-&nbsp;siz&nbsp;digit&nbsp;color&nbsp;code</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="genClasses.html#Genesis">Genesis</a>:<br>
+<dl><dt><a name="Form-AUX"><strong>AUX</strong></a>(self, args)</dt><dd><tt><a href="#Genesis">Genesis</a>&nbsp;AUX&nbsp;command&nbsp;-&nbsp;returns&nbsp;STATUS.&nbsp;&nbsp;Sets&nbsp;class&nbsp;variables&nbsp;READANS&nbsp;<br>
+and&nbsp;COMANS,&nbsp;returns&nbsp;STATUS<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;args&nbsp;-&nbsp;string&nbsp;containing&nbsp;arguments</tt></dd></dl>
+
+<dl><dt><a name="Form-COM"><strong>COM</strong></a>(self, args)</dt><dd><tt><a href="#Genesis">Genesis</a>&nbsp;COM&nbsp;command&nbsp;-&nbsp;all&nbsp;important&nbsp;command&nbsp;to&nbsp;issue&nbsp;script&nbsp;commands&nbsp;-&nbsp;returns&nbsp;STATUS<br>
+and&nbsp;sets&nbsp;READANS&nbsp;as&nbsp;the&nbsp;command&nbsp;response&nbsp;raw&nbsp;input.&nbsp;&nbsp;COMANS&nbsp;is&nbsp;the&nbsp;parsed&nbsp;READANS.&nbsp;&nbsp;These&nbsp;are<br>
+class&nbsp;variables<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;args&nbsp;-&nbsp;string&nbsp;containing&nbsp;arguments&nbsp;for&nbsp;COM&nbsp;command&nbsp;(everything&nbsp;after&nbsp;COM)</tt></dd></dl>
+
+<dl><dt><a name="Form-DISP_INFO"><strong>DISP_INFO</strong></a>(self, args)</dt><dd><tt>This&nbsp;is&nbsp;similar&nbsp;to&nbsp;the&nbsp;DO_INFO&nbsp;but&nbsp;is&nbsp;run&nbsp;in&nbsp;'display'&nbsp;mode&nbsp;and&nbsp;is&nbsp;parsed&nbsp;differently&nbsp;<br>
+-&nbsp;this&nbsp;method&nbsp;is&nbsp;not&nbsp;complete</tt></dd></dl>
+
+<dl><dt><a name="Form-DO_INFO"><strong>DO_INFO</strong></a>(self, args)</dt><dd><tt>This&nbsp;is&nbsp;the&nbsp;command&nbsp;COM&nbsp;info,...&nbsp;&nbsp;returns&nbsp;a&nbsp;dictionary&nbsp;with&nbsp;all&nbsp;the&nbsp;information&nbsp;in&nbsp;the&nbsp;<br>
+output&nbsp;file&nbsp;from&nbsp;the&nbsp;info&nbsp;command.&nbsp;&nbsp;Each&nbsp;array&nbsp;of&nbsp;information&nbsp;is&nbsp;accessed&nbsp;by&nbsp;a&nbsp;key&nbsp;to&nbsp;the<br>
+dictionary&nbsp;that&nbsp;is&nbsp;returned.&nbsp;LIMITATION:&nbsp;Any&nbsp;string&nbsp;resembling&nbsp;a&nbsp;number&nbsp;will&nbsp;be&nbsp;converted<br>
+to&nbsp;a&nbsp;number.&nbsp;&nbsp;This&nbsp;means&nbsp;that&nbsp;a&nbsp;layer&nbsp;with&nbsp;the&nbsp;name&nbsp;'1.'&nbsp;or&nbsp;'1'&nbsp;will&nbsp;be&nbsp;returned&nbsp;later&nbsp;as<br>
+the&nbsp;float&nbsp;1.0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;args&nbsp;-&nbsp;arguments&nbsp;to&nbsp;the&nbsp;info&nbsp;command&nbsp;as&nbsp;a&nbsp;string</tt></dd></dl>
+
+<dl><dt><a name="Form-INFO"><strong>INFO</strong></a>(self, args)</dt><dd><tt>This&nbsp;is&nbsp;similar&nbsp;to&nbsp;the&nbsp;<a href="#Genesis">Genesis</a>&nbsp;command&nbsp;<a href="#Form-COM">COM</a>(info,...)&nbsp;Returns&nbsp;list&nbsp;of&nbsp;strings&nbsp;which<br>
+are&nbsp;lines&nbsp;from&nbsp;the&nbsp;output&nbsp;file<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;args&nbsp;-&nbsp;string&nbsp;containing&nbsp;all&nbsp;the&nbsp;arguments&nbsp;to&nbsp;the&nbsp;info&nbsp;command&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(that&nbsp;would&nbsp;be&nbsp;after&nbsp;the&nbsp;info,_*_)</tt></dd></dl>
+
+<dl><dt><a name="Form-MOUSE"><strong>MOUSE</strong></a>(self, msg, mode<font color="#909090">='p'</font>)</dt><dd><tt><a href="#Genesis">Genesis</a>&nbsp;MOUSE&nbsp;command&nbsp;-&nbsp;pauses&nbsp;to&nbsp;allow&nbsp;user&nbsp;to&nbsp;select&nbsp;a&nbsp;location&nbsp;with&nbsp;the&nbsp;mouse&nbsp;-&nbsp;<br>
+returns&nbsp;STATUS&nbsp;as&nbsp;integer.&nbsp;&nbsp;Sets&nbsp;class&nbsp;variables&nbsp;READANS&nbsp;and&nbsp;MOUSEANS&nbsp;to&nbsp;mouse&nbsp;location<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg&nbsp;-&nbsp;message&nbsp;to&nbsp;put&nbsp;in&nbsp;dialog&nbsp;box<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mode&nbsp;-&nbsp;set&nbsp;to&nbsp;character&nbsp;'p'&nbsp;or&nbsp;'r'&nbsp;&nbsp;p&nbsp;means&nbsp;to&nbsp;return&nbsp;a&nbsp;point,&nbsp;and&nbsp;r&nbsp;a&nbsp;rectangle&nbsp;(two&nbsp;points)</tt></dd></dl>
+
+<dl><dt><a name="Form-PAUSE"><strong>PAUSE</strong></a>(self, msg)</dt><dd><tt><a href="#Genesis">Genesis</a>&nbsp;PAUSE&nbsp;command&nbsp;-&nbsp;pauses&nbsp;script&nbsp;with&nbsp;box,&nbsp;and&nbsp;allows&nbsp;user&nbsp;to&nbsp;interact&nbsp;with&nbsp;<br>
+<a href="#Genesis">Genesis</a>&nbsp;before&nbsp;continuing&nbsp;-&nbsp;returns&nbsp;STATUS&nbsp;(as&nbsp;integer),&nbsp;sets&nbsp;class&nbsp;variables<br>
+READANS&nbsp;and&nbsp;PAUSANS<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg&nbsp;-&nbsp;string&nbsp;containing&nbsp;message&nbsp;to&nbsp;put&nbsp;in&nbsp;pause&nbsp;dialog&nbsp;box</tt></dd></dl>
+
+<dl><dt><a name="Form-SU_OFF"><strong>SU_OFF</strong></a>(self)</dt><dd><tt><a href="#Genesis">Genesis</a>&nbsp;SU_OFF&nbsp;command&nbsp;-&nbsp;eq&nbsp;to&nbsp;running&nbsp;SU_OFF&nbsp;in&nbsp;csh</tt></dd></dl>
+
+<dl><dt><a name="Form-SU_ON"><strong>SU_ON</strong></a>(self)</dt><dd><tt>The&nbsp;<a href="#Genesis">Genesis</a>&nbsp;SU_ON&nbsp;command&nbsp;-&nbsp;eq.&nbsp;to&nbsp;running&nbsp;SU_ON&nbsp;in&nbsp;csh</tt></dd></dl>
+
+<dl><dt><a name="Form-VOF"><strong>VOF</strong></a>(self)</dt><dd><tt><a href="#Genesis">Genesis</a>&nbsp;VOF&nbsp;command&nbsp;-&nbsp;turns&nbsp;on&nbsp;script&nbsp;halting&nbsp;on&nbsp;errors&nbsp;-&nbsp;eq&nbsp;to&nbsp;running&nbsp;VOF&nbsp;in&nbsp;csh</tt></dd></dl>
+
+<dl><dt><a name="Form-VON"><strong>VON</strong></a>(self)</dt><dd><tt><a href="#Genesis">Genesis</a>&nbsp;VON&nbsp;command&nbsp;-&nbsp;turns&nbsp;off&nbsp;script&nbsp;halting&nbsp;on&nbsp;errors-&nbsp;eq&nbsp;to&nbsp;running&nbsp;VON&nbsp;in&nbsp;csh</tt></dd></dl>
+
+<dl><dt><a name="Form-__del__"><strong>__del__</strong></a>(self)</dt><dd><tt>Called&nbsp;when&nbsp;class&nbsp;is&nbsp;cleaned&nbsp;up&nbsp;by&nbsp;python</tt></dd></dl>
+
+<dl><dt><a name="Form-blank"><strong>blank</strong></a>(self)</dt><dd><tt>Cleans&nbsp;out&nbsp;the&nbsp;return&nbsp;values</tt></dd></dl>
+
+<dl><dt><a name="Form-clean"><strong>clean</strong></a>(self, strip_me, badchars)</dt><dd><tt>Internal&nbsp;-&nbsp;strips&nbsp;a&nbsp;string&nbsp;(strip_me)&nbsp;of&nbsp;given&nbsp;(badchars)&nbsp;on&nbsp;either&nbsp;edge&nbsp;-&nbsp;used&nbsp;in&nbsp;parsing</tt></dd></dl>
+
+<dl><dt><a name="Form-convertToNumber"><strong>convertToNumber</strong></a>(self, value)</dt><dd><tt>Utility&nbsp;function&nbsp;-&nbsp;converts&nbsp;string&nbsp;to&nbsp;a&nbsp;number&nbsp;returns&nbsp;integer&nbsp;if&nbsp;<br>
+possible&nbsp;-&nbsp;otherwise&nbsp;returns&nbsp;a&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value&nbsp;-&nbsp;string&nbsp;to&nbsp;be&nbsp;converted</tt></dd></dl>
+
+<dl><dt><a name="Form-dbutil"><strong>dbutil</strong></a>(self, *args)</dt><dd><tt>Runs&nbsp;the&nbsp;dbutil&nbsp;command&nbsp;with&nbsp;the&nbsp;specified&nbsp;arguments&nbsp;-&nbsp;returns&nbsp;lines&nbsp;from&nbsp;the&nbsp;response&nbsp;as<br>
+array&nbsp;of&nbsp;strings<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;args&nbsp;-&nbsp;arguments&nbsp;for&nbsp;dbutil&nbsp;command</tt></dd></dl>
+
+<dl><dt><a name="Form-error"><strong>error</strong></a>(self, msg, severity<font color="#909090">=0</font>)</dt><dd><tt>Basic&nbsp;error&nbsp;handler<br>
+msg&nbsp;-&nbsp;string&nbsp;containing&nbsp;error&nbsp;message<br>
+severity&nbsp;-&nbsp;integer.&nbsp;&nbsp;If&nbsp;greater&nbsp;than&nbsp;one&nbsp;script&nbsp;exits</tt></dd></dl>
+
+<dl><dt><a name="Form-normalize"><strong>normalize</strong></a>(self)</dt><dd><tt>Normalize&nbsp;the&nbsp;path&nbsp;to&nbsp;GENESIS_EDIR,&nbsp;and&nbsp;make&nbsp;sure&nbsp;the&nbsp;environment&nbsp;is&nbsp;set</tt></dd></dl>
+
+<dl><dt><a name="Form-parseDispInfo"><strong>parseDispInfo</strong></a>(self, infoList)</dt><dd><tt>Parses&nbsp;output&nbsp;from&nbsp;info&nbsp;command&nbsp;that&nbsp;was&nbsp;run&nbsp;in&nbsp;display&nbsp;mode.&nbsp;Incomplete</tt></dd></dl>
+
+<dl><dt><a name="Form-parseFeatureInfo"><strong>parseFeatureInfo</strong></a>(self, infoList)</dt><dd><tt>Internal&nbsp;-&nbsp;Parses&nbsp;output&nbsp;from&nbsp;the&nbsp;info&nbsp;command&nbsp;when&nbsp;it&nbsp;writes&nbsp;out&nbsp;features.&nbsp;&nbsp;Uses&nbsp;the&nbsp;genFeatures.py<br>
+module&nbsp;and&nbsp;parses&nbsp;the&nbsp;information&nbsp;from&nbsp;this&nbsp;command&nbsp;(-d&nbsp;FEATURES)&nbsp;into&nbsp;class&nbsp;objects.</tt></dd></dl>
+
+<dl><dt><a name="Form-parseInfo"><strong>parseInfo</strong></a>(self, infoList)</dt><dd><tt>Internal&nbsp;-&nbsp;parses&nbsp;the&nbsp;output&nbsp;from&nbsp;the&nbsp;info&nbsp;command&nbsp;into&nbsp;a&nbsp;dictionary&nbsp;-&nbsp;returns&nbsp;dictionary</tt></dd></dl>
+
+<dl><dt><a name="Form-printFeatureDict"><strong>printFeatureDict</strong></a>(self, features_dict)</dt><dd><tt>Used&nbsp;for&nbsp;debugging&nbsp;purposes,&nbsp;this&nbsp;prints&nbsp;out&nbsp;a&nbsp;dictionary&nbsp;created&nbsp;with&nbsp;the&nbsp;parseFeatureInfo&nbsp;command<br>
+features_dict&nbsp;-&nbsp;dictionary&nbsp;returned&nbsp;by&nbsp;method&nbsp;parseFeatureInfo</tt></dd></dl>
+
+<dl><dt><a name="Form-sendCmd"><strong>sendCmd</strong></a>(self, cmd, args<font color="#909090">=''</font>)</dt><dd><tt>Send&nbsp;a&nbsp;command&nbsp;to&nbsp;STDOUT&nbsp;-&nbsp;This&nbsp;is&nbsp;where&nbsp;<a href="#Genesis">Genesis</a>&nbsp;will&nbsp;<br>
+see&nbsp;a&nbsp;command&nbsp;-&nbsp;used&nbsp;by&nbsp;CMD,&nbsp;DO_INFO,&nbsp;etc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cmd&nbsp;-&nbsp;the&nbsp;command&nbsp;root&nbsp;in&nbsp;CSH&nbsp;script&nbsp;form<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;args&nbsp;-&nbsp;any&nbsp;arguments&nbsp;to&nbsp;the&nbsp;initial&nbsp;command&nbsp;CMD&nbsp;xxx...</tt></dd></dl>
+
+<hr>
+Data and other attributes inherited from <a href="genClasses.html#Genesis">Genesis</a>:<br>
+<dl><dt><strong>colors</strong> = {'hex': {'document': '9BDBDB', 'drill': '9BB4BF', 'mixed': 'F2E086', 'power_ground': 'DBAD00', 'rout': 'D8D8D8', 'signal': 'FCC64D', 'silk_screen': 'FFFFFF', 'solder_mask': '00A57C', 'solder_paste': 'FFFFCE'}, 'rgb': {'document': (155, 219, 219), 'drill': (155, 180, 191), 'mixed': (242, 224, 134), 'power_ground': (219, 173, 0), 'rout': (216, 216, 216), 'signal': (252, 198, 55), 'silk_screen': (255, 255, 255), 'solder_mask': (0, 165, 124), 'solder_paste': (255, 255, 206)}}</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Genesis">class <strong>Genesis</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>This&nbsp;class&nbsp;defines&nbsp;the&nbsp;low-level&nbsp;interface&nbsp;methods&nbsp;for&nbsp;use&nbsp;with&nbsp;<a href="#Genesis">Genesis</a>.<br>
+It&nbsp;serves&nbsp;as&nbsp;a&nbsp;base-class&nbsp;for&nbsp;the&nbsp;higher-level&nbsp;objects.&nbsp;&nbsp;It&nbsp;defines&nbsp;<br>
+methods&nbsp;to&nbsp;interface&nbsp;with&nbsp;<a href="#Genesis">Genesis</a>&nbsp;itself&nbsp;with&nbsp;the&nbsp;methods&nbsp;Frontline&nbsp;has<br>
+provided.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Genesis-AUX"><strong>AUX</strong></a>(self, args)</dt><dd><tt><a href="#Genesis">Genesis</a>&nbsp;AUX&nbsp;command&nbsp;-&nbsp;returns&nbsp;STATUS.&nbsp;&nbsp;Sets&nbsp;class&nbsp;variables&nbsp;READANS&nbsp;<br>
+and&nbsp;COMANS,&nbsp;returns&nbsp;STATUS<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;args&nbsp;-&nbsp;string&nbsp;containing&nbsp;arguments</tt></dd></dl>
+
+<dl><dt><a name="Genesis-COM"><strong>COM</strong></a>(self, args)</dt><dd><tt><a href="#Genesis">Genesis</a>&nbsp;COM&nbsp;command&nbsp;-&nbsp;all&nbsp;important&nbsp;command&nbsp;to&nbsp;issue&nbsp;script&nbsp;commands&nbsp;-&nbsp;returns&nbsp;STATUS<br>
+and&nbsp;sets&nbsp;READANS&nbsp;as&nbsp;the&nbsp;command&nbsp;response&nbsp;raw&nbsp;input.&nbsp;&nbsp;COMANS&nbsp;is&nbsp;the&nbsp;parsed&nbsp;READANS.&nbsp;&nbsp;These&nbsp;are<br>
+class&nbsp;variables<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;args&nbsp;-&nbsp;string&nbsp;containing&nbsp;arguments&nbsp;for&nbsp;COM&nbsp;command&nbsp;(everything&nbsp;after&nbsp;COM)</tt></dd></dl>
+
+<dl><dt><a name="Genesis-DISP_INFO"><strong>DISP_INFO</strong></a>(self, args)</dt><dd><tt>This&nbsp;is&nbsp;similar&nbsp;to&nbsp;the&nbsp;DO_INFO&nbsp;but&nbsp;is&nbsp;run&nbsp;in&nbsp;'display'&nbsp;mode&nbsp;and&nbsp;is&nbsp;parsed&nbsp;differently&nbsp;<br>
+-&nbsp;this&nbsp;method&nbsp;is&nbsp;not&nbsp;complete</tt></dd></dl>
+
+<dl><dt><a name="Genesis-DO_INFO"><strong>DO_INFO</strong></a>(self, args)</dt><dd><tt>This&nbsp;is&nbsp;the&nbsp;command&nbsp;COM&nbsp;info,...&nbsp;&nbsp;returns&nbsp;a&nbsp;dictionary&nbsp;with&nbsp;all&nbsp;the&nbsp;information&nbsp;in&nbsp;the&nbsp;<br>
+output&nbsp;file&nbsp;from&nbsp;the&nbsp;info&nbsp;command.&nbsp;&nbsp;Each&nbsp;array&nbsp;of&nbsp;information&nbsp;is&nbsp;accessed&nbsp;by&nbsp;a&nbsp;key&nbsp;to&nbsp;the<br>
+dictionary&nbsp;that&nbsp;is&nbsp;returned.&nbsp;LIMITATION:&nbsp;Any&nbsp;string&nbsp;resembling&nbsp;a&nbsp;number&nbsp;will&nbsp;be&nbsp;converted<br>
+to&nbsp;a&nbsp;number.&nbsp;&nbsp;This&nbsp;means&nbsp;that&nbsp;a&nbsp;layer&nbsp;with&nbsp;the&nbsp;name&nbsp;'1.'&nbsp;or&nbsp;'1'&nbsp;will&nbsp;be&nbsp;returned&nbsp;later&nbsp;as<br>
+the&nbsp;float&nbsp;1.0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;args&nbsp;-&nbsp;arguments&nbsp;to&nbsp;the&nbsp;info&nbsp;command&nbsp;as&nbsp;a&nbsp;string</tt></dd></dl>
+
+<dl><dt><a name="Genesis-INFO"><strong>INFO</strong></a>(self, args)</dt><dd><tt>This&nbsp;is&nbsp;similar&nbsp;to&nbsp;the&nbsp;<a href="#Genesis">Genesis</a>&nbsp;command&nbsp;<a href="#Genesis-COM">COM</a>(info,...)&nbsp;Returns&nbsp;list&nbsp;of&nbsp;strings&nbsp;which<br>
+are&nbsp;lines&nbsp;from&nbsp;the&nbsp;output&nbsp;file<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;args&nbsp;-&nbsp;string&nbsp;containing&nbsp;all&nbsp;the&nbsp;arguments&nbsp;to&nbsp;the&nbsp;info&nbsp;command&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(that&nbsp;would&nbsp;be&nbsp;after&nbsp;the&nbsp;info,_*_)</tt></dd></dl>
+
+<dl><dt><a name="Genesis-MOUSE"><strong>MOUSE</strong></a>(self, msg, mode<font color="#909090">='p'</font>)</dt><dd><tt><a href="#Genesis">Genesis</a>&nbsp;MOUSE&nbsp;command&nbsp;-&nbsp;pauses&nbsp;to&nbsp;allow&nbsp;user&nbsp;to&nbsp;select&nbsp;a&nbsp;location&nbsp;with&nbsp;the&nbsp;mouse&nbsp;-&nbsp;<br>
+returns&nbsp;STATUS&nbsp;as&nbsp;integer.&nbsp;&nbsp;Sets&nbsp;class&nbsp;variables&nbsp;READANS&nbsp;and&nbsp;MOUSEANS&nbsp;to&nbsp;mouse&nbsp;location<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg&nbsp;-&nbsp;message&nbsp;to&nbsp;put&nbsp;in&nbsp;dialog&nbsp;box<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mode&nbsp;-&nbsp;set&nbsp;to&nbsp;character&nbsp;'p'&nbsp;or&nbsp;'r'&nbsp;&nbsp;p&nbsp;means&nbsp;to&nbsp;return&nbsp;a&nbsp;point,&nbsp;and&nbsp;r&nbsp;a&nbsp;rectangle&nbsp;(two&nbsp;points)</tt></dd></dl>
+
+<dl><dt><a name="Genesis-PAUSE"><strong>PAUSE</strong></a>(self, msg)</dt><dd><tt><a href="#Genesis">Genesis</a>&nbsp;PAUSE&nbsp;command&nbsp;-&nbsp;pauses&nbsp;script&nbsp;with&nbsp;box,&nbsp;and&nbsp;allows&nbsp;user&nbsp;to&nbsp;interact&nbsp;with&nbsp;<br>
+<a href="#Genesis">Genesis</a>&nbsp;before&nbsp;continuing&nbsp;-&nbsp;returns&nbsp;STATUS&nbsp;(as&nbsp;integer),&nbsp;sets&nbsp;class&nbsp;variables<br>
+READANS&nbsp;and&nbsp;PAUSANS<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg&nbsp;-&nbsp;string&nbsp;containing&nbsp;message&nbsp;to&nbsp;put&nbsp;in&nbsp;pause&nbsp;dialog&nbsp;box</tt></dd></dl>
+
+<dl><dt><a name="Genesis-SU_OFF"><strong>SU_OFF</strong></a>(self)</dt><dd><tt><a href="#Genesis">Genesis</a>&nbsp;SU_OFF&nbsp;command&nbsp;-&nbsp;eq&nbsp;to&nbsp;running&nbsp;SU_OFF&nbsp;in&nbsp;csh</tt></dd></dl>
+
+<dl><dt><a name="Genesis-SU_ON"><strong>SU_ON</strong></a>(self)</dt><dd><tt>The&nbsp;<a href="#Genesis">Genesis</a>&nbsp;SU_ON&nbsp;command&nbsp;-&nbsp;eq.&nbsp;to&nbsp;running&nbsp;SU_ON&nbsp;in&nbsp;csh</tt></dd></dl>
+
+<dl><dt><a name="Genesis-VOF"><strong>VOF</strong></a>(self)</dt><dd><tt><a href="#Genesis">Genesis</a>&nbsp;VOF&nbsp;command&nbsp;-&nbsp;turns&nbsp;on&nbsp;script&nbsp;halting&nbsp;on&nbsp;errors&nbsp;-&nbsp;eq&nbsp;to&nbsp;running&nbsp;VOF&nbsp;in&nbsp;csh</tt></dd></dl>
+
+<dl><dt><a name="Genesis-VON"><strong>VON</strong></a>(self)</dt><dd><tt><a href="#Genesis">Genesis</a>&nbsp;VON&nbsp;command&nbsp;-&nbsp;turns&nbsp;off&nbsp;script&nbsp;halting&nbsp;on&nbsp;errors-&nbsp;eq&nbsp;to&nbsp;running&nbsp;VON&nbsp;in&nbsp;csh</tt></dd></dl>
+
+<dl><dt><a name="Genesis-__del__"><strong>__del__</strong></a>(self)</dt><dd><tt>Called&nbsp;when&nbsp;class&nbsp;is&nbsp;cleaned&nbsp;up&nbsp;by&nbsp;python</tt></dd></dl>
+
+<dl><dt><a name="Genesis-__init__"><strong>__init__</strong></a>(self)</dt><dd><tt>Initialize&nbsp;method,&nbsp;called&nbsp;when&nbsp;object&nbsp;is&nbsp;instantiated&nbsp;(created)</tt></dd></dl>
+
+<dl><dt><a name="Genesis-blank"><strong>blank</strong></a>(self)</dt><dd><tt>Cleans&nbsp;out&nbsp;the&nbsp;return&nbsp;values</tt></dd></dl>
+
+<dl><dt><a name="Genesis-clean"><strong>clean</strong></a>(self, strip_me, badchars)</dt><dd><tt>Internal&nbsp;-&nbsp;strips&nbsp;a&nbsp;string&nbsp;(strip_me)&nbsp;of&nbsp;given&nbsp;(badchars)&nbsp;on&nbsp;either&nbsp;edge&nbsp;-&nbsp;used&nbsp;in&nbsp;parsing</tt></dd></dl>
+
+<dl><dt><a name="Genesis-convertToNumber"><strong>convertToNumber</strong></a>(self, value)</dt><dd><tt>Utility&nbsp;function&nbsp;-&nbsp;converts&nbsp;string&nbsp;to&nbsp;a&nbsp;number&nbsp;returns&nbsp;integer&nbsp;if&nbsp;<br>
+possible&nbsp;-&nbsp;otherwise&nbsp;returns&nbsp;a&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value&nbsp;-&nbsp;string&nbsp;to&nbsp;be&nbsp;converted</tt></dd></dl>
+
+<dl><dt><a name="Genesis-dbutil"><strong>dbutil</strong></a>(self, *args)</dt><dd><tt>Runs&nbsp;the&nbsp;dbutil&nbsp;command&nbsp;with&nbsp;the&nbsp;specified&nbsp;arguments&nbsp;-&nbsp;returns&nbsp;lines&nbsp;from&nbsp;the&nbsp;response&nbsp;as<br>
+array&nbsp;of&nbsp;strings<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;args&nbsp;-&nbsp;arguments&nbsp;for&nbsp;dbutil&nbsp;command</tt></dd></dl>
+
+<dl><dt><a name="Genesis-error"><strong>error</strong></a>(self, msg, severity<font color="#909090">=0</font>)</dt><dd><tt>Basic&nbsp;error&nbsp;handler<br>
+msg&nbsp;-&nbsp;string&nbsp;containing&nbsp;error&nbsp;message<br>
+severity&nbsp;-&nbsp;integer.&nbsp;&nbsp;If&nbsp;greater&nbsp;than&nbsp;one&nbsp;script&nbsp;exits</tt></dd></dl>
+
+<dl><dt><a name="Genesis-normalize"><strong>normalize</strong></a>(self)</dt><dd><tt>Normalize&nbsp;the&nbsp;path&nbsp;to&nbsp;GENESIS_EDIR,&nbsp;and&nbsp;make&nbsp;sure&nbsp;the&nbsp;environment&nbsp;is&nbsp;set</tt></dd></dl>
+
+<dl><dt><a name="Genesis-parseDispInfo"><strong>parseDispInfo</strong></a>(self, infoList)</dt><dd><tt>Parses&nbsp;output&nbsp;from&nbsp;info&nbsp;command&nbsp;that&nbsp;was&nbsp;run&nbsp;in&nbsp;display&nbsp;mode.&nbsp;Incomplete</tt></dd></dl>
+
+<dl><dt><a name="Genesis-parseFeatureInfo"><strong>parseFeatureInfo</strong></a>(self, infoList)</dt><dd><tt>Internal&nbsp;-&nbsp;Parses&nbsp;output&nbsp;from&nbsp;the&nbsp;info&nbsp;command&nbsp;when&nbsp;it&nbsp;writes&nbsp;out&nbsp;features.&nbsp;&nbsp;Uses&nbsp;the&nbsp;genFeatures.py<br>
+module&nbsp;and&nbsp;parses&nbsp;the&nbsp;information&nbsp;from&nbsp;this&nbsp;command&nbsp;(-d&nbsp;FEATURES)&nbsp;into&nbsp;class&nbsp;objects.</tt></dd></dl>
+
+<dl><dt><a name="Genesis-parseInfo"><strong>parseInfo</strong></a>(self, infoList)</dt><dd><tt>Internal&nbsp;-&nbsp;parses&nbsp;the&nbsp;output&nbsp;from&nbsp;the&nbsp;info&nbsp;command&nbsp;into&nbsp;a&nbsp;dictionary&nbsp;-&nbsp;returns&nbsp;dictionary</tt></dd></dl>
+
+<dl><dt><a name="Genesis-printFeatureDict"><strong>printFeatureDict</strong></a>(self, features_dict)</dt><dd><tt>Used&nbsp;for&nbsp;debugging&nbsp;purposes,&nbsp;this&nbsp;prints&nbsp;out&nbsp;a&nbsp;dictionary&nbsp;created&nbsp;with&nbsp;the&nbsp;parseFeatureInfo&nbsp;command<br>
+features_dict&nbsp;-&nbsp;dictionary&nbsp;returned&nbsp;by&nbsp;method&nbsp;parseFeatureInfo</tt></dd></dl>
+
+<dl><dt><a name="Genesis-sendCmd"><strong>sendCmd</strong></a>(self, cmd, args<font color="#909090">=''</font>)</dt><dd><tt>Send&nbsp;a&nbsp;command&nbsp;to&nbsp;STDOUT&nbsp;-&nbsp;This&nbsp;is&nbsp;where&nbsp;<a href="#Genesis">Genesis</a>&nbsp;will&nbsp;<br>
+see&nbsp;a&nbsp;command&nbsp;-&nbsp;used&nbsp;by&nbsp;CMD,&nbsp;DO_INFO,&nbsp;etc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cmd&nbsp;-&nbsp;the&nbsp;command&nbsp;root&nbsp;in&nbsp;CSH&nbsp;script&nbsp;form<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;args&nbsp;-&nbsp;any&nbsp;arguments&nbsp;to&nbsp;the&nbsp;initial&nbsp;command&nbsp;CMD&nbsp;xxx...</tt></dd></dl>
+
+<dl><dt><a name="Genesis-write"><strong>write</strong></a>(self, msg)</dt><dd><tt>Very&nbsp;basic&nbsp;output&nbsp;writer<br>
+msg&nbsp;-&nbsp;string&nbsp;to&nbsp;write&nbsp;to&nbsp;STDOUT</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>colors</strong> = {'hex': {'document': '9BDBDB', 'drill': '9BB4BF', 'mixed': 'F2E086', 'power_ground': 'DBAD00', 'rout': 'D8D8D8', 'signal': 'FCC64D', 'silk_screen': 'FFFFFF', 'solder_mask': '00A57C', 'solder_paste': 'FFFFCE'}, 'rgb': {'document': (155, 219, 219), 'drill': (155, 180, 191), 'mixed': (242, 224, 134), 'power_ground': (219, 173, 0), 'rout': (216, 216, 216), 'signal': (252, 198, 55), 'silk_screen': (255, 255, 255), 'solder_mask': (0, 165, 124), 'solder_paste': (255, 255, 206)}}</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Job">class <strong>Job</strong></a>(<a href="genClasses.html#Genesis">Genesis</a>, <a href="genClasses.html#ExtraStuff">ExtraStuff</a>, <a href="genCommands.html#JobCmds">genCommands.JobCmds</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>This&nbsp;class&nbsp;is&nbsp;ised&nbsp;to&nbsp;represent&nbsp;a&nbsp;job&nbsp;object&nbsp;in&nbsp;the&nbsp;<a href="#Genesis">Genesis</a>&nbsp;database.&nbsp;&nbsp;It&nbsp;is&nbsp;used&nbsp;to&nbsp;open,&nbsp;close,&nbsp;and&nbsp;manipulate<br>
+jobs.&nbsp;&nbsp;Other&nbsp;classes&nbsp;representing&nbsp;steps,&nbsp;forms,&nbsp;matrices,&nbsp;etc,&nbsp;can&nbsp;be&nbsp;contained&nbsp;by&nbsp;this&nbsp;class.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="genClasses.html#Job">Job</a></dd>
+<dd><a href="genClasses.html#Genesis">Genesis</a></dd>
+<dd><a href="genClasses.html#ExtraStuff">ExtraStuff</a></dd>
+<dd><a href="genCommands.html#JobCmds">genCommands.JobCmds</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Job-__getattr__"><strong>__getattr__</strong></a>(self, name)</dt><dd><tt>Hook&nbsp;to&nbsp;generate&nbsp;attributes&nbsp;as&nbsp;they're&nbsp;requested&nbsp;-&nbsp;it&nbsp;is&nbsp;run&nbsp;automatically&nbsp;upon&nbsp;<br>
+initial&nbsp;request&nbsp;of&nbsp;an&nbsp;attribute.&nbsp;e.g.&nbsp;&lt;class&nbsp;instance&gt;.attribute&nbsp;<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;attribute&nbsp;is&nbsp;in&nbsp;this&nbsp;method,&nbsp;it&nbsp;is&nbsp;handled&nbsp;by&nbsp;methods&nbsp;defined&nbsp;here,&nbsp;<br>
+otherwise&nbsp;the&nbsp;<a href="#Genesis">Genesis</a>&nbsp;job&nbsp;object&nbsp;associated&nbsp;with&nbsp;this&nbsp;instance&nbsp;is&nbsp;inspected&nbsp;<br>
+for&nbsp;a&nbsp;corresponding&nbsp;<a href="#Genesis">Genesis</a>&nbsp;attribute;&nbsp;the&nbsp;value&nbsp;of&nbsp;which&nbsp;is&nbsp;stored&nbsp;in&nbsp;the&nbsp;<br>
+instance&nbsp;attribute.<br>
+&nbsp;<br>
+Special&nbsp;Attributes&nbsp;Supported:&nbsp;&nbsp;matrix,&nbsp;info,&nbsp;steps,&nbsp;forms,&nbsp;db,&nbsp;dbpath,&nbsp;lockStat,&nbsp;user,&nbsp;bucket,&nbsp;xmlbucket</tt></dd></dl>
+
+<dl><dt><a name="Job-__init__"><strong>__init__</strong></a>(self, name)</dt></dl>
+
+<dl><dt><a name="Job-__str__"><strong>__str__</strong></a>(self)</dt><dd><tt>Returns&nbsp;string&nbsp;describing&nbsp;class&nbsp;-&nbsp;also&nbsp;what&nbsp;is&nbsp;printed&nbsp;if&nbsp;print&nbsp;method&nbsp;called&nbsp;on&nbsp;class&nbsp;object</tt></dd></dl>
+
+<dl><dt><a name="Job-dbName"><strong>dbName</strong></a>(self)</dt><dd><tt>Returns&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;job.&nbsp;&nbsp;Populates&nbsp;&lt;inst&gt;.db</tt></dd></dl>
+
+<dl><dt><a name="Job-dbPath"><strong>dbPath</strong></a>(self)</dt><dd><tt>Returns&nbsp;the&nbsp;file&nbsp;path&nbsp;to&nbsp;the&nbsp;job.&nbsp;&nbsp;Populates&nbsp;&lt;inst&gt;.dbpath</tt></dd></dl>
+
+<dl><dt><a name="Job-dbStat"><strong>dbStat</strong></a>(self)</dt><dd><tt>Returns&nbsp;the&nbsp;lock&nbsp;status.&nbsp;&nbsp;Populates&nbsp;&lt;inst&gt;.lockStat</tt></dd></dl>
+
+<dl><dt><a name="Job-getBucket"><strong>getBucket</strong></a>(self)</dt><dd><tt>Returns&nbsp;the&nbsp;persistency&nbsp;bucket...inspects&nbsp;the&nbsp;genPersist&nbsp;module&nbsp;to<br>
+check&nbsp;the&nbsp;value&nbsp;of&nbsp;ENGINE,&nbsp;which&nbsp;by&nbsp;default&nbsp;is&nbsp;set&nbsp;to&nbsp;XML&nbsp;if&nbsp;gnosis.xml&nbsp;is&nbsp;installed.</tt></dd></dl>
+
+<dl><dt><a name="Job-getForms"><strong>getForms</strong></a>(self)</dt><dd><tt>Populates&nbsp;the&nbsp;self.<strong>forms</strong>&nbsp;list.&nbsp;&nbsp;This&nbsp;contains&nbsp;a&nbsp;list&nbsp;of&nbsp;all&nbsp;form&nbsp;names&nbsp;in&nbsp;the&nbsp;job.&nbsp;&nbsp;Forms&nbsp;aren't<br>
+very&nbsp;fully&nbsp;implemented&nbsp;yet.</tt></dd></dl>
+
+<dl><dt><a name="Job-getInfo"><strong>getInfo</strong></a>(self)</dt><dd><tt>Called&nbsp;by&nbsp;__get_attr__&nbsp;or&nbsp;can&nbsp;be&nbsp;called&nbsp;by&nbsp;user.&nbsp;&nbsp;Builds&nbsp;and&nbsp;returns&nbsp;&lt;inst&gt;.info&nbsp;dictionary</tt></dd></dl>
+
+<dl><dt><a name="Job-getSteps"><strong>getSteps</strong></a>(self)</dt><dd><tt>Populates&nbsp;the&nbsp;&lt;inst&gt;.steps&nbsp;dictionary&nbsp;with&nbsp;<a href="#Step">Step</a>&nbsp;classes&nbsp;representing&nbsp;each&nbsp;step.&nbsp;&nbsp;Use&nbsp;to&nbsp;update<br>
+the&nbsp;job&nbsp;class's&nbsp;representation&nbsp;of&nbsp;its&nbsp;steps</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="genClasses.html#Genesis">Genesis</a>:<br>
+<dl><dt><a name="Job-AUX"><strong>AUX</strong></a>(self, args)</dt><dd><tt><a href="#Genesis">Genesis</a>&nbsp;AUX&nbsp;command&nbsp;-&nbsp;returns&nbsp;STATUS.&nbsp;&nbsp;Sets&nbsp;class&nbsp;variables&nbsp;READANS&nbsp;<br>
+and&nbsp;COMANS,&nbsp;returns&nbsp;STATUS<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;args&nbsp;-&nbsp;string&nbsp;containing&nbsp;arguments</tt></dd></dl>
+
+<dl><dt><a name="Job-COM"><strong>COM</strong></a>(self, args)</dt><dd><tt><a href="#Genesis">Genesis</a>&nbsp;COM&nbsp;command&nbsp;-&nbsp;all&nbsp;important&nbsp;command&nbsp;to&nbsp;issue&nbsp;script&nbsp;commands&nbsp;-&nbsp;returns&nbsp;STATUS<br>
+and&nbsp;sets&nbsp;READANS&nbsp;as&nbsp;the&nbsp;command&nbsp;response&nbsp;raw&nbsp;input.&nbsp;&nbsp;COMANS&nbsp;is&nbsp;the&nbsp;parsed&nbsp;READANS.&nbsp;&nbsp;These&nbsp;are<br>
+class&nbsp;variables<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;args&nbsp;-&nbsp;string&nbsp;containing&nbsp;arguments&nbsp;for&nbsp;COM&nbsp;command&nbsp;(everything&nbsp;after&nbsp;COM)</tt></dd></dl>
+
+<dl><dt><a name="Job-DISP_INFO"><strong>DISP_INFO</strong></a>(self, args)</dt><dd><tt>This&nbsp;is&nbsp;similar&nbsp;to&nbsp;the&nbsp;DO_INFO&nbsp;but&nbsp;is&nbsp;run&nbsp;in&nbsp;'display'&nbsp;mode&nbsp;and&nbsp;is&nbsp;parsed&nbsp;differently&nbsp;<br>
+-&nbsp;this&nbsp;method&nbsp;is&nbsp;not&nbsp;complete</tt></dd></dl>
+
+<dl><dt><a name="Job-DO_INFO"><strong>DO_INFO</strong></a>(self, args)</dt><dd><tt>This&nbsp;is&nbsp;the&nbsp;command&nbsp;COM&nbsp;info,...&nbsp;&nbsp;returns&nbsp;a&nbsp;dictionary&nbsp;with&nbsp;all&nbsp;the&nbsp;information&nbsp;in&nbsp;the&nbsp;<br>
+output&nbsp;file&nbsp;from&nbsp;the&nbsp;info&nbsp;command.&nbsp;&nbsp;Each&nbsp;array&nbsp;of&nbsp;information&nbsp;is&nbsp;accessed&nbsp;by&nbsp;a&nbsp;key&nbsp;to&nbsp;the<br>
+dictionary&nbsp;that&nbsp;is&nbsp;returned.&nbsp;LIMITATION:&nbsp;Any&nbsp;string&nbsp;resembling&nbsp;a&nbsp;number&nbsp;will&nbsp;be&nbsp;converted<br>
+to&nbsp;a&nbsp;number.&nbsp;&nbsp;This&nbsp;means&nbsp;that&nbsp;a&nbsp;layer&nbsp;with&nbsp;the&nbsp;name&nbsp;'1.'&nbsp;or&nbsp;'1'&nbsp;will&nbsp;be&nbsp;returned&nbsp;later&nbsp;as<br>
+the&nbsp;float&nbsp;1.0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;args&nbsp;-&nbsp;arguments&nbsp;to&nbsp;the&nbsp;info&nbsp;command&nbsp;as&nbsp;a&nbsp;string</tt></dd></dl>
+
+<dl><dt><a name="Job-INFO"><strong>INFO</strong></a>(self, args)</dt><dd><tt>This&nbsp;is&nbsp;similar&nbsp;to&nbsp;the&nbsp;<a href="#Genesis">Genesis</a>&nbsp;command&nbsp;<a href="#Job-COM">COM</a>(info,...)&nbsp;Returns&nbsp;list&nbsp;of&nbsp;strings&nbsp;which<br>
+are&nbsp;lines&nbsp;from&nbsp;the&nbsp;output&nbsp;file<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;args&nbsp;-&nbsp;string&nbsp;containing&nbsp;all&nbsp;the&nbsp;arguments&nbsp;to&nbsp;the&nbsp;info&nbsp;command&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(that&nbsp;would&nbsp;be&nbsp;after&nbsp;the&nbsp;info,_*_)</tt></dd></dl>
+
+<dl><dt><a name="Job-MOUSE"><strong>MOUSE</strong></a>(self, msg, mode<font color="#909090">='p'</font>)</dt><dd><tt><a href="#Genesis">Genesis</a>&nbsp;MOUSE&nbsp;command&nbsp;-&nbsp;pauses&nbsp;to&nbsp;allow&nbsp;user&nbsp;to&nbsp;select&nbsp;a&nbsp;location&nbsp;with&nbsp;the&nbsp;mouse&nbsp;-&nbsp;<br>
+returns&nbsp;STATUS&nbsp;as&nbsp;integer.&nbsp;&nbsp;Sets&nbsp;class&nbsp;variables&nbsp;READANS&nbsp;and&nbsp;MOUSEANS&nbsp;to&nbsp;mouse&nbsp;location<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg&nbsp;-&nbsp;message&nbsp;to&nbsp;put&nbsp;in&nbsp;dialog&nbsp;box<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mode&nbsp;-&nbsp;set&nbsp;to&nbsp;character&nbsp;'p'&nbsp;or&nbsp;'r'&nbsp;&nbsp;p&nbsp;means&nbsp;to&nbsp;return&nbsp;a&nbsp;point,&nbsp;and&nbsp;r&nbsp;a&nbsp;rectangle&nbsp;(two&nbsp;points)</tt></dd></dl>
+
+<dl><dt><a name="Job-PAUSE"><strong>PAUSE</strong></a>(self, msg)</dt><dd><tt><a href="#Genesis">Genesis</a>&nbsp;PAUSE&nbsp;command&nbsp;-&nbsp;pauses&nbsp;script&nbsp;with&nbsp;box,&nbsp;and&nbsp;allows&nbsp;user&nbsp;to&nbsp;interact&nbsp;with&nbsp;<br>
+<a href="#Genesis">Genesis</a>&nbsp;before&nbsp;continuing&nbsp;-&nbsp;returns&nbsp;STATUS&nbsp;(as&nbsp;integer),&nbsp;sets&nbsp;class&nbsp;variables<br>
+READANS&nbsp;and&nbsp;PAUSANS<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg&nbsp;-&nbsp;string&nbsp;containing&nbsp;message&nbsp;to&nbsp;put&nbsp;in&nbsp;pause&nbsp;dialog&nbsp;box</tt></dd></dl>
+
+<dl><dt><a name="Job-SU_OFF"><strong>SU_OFF</strong></a>(self)</dt><dd><tt><a href="#Genesis">Genesis</a>&nbsp;SU_OFF&nbsp;command&nbsp;-&nbsp;eq&nbsp;to&nbsp;running&nbsp;SU_OFF&nbsp;in&nbsp;csh</tt></dd></dl>
+
+<dl><dt><a name="Job-SU_ON"><strong>SU_ON</strong></a>(self)</dt><dd><tt>The&nbsp;<a href="#Genesis">Genesis</a>&nbsp;SU_ON&nbsp;command&nbsp;-&nbsp;eq.&nbsp;to&nbsp;running&nbsp;SU_ON&nbsp;in&nbsp;csh</tt></dd></dl>
+
+<dl><dt><a name="Job-VOF"><strong>VOF</strong></a>(self)</dt><dd><tt><a href="#Genesis">Genesis</a>&nbsp;VOF&nbsp;command&nbsp;-&nbsp;turns&nbsp;on&nbsp;script&nbsp;halting&nbsp;on&nbsp;errors&nbsp;-&nbsp;eq&nbsp;to&nbsp;running&nbsp;VOF&nbsp;in&nbsp;csh</tt></dd></dl>
+
+<dl><dt><a name="Job-VON"><strong>VON</strong></a>(self)</dt><dd><tt><a href="#Genesis">Genesis</a>&nbsp;VON&nbsp;command&nbsp;-&nbsp;turns&nbsp;off&nbsp;script&nbsp;halting&nbsp;on&nbsp;errors-&nbsp;eq&nbsp;to&nbsp;running&nbsp;VON&nbsp;in&nbsp;csh</tt></dd></dl>
+
+<dl><dt><a name="Job-__del__"><strong>__del__</strong></a>(self)</dt><dd><tt>Called&nbsp;when&nbsp;class&nbsp;is&nbsp;cleaned&nbsp;up&nbsp;by&nbsp;python</tt></dd></dl>
+
+<dl><dt><a name="Job-blank"><strong>blank</strong></a>(self)</dt><dd><tt>Cleans&nbsp;out&nbsp;the&nbsp;return&nbsp;values</tt></dd></dl>
+
+<dl><dt><a name="Job-clean"><strong>clean</strong></a>(self, strip_me, badchars)</dt><dd><tt>Internal&nbsp;-&nbsp;strips&nbsp;a&nbsp;string&nbsp;(strip_me)&nbsp;of&nbsp;given&nbsp;(badchars)&nbsp;on&nbsp;either&nbsp;edge&nbsp;-&nbsp;used&nbsp;in&nbsp;parsing</tt></dd></dl>
+
+<dl><dt><a name="Job-convertToNumber"><strong>convertToNumber</strong></a>(self, value)</dt><dd><tt>Utility&nbsp;function&nbsp;-&nbsp;converts&nbsp;string&nbsp;to&nbsp;a&nbsp;number&nbsp;returns&nbsp;integer&nbsp;if&nbsp;<br>
+possible&nbsp;-&nbsp;otherwise&nbsp;returns&nbsp;a&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value&nbsp;-&nbsp;string&nbsp;to&nbsp;be&nbsp;converted</tt></dd></dl>
+
+<dl><dt><a name="Job-dbutil"><strong>dbutil</strong></a>(self, *args)</dt><dd><tt>Runs&nbsp;the&nbsp;dbutil&nbsp;command&nbsp;with&nbsp;the&nbsp;specified&nbsp;arguments&nbsp;-&nbsp;returns&nbsp;lines&nbsp;from&nbsp;the&nbsp;response&nbsp;as<br>
+array&nbsp;of&nbsp;strings<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;args&nbsp;-&nbsp;arguments&nbsp;for&nbsp;dbutil&nbsp;command</tt></dd></dl>
+
+<dl><dt><a name="Job-error"><strong>error</strong></a>(self, msg, severity<font color="#909090">=0</font>)</dt><dd><tt>Basic&nbsp;error&nbsp;handler<br>
+msg&nbsp;-&nbsp;string&nbsp;containing&nbsp;error&nbsp;message<br>
+severity&nbsp;-&nbsp;integer.&nbsp;&nbsp;If&nbsp;greater&nbsp;than&nbsp;one&nbsp;script&nbsp;exits</tt></dd></dl>
+
+<dl><dt><a name="Job-normalize"><strong>normalize</strong></a>(self)</dt><dd><tt>Normalize&nbsp;the&nbsp;path&nbsp;to&nbsp;GENESIS_EDIR,&nbsp;and&nbsp;make&nbsp;sure&nbsp;the&nbsp;environment&nbsp;is&nbsp;set</tt></dd></dl>
+
+<dl><dt><a name="Job-parseDispInfo"><strong>parseDispInfo</strong></a>(self, infoList)</dt><dd><tt>Parses&nbsp;output&nbsp;from&nbsp;info&nbsp;command&nbsp;that&nbsp;was&nbsp;run&nbsp;in&nbsp;display&nbsp;mode.&nbsp;Incomplete</tt></dd></dl>
+
+<dl><dt><a name="Job-parseFeatureInfo"><strong>parseFeatureInfo</strong></a>(self, infoList)</dt><dd><tt>Internal&nbsp;-&nbsp;Parses&nbsp;output&nbsp;from&nbsp;the&nbsp;info&nbsp;command&nbsp;when&nbsp;it&nbsp;writes&nbsp;out&nbsp;features.&nbsp;&nbsp;Uses&nbsp;the&nbsp;genFeatures.py<br>
+module&nbsp;and&nbsp;parses&nbsp;the&nbsp;information&nbsp;from&nbsp;this&nbsp;command&nbsp;(-d&nbsp;FEATURES)&nbsp;into&nbsp;class&nbsp;objects.</tt></dd></dl>
+
+<dl><dt><a name="Job-parseInfo"><strong>parseInfo</strong></a>(self, infoList)</dt><dd><tt>Internal&nbsp;-&nbsp;parses&nbsp;the&nbsp;output&nbsp;from&nbsp;the&nbsp;info&nbsp;command&nbsp;into&nbsp;a&nbsp;dictionary&nbsp;-&nbsp;returns&nbsp;dictionary</tt></dd></dl>
+
+<dl><dt><a name="Job-printFeatureDict"><strong>printFeatureDict</strong></a>(self, features_dict)</dt><dd><tt>Used&nbsp;for&nbsp;debugging&nbsp;purposes,&nbsp;this&nbsp;prints&nbsp;out&nbsp;a&nbsp;dictionary&nbsp;created&nbsp;with&nbsp;the&nbsp;parseFeatureInfo&nbsp;command<br>
+features_dict&nbsp;-&nbsp;dictionary&nbsp;returned&nbsp;by&nbsp;method&nbsp;parseFeatureInfo</tt></dd></dl>
+
+<dl><dt><a name="Job-sendCmd"><strong>sendCmd</strong></a>(self, cmd, args<font color="#909090">=''</font>)</dt><dd><tt>Send&nbsp;a&nbsp;command&nbsp;to&nbsp;STDOUT&nbsp;-&nbsp;This&nbsp;is&nbsp;where&nbsp;<a href="#Genesis">Genesis</a>&nbsp;will&nbsp;<br>
+see&nbsp;a&nbsp;command&nbsp;-&nbsp;used&nbsp;by&nbsp;CMD,&nbsp;DO_INFO,&nbsp;etc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cmd&nbsp;-&nbsp;the&nbsp;command&nbsp;root&nbsp;in&nbsp;CSH&nbsp;script&nbsp;form<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;args&nbsp;-&nbsp;any&nbsp;arguments&nbsp;to&nbsp;the&nbsp;initial&nbsp;command&nbsp;CMD&nbsp;xxx...</tt></dd></dl>
+
+<dl><dt><a name="Job-write"><strong>write</strong></a>(self, msg)</dt><dd><tt>Very&nbsp;basic&nbsp;output&nbsp;writer<br>
+msg&nbsp;-&nbsp;string&nbsp;to&nbsp;write&nbsp;to&nbsp;STDOUT</tt></dd></dl>
+
+<hr>
+Data and other attributes inherited from <a href="genClasses.html#Genesis">Genesis</a>:<br>
+<dl><dt><strong>colors</strong> = {'hex': {'document': '9BDBDB', 'drill': '9BB4BF', 'mixed': 'F2E086', 'power_ground': 'DBAD00', 'rout': 'D8D8D8', 'signal': 'FCC64D', 'silk_screen': 'FFFFFF', 'solder_mask': '00A57C', 'solder_paste': 'FFFFCE'}, 'rgb': {'document': (155, 219, 219), 'drill': (155, 180, 191), 'mixed': (242, 224, 134), 'power_ground': (219, 173, 0), 'rout': (216, 216, 216), 'signal': (252, 198, 55), 'silk_screen': (255, 255, 255), 'solder_mask': (0, 165, 124), 'solder_paste': (255, 255, 206)}}</dl>
+
+<hr>
+Methods inherited from <a href="genClasses.html#ExtraStuff">ExtraStuff</a>:<br>
+<dl><dt><a name="Job-getGenesisAttr"><strong>getGenesisAttr</strong></a>(self, name)</dt><dd><tt>Retrieve&nbsp;string&nbsp;associated&nbsp;with&nbsp;a&nbsp;certain&nbsp;attribute</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="genCommands.html#JobCmds">genCommands.JobCmds</a>:<br>
+<dl><dt><a name="Job-addStep"><strong>addStep</strong></a>(self, name)</dt><dd><tt>Add&nbsp;a&nbsp;step&nbsp;to&nbsp;the&nbsp;job.<br>
+name&nbsp;-&nbsp;name&nbsp;of&nbsp;new&nbsp;step</tt></dd></dl>
+
+<dl><dt><a name="Job-checkin"><strong>checkin</strong></a>(self)</dt><dd><tt>Not&nbsp;implemented&nbsp;yet.</tt></dd></dl>
+
+<dl><dt><a name="Job-checkout"><strong>checkout</strong></a>(self)</dt><dd><tt>Not&nbsp;implemented&nbsp;yet.</tt></dd></dl>
+
+<dl><dt><a name="Job-close"><strong>close</strong></a>(self, unlock)</dt><dd><tt>Close&nbsp;job&nbsp;represented&nbsp;by&nbsp;this&nbsp;class.<br>
+unlock&nbsp;-&nbsp;if&nbsp;&gt;&nbsp;1,&nbsp;checks&nbsp;in/unlocks&nbsp;the&nbsp;job</tt></dd></dl>
+
+<dl><dt><a name="Job-importForm"><strong>importForm</strong></a>(self, formName, newFormName<font color="#909090">=''</font>)</dt><dd><tt>Import&nbsp;a&nbsp;form&nbsp;into&nbsp;the&nbsp;job&nbsp;from&nbsp;genesislib.<br>
+formName&nbsp;-&nbsp;string&nbsp;containing&nbsp;name&nbsp;of&nbsp;form&nbsp;to&nbsp;import</tt></dd></dl>
+
+<dl><dt><a name="Job-open"><strong>open</strong></a>(self, lock)</dt><dd><tt>Open&nbsp;the&nbsp;job,&nbsp;and&nbsp;checkout&nbsp;if&nbsp;so&nbsp;indicated<br>
+lock&nbsp;-&nbsp;integer:&nbsp;if&nbsp;&gt;&nbsp;1,&nbsp;job&nbsp;is&nbsp;checked&nbsp;out/locked</tt></dd></dl>
+
+<dl><dt><a name="Job-removeStep"><strong>removeStep</strong></a>(self, name)</dt><dd><tt>Remove&nbsp;a&nbsp;step&nbsp;from&nbsp;the&nbsp;job.<br>
+name&nbsp;-&nbsp;name&nbsp;of&nbsp;step&nbsp;to&nbsp;delete</tt></dd></dl>
+
+<dl><dt><a name="Job-save"><strong>save</strong></a>(self, override<font color="#909090">='no'</font>)</dt><dd><tt>Save&nbsp;the&nbsp;job&nbsp;pointed&nbsp;to&nbsp;by&nbsp;the&nbsp;job&nbsp;class&nbsp;(job.name)<br>
+override&nbsp;(optional)&nbsp;defaults&nbsp;to&nbsp;no.&nbsp;&nbsp;If&nbsp;set&nbsp;to&nbsp;yes,&nbsp;then&nbsp;overrides&nbsp;online&nbsp;violations</tt></dd></dl>
+
+<dl><dt><a name="Job-setGenesisAttr"><strong>setGenesisAttr</strong></a>(self, name, value)</dt><dd><tt>Set&nbsp;job&nbsp;attribute&nbsp;to&nbsp;a&nbsp;value,&nbsp;update&nbsp;Python&nbsp;attribute&nbsp;value.<br>
+name&nbsp;-&nbsp;string&nbsp;containing&nbsp;name&nbsp;of&nbsp;attribute<br>
+value&nbsp;-&nbsp;string/int/float&nbsp;containing&nbsp;value&nbsp;of&nbsp;attribute<br>
+&nbsp;&nbsp;NOTE:&nbsp;&nbsp;Value&nbsp;may&nbsp;be&nbsp;cast&nbsp;to&nbsp;string&nbsp;upon&nbsp;retreival</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Layer">class <strong>Layer</strong></a>(<a href="genClasses.html#ExtraStuff">ExtraStuff</a>, <a href="genCommands.html#LayerCmds">genCommands.LayerCmds</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>this&nbsp;class&nbsp;defines&nbsp;a&nbsp;layer&nbsp;object&nbsp;inside&nbsp;editor.&nbsp;&nbsp;It&nbsp;may&nbsp;contain&nbsp;info,&nbsp;but&nbsp;cannot<br>
+issue&nbsp;COM&nbsp;commands&nbsp;on&nbsp;it's&nbsp;own.&nbsp;&nbsp;This&nbsp;layer&nbsp;object&nbsp;is&nbsp;a&nbsp;child&nbsp;of&nbsp;a&nbsp;step,<br>
+NOT&nbsp;the&nbsp;matrix.&nbsp;&nbsp;e.g.&nbsp;this&nbsp;object&nbsp;does&nbsp;not&nbsp;represent&nbsp;a&nbsp;matrix&nbsp;row.<br>
+Most&nbsp;of&nbsp;these&nbsp;are&nbsp;commands&nbsp;you&nbsp;can&nbsp;access&nbsp;by&nbsp;right-clicking&nbsp;a&nbsp;layer&nbsp;in&nbsp;the&nbsp;editor.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="genClasses.html#Layer">Layer</a></dd>
+<dd><a href="genClasses.html#ExtraStuff">ExtraStuff</a></dd>
+<dd><a href="genCommands.html#LayerCmds">genCommands.LayerCmds</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Layer-__del__"><strong>__del__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Layer-__getattr__"><strong>__getattr__</strong></a>(self, name)</dt><dd><tt>Hook&nbsp;to&nbsp;generate&nbsp;attributes&nbsp;as&nbsp;they're&nbsp;requested&nbsp;-&nbsp;it&nbsp;is&nbsp;run&nbsp;automatically&nbsp;upon&nbsp;<br>
+initial&nbsp;request&nbsp;of&nbsp;an&nbsp;attribute.&nbsp;e.g.&nbsp;&lt;class&nbsp;instance&gt;.attribute&nbsp;<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;attribute&nbsp;is&nbsp;in&nbsp;this&nbsp;method,&nbsp;it&nbsp;is&nbsp;handled&nbsp;by&nbsp;methods&nbsp;defined&nbsp;here,&nbsp;<br>
+otherwise&nbsp;the&nbsp;<a href="#Genesis">Genesis</a>&nbsp;layer&nbsp;object&nbsp;associated&nbsp;with&nbsp;this&nbsp;instance&nbsp;is&nbsp;inspected&nbsp;<br>
+for&nbsp;a&nbsp;corresponding&nbsp;<a href="#Genesis">Genesis</a>&nbsp;attribute;&nbsp;the&nbsp;value&nbsp;of&nbsp;which&nbsp;is&nbsp;stored&nbsp;in&nbsp;the&nbsp;<br>
+instance&nbsp;attribute.<br>
+&nbsp;<br>
+Special&nbsp;Attributes&nbsp;Supported:&nbsp;&nbsp;info,&nbsp;cell,&nbsp;color,&nbsp;hexcolor</tt></dd></dl>
+
+<dl><dt><a name="Layer-__init__"><strong>__init__</strong></a>(self, step, name)</dt></dl>
+
+<dl><dt><a name="Layer-getColor"><strong>getColor</strong></a>(self, format<font color="#909090">='rgb'</font>)</dt><dd><tt>Return&nbsp;the&nbsp;color&nbsp;used&nbsp;in&nbsp;the&nbsp;<a href="#Genesis">Genesis</a>&nbsp;matrix&nbsp;for&nbsp;this&nbsp;layer.<br>
+If&nbsp;format&nbsp;is&nbsp;'rgb',&nbsp;a&nbsp;tuple&nbsp;of&nbsp;rgb&nbsp;values&nbsp;is&nbsp;returned&nbsp;(e,g,&nbsp;(252,198,55)&nbsp;for&nbsp;signal&nbsp;layers).<br>
+If&nbsp;format&nbsp;is&nbsp;'hex',&nbsp;a&nbsp;string&nbsp;representing&nbsp;the&nbsp;hexadecimal&nbsp;color&nbsp;value&nbsp;is&nbsp;returned&nbsp;(e.g.&nbsp;'FCC64D')<br>
+This&nbsp;method&nbsp;is&nbsp;called&nbsp;when&nbsp;the&nbsp;layer's&nbsp;self.<strong>color</strong>&nbsp;or&nbsp;self.<strong>hexcolor</strong>&nbsp;attribute&nbsp;are&nbsp;accessed<br>
+The&nbsp;colors&nbsp;table&nbsp;is&nbsp;a&nbsp;dictionary&nbsp;defined&nbsp;in&nbsp;the&nbsp;<a href="#Genesis">Genesis</a>&nbsp;class&nbsp;as&nbsp;self.<strong>colors</strong></tt></dd></dl>
+
+<dl><dt><a name="Layer-getInfo"><strong>getInfo</strong></a>(self)</dt><dd><tt>Get&nbsp;all&nbsp;info&nbsp;about&nbsp;self,&nbsp;store&nbsp;in&nbsp;self.<strong>info</strong>&nbsp;&nbsp;&nbsp;&nbsp;<br>
+This&nbsp;method&nbsp;is&nbsp;automagically&nbsp;called&nbsp;when&nbsp;one&nbsp;accesses&nbsp;the&nbsp;self.<strong>info</strong>&nbsp;attribute.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="genClasses.html#ExtraStuff">ExtraStuff</a>:<br>
+<dl><dt><a name="Layer-getGenesisAttr"><strong>getGenesisAttr</strong></a>(self, name)</dt><dd><tt>Retrieve&nbsp;string&nbsp;associated&nbsp;with&nbsp;a&nbsp;certain&nbsp;attribute</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="genCommands.html#LayerCmds">genCommands.LayerCmds</a>:<br>
+<dl><dt><a name="Layer-affect"><strong>affect</strong></a>(self)</dt><dd><tt>Sets&nbsp;this&nbsp;layer&nbsp;to&nbsp;be&nbsp;affected</tt></dd></dl>
+
+<dl><dt><a name="Layer-copy"><strong>copy</strong></a>(self, dest_lay, mode<font color="#909090">='replace'</font>)</dt><dd><tt>copies&nbsp;this&nbsp;layer&nbsp;to&nbsp;destination&nbsp;layer<br>
+dest_lay&nbsp;-&nbsp;name&nbsp;of&nbsp;destination&nbsp;layer<br>
+mode&nbsp;-&nbsp;replace&nbsp;or&nbsp;append&nbsp;defaults&nbsp;to&nbsp;replace</tt></dd></dl>
+
+<dl><dt><a name="Layer-display"><strong>display</strong></a>(self, num<font color="#909090">=1</font>)</dt><dd><tt>Display&nbsp;layer&nbsp;in&nbsp;the&nbsp;editor<br>
+num&nbsp;-&nbsp;color&nbsp;number&nbsp;(defaults&nbsp;to&nbsp;1)</tt></dd></dl>
+
+<dl><dt><a name="Layer-featOut"><strong>featOut</strong></a>(self, fileName<font color="#909090">=''</font>)</dt><dd><tt>Takes&nbsp;all&nbsp;the&nbsp;features&nbsp;on&nbsp;the&nbsp;layer,&nbsp;parses&nbsp;them,&nbsp;and&nbsp;returns&nbsp;them&nbsp;in&nbsp;a&nbsp;<br>
+dictionary.&nbsp;&nbsp;See&nbsp;Features.py&nbsp;module.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fileName&nbsp;(optional)&nbsp;-&nbsp;name&nbsp;with&nbsp;path&nbsp;of&nbsp;filename&nbsp;if&nbsp;you&nbsp;don't&nbsp;want&nbsp;to&nbsp;use&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default&nbsp;temp&nbsp;files</tt></dd></dl>
+
+<dl><dt><a name="Layer-featSelOut"><strong>featSelOut</strong></a>(self, fileName<font color="#909090">=''</font>)</dt><dd><tt>Takes&nbsp;all&nbsp;the&nbsp;Selected&nbsp;features,&nbsp;parses&nbsp;them,&nbsp;and&nbsp;returns&nbsp;them&nbsp;in&nbsp;a&nbsp;<br>
+dictionary.&nbsp;&nbsp;See&nbsp;Features.py&nbsp;module.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;filename&nbsp;-&nbsp;see&nbsp;<a href="#Layer-featOut">featOut</a>()</tt></dd></dl>
+
+<dl><dt><a name="Layer-histogram"><strong>histogram</strong></a>(self)</dt><dd><tt>Returns&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;histogram&nbsp;information&nbsp;on&nbsp;the&nbsp;layer.&nbsp;&nbsp;Returns&nbsp;key&nbsp;value&nbsp;pairs&nbsp;of&nbsp;<br>
+all&nbsp;the&nbsp;histogram&nbsp;information.</tt></dd></dl>
+
+<dl><dt><a name="Layer-polarity"><strong>polarity</strong></a>(self)</dt><dd><tt>Returns&nbsp;the&nbsp;polarity&nbsp;of&nbsp;the&nbsp;layer</tt></dd></dl>
+
+<dl><dt><a name="Layer-setGenesisAttr"><strong>setGenesisAttr</strong></a>(self, name, value)</dt><dd><tt>Set&nbsp;layer&nbsp;attribute&nbsp;to&nbsp;a&nbsp;value,&nbsp;update&nbsp;Python&nbsp;attribute&nbsp;value.<br>
+name&nbsp;-&nbsp;string&nbsp;containing&nbsp;name&nbsp;of&nbsp;attribute<br>
+value&nbsp;-&nbsp;string/int/float&nbsp;containing&nbsp;value&nbsp;of&nbsp;attribute<br>
+&nbsp;&nbsp;NOTE:&nbsp;&nbsp;Value&nbsp;may&nbsp;be&nbsp;cast&nbsp;to&nbsp;string&nbsp;upon&nbsp;retreival</tt></dd></dl>
+
+<dl><dt><a name="Layer-unaffect"><strong>unaffect</strong></a>(self)</dt><dd><tt>Unaffects&nbsp;the&nbsp;layer</tt></dd></dl>
+
+<dl><dt><a name="Layer-work"><strong>work</strong></a>(self)</dt><dd><tt>Changes&nbsp;this&nbsp;to&nbsp;the&nbsp;work&nbsp;layer</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Matrix">class <strong>Matrix</strong></a>(<a href="genClasses.html#Genesis">Genesis</a>, <a href="genCommands.html#MatrixCmds">genCommands.MatrixCmds</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Defines&nbsp;the&nbsp;job&nbsp;matrix.&nbsp;&nbsp;Allows&nbsp;manipulation&nbsp;of&nbsp;matrix&nbsp;and&nbsp;retrieval&nbsp;of&nbsp;information&nbsp;from&nbsp;matrix<br>
+accessed&nbsp;as&nbsp;&lt;jobname&gt;.matrix<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="genClasses.html#Matrix">Matrix</a></dd>
+<dd><a href="genClasses.html#Genesis">Genesis</a></dd>
+<dd><a href="genCommands.html#MatrixCmds">genCommands.MatrixCmds</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Matrix-__getattr__"><strong>__getattr__</strong></a>(self, name)</dt><dd><tt>Method&nbsp;to&nbsp;dynamically&nbsp;get&nbsp;info&nbsp;about&nbsp;the&nbsp;matrix&nbsp;<br>
+Attributes&nbsp;Supported:&nbsp;info</tt></dd></dl>
+
+<dl><dt><a name="Matrix-__init__"><strong>__init__</strong></a>(self, job)</dt></dl>
+
+<dl><dt><a name="Matrix-getInfo"><strong>getInfo</strong></a>(self)</dt><dd><tt>Called&nbsp;when&nbsp;the&nbsp;info&nbsp;dictionary&nbsp;is&nbsp;accessed&nbsp;if&nbsp;not&nbsp;already&nbsp;created.&nbsp;&nbsp;Populates&nbsp;info<br>
+dictionary.</tt></dd></dl>
+
+<dl><dt><a name="Matrix-getRow"><strong>getRow</strong></a>(self, name)</dt><dd><tt>method&nbsp;returns&nbsp;row&nbsp;number&nbsp;of&nbsp;given&nbsp;layer.&nbsp;&nbsp;A&nbsp;row&nbsp;number&nbsp;of&nbsp;zero&nbsp;<br>
+means&nbsp;the&nbsp;layer&nbsp;doesn't&nbsp;exist<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;-&nbsp;string&nbsp;containing&nbsp;name&nbsp;of&nbsp;layer</tt></dd></dl>
+
+<dl><dt><a name="Matrix-getRowColor"><strong>getRowColor</strong></a>(self, rowNum, format<font color="#909090">='rgb'</font>)</dt><dd><tt>Return&nbsp;the&nbsp;color&nbsp;used&nbsp;in&nbsp;the&nbsp;<a href="#Genesis">Genesis</a>&nbsp;matrix&nbsp;for&nbsp;the&nbsp;given&nbsp;row&nbsp;(layer).<br>
+If&nbsp;format&nbsp;is&nbsp;'rgb',&nbsp;a&nbsp;tuple&nbsp;of&nbsp;rgb&nbsp;values&nbsp;is&nbsp;returned&nbsp;(e,g,&nbsp;(252,198,55)&nbsp;for&nbsp;signal&nbsp;layers).<br>
+If&nbsp;format&nbsp;is&nbsp;'hex',&nbsp;a&nbsp;string&nbsp;representing&nbsp;the&nbsp;hexadecimal&nbsp;color&nbsp;value&nbsp;is&nbsp;returned&nbsp;(e.g.&nbsp;'FCC64D')<br>
+The&nbsp;colors&nbsp;table&nbsp;is&nbsp;a&nbsp;dictionary&nbsp;defined&nbsp;in&nbsp;the&nbsp;<a href="#Genesis">Genesis</a>&nbsp;class&nbsp;as&nbsp;self.<strong>colors</strong></tt></dd></dl>
+
+<dl><dt><a name="Matrix-getRowInfo"><strong>getRowInfo</strong></a>(self, rowNum)</dt><dd><tt>Method&nbsp;returns&nbsp;dictionary&nbsp;of&nbsp;information&nbsp;on&nbsp;given&nbsp;row.&nbsp;Dictionary&nbsp;contains&nbsp;<br>
+following&nbsp;keys:&nbsp;&nbsp;name,&nbsp;context,&nbsp;type,&nbsp;polarity,&nbsp;and&nbsp;side<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rowNum&nbsp;-&nbsp;The&nbsp;row&nbsp;number&nbsp;in&nbsp;the&nbsp;matrix</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="genClasses.html#Genesis">Genesis</a>:<br>
+<dl><dt><a name="Matrix-AUX"><strong>AUX</strong></a>(self, args)</dt><dd><tt><a href="#Genesis">Genesis</a>&nbsp;AUX&nbsp;command&nbsp;-&nbsp;returns&nbsp;STATUS.&nbsp;&nbsp;Sets&nbsp;class&nbsp;variables&nbsp;READANS&nbsp;<br>
+and&nbsp;COMANS,&nbsp;returns&nbsp;STATUS<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;args&nbsp;-&nbsp;string&nbsp;containing&nbsp;arguments</tt></dd></dl>
+
+<dl><dt><a name="Matrix-COM"><strong>COM</strong></a>(self, args)</dt><dd><tt><a href="#Genesis">Genesis</a>&nbsp;COM&nbsp;command&nbsp;-&nbsp;all&nbsp;important&nbsp;command&nbsp;to&nbsp;issue&nbsp;script&nbsp;commands&nbsp;-&nbsp;returns&nbsp;STATUS<br>
+and&nbsp;sets&nbsp;READANS&nbsp;as&nbsp;the&nbsp;command&nbsp;response&nbsp;raw&nbsp;input.&nbsp;&nbsp;COMANS&nbsp;is&nbsp;the&nbsp;parsed&nbsp;READANS.&nbsp;&nbsp;These&nbsp;are<br>
+class&nbsp;variables<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;args&nbsp;-&nbsp;string&nbsp;containing&nbsp;arguments&nbsp;for&nbsp;COM&nbsp;command&nbsp;(everything&nbsp;after&nbsp;COM)</tt></dd></dl>
+
+<dl><dt><a name="Matrix-DISP_INFO"><strong>DISP_INFO</strong></a>(self, args)</dt><dd><tt>This&nbsp;is&nbsp;similar&nbsp;to&nbsp;the&nbsp;DO_INFO&nbsp;but&nbsp;is&nbsp;run&nbsp;in&nbsp;'display'&nbsp;mode&nbsp;and&nbsp;is&nbsp;parsed&nbsp;differently&nbsp;<br>
+-&nbsp;this&nbsp;method&nbsp;is&nbsp;not&nbsp;complete</tt></dd></dl>
+
+<dl><dt><a name="Matrix-DO_INFO"><strong>DO_INFO</strong></a>(self, args)</dt><dd><tt>This&nbsp;is&nbsp;the&nbsp;command&nbsp;COM&nbsp;info,...&nbsp;&nbsp;returns&nbsp;a&nbsp;dictionary&nbsp;with&nbsp;all&nbsp;the&nbsp;information&nbsp;in&nbsp;the&nbsp;<br>
+output&nbsp;file&nbsp;from&nbsp;the&nbsp;info&nbsp;command.&nbsp;&nbsp;Each&nbsp;array&nbsp;of&nbsp;information&nbsp;is&nbsp;accessed&nbsp;by&nbsp;a&nbsp;key&nbsp;to&nbsp;the<br>
+dictionary&nbsp;that&nbsp;is&nbsp;returned.&nbsp;LIMITATION:&nbsp;Any&nbsp;string&nbsp;resembling&nbsp;a&nbsp;number&nbsp;will&nbsp;be&nbsp;converted<br>
+to&nbsp;a&nbsp;number.&nbsp;&nbsp;This&nbsp;means&nbsp;that&nbsp;a&nbsp;layer&nbsp;with&nbsp;the&nbsp;name&nbsp;'1.'&nbsp;or&nbsp;'1'&nbsp;will&nbsp;be&nbsp;returned&nbsp;later&nbsp;as<br>
+the&nbsp;float&nbsp;1.0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;args&nbsp;-&nbsp;arguments&nbsp;to&nbsp;the&nbsp;info&nbsp;command&nbsp;as&nbsp;a&nbsp;string</tt></dd></dl>
+
+<dl><dt><a name="Matrix-INFO"><strong>INFO</strong></a>(self, args)</dt><dd><tt>This&nbsp;is&nbsp;similar&nbsp;to&nbsp;the&nbsp;<a href="#Genesis">Genesis</a>&nbsp;command&nbsp;<a href="#Matrix-COM">COM</a>(info,...)&nbsp;Returns&nbsp;list&nbsp;of&nbsp;strings&nbsp;which<br>
+are&nbsp;lines&nbsp;from&nbsp;the&nbsp;output&nbsp;file<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;args&nbsp;-&nbsp;string&nbsp;containing&nbsp;all&nbsp;the&nbsp;arguments&nbsp;to&nbsp;the&nbsp;info&nbsp;command&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(that&nbsp;would&nbsp;be&nbsp;after&nbsp;the&nbsp;info,_*_)</tt></dd></dl>
+
+<dl><dt><a name="Matrix-MOUSE"><strong>MOUSE</strong></a>(self, msg, mode<font color="#909090">='p'</font>)</dt><dd><tt><a href="#Genesis">Genesis</a>&nbsp;MOUSE&nbsp;command&nbsp;-&nbsp;pauses&nbsp;to&nbsp;allow&nbsp;user&nbsp;to&nbsp;select&nbsp;a&nbsp;location&nbsp;with&nbsp;the&nbsp;mouse&nbsp;-&nbsp;<br>
+returns&nbsp;STATUS&nbsp;as&nbsp;integer.&nbsp;&nbsp;Sets&nbsp;class&nbsp;variables&nbsp;READANS&nbsp;and&nbsp;MOUSEANS&nbsp;to&nbsp;mouse&nbsp;location<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg&nbsp;-&nbsp;message&nbsp;to&nbsp;put&nbsp;in&nbsp;dialog&nbsp;box<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mode&nbsp;-&nbsp;set&nbsp;to&nbsp;character&nbsp;'p'&nbsp;or&nbsp;'r'&nbsp;&nbsp;p&nbsp;means&nbsp;to&nbsp;return&nbsp;a&nbsp;point,&nbsp;and&nbsp;r&nbsp;a&nbsp;rectangle&nbsp;(two&nbsp;points)</tt></dd></dl>
+
+<dl><dt><a name="Matrix-PAUSE"><strong>PAUSE</strong></a>(self, msg)</dt><dd><tt><a href="#Genesis">Genesis</a>&nbsp;PAUSE&nbsp;command&nbsp;-&nbsp;pauses&nbsp;script&nbsp;with&nbsp;box,&nbsp;and&nbsp;allows&nbsp;user&nbsp;to&nbsp;interact&nbsp;with&nbsp;<br>
+<a href="#Genesis">Genesis</a>&nbsp;before&nbsp;continuing&nbsp;-&nbsp;returns&nbsp;STATUS&nbsp;(as&nbsp;integer),&nbsp;sets&nbsp;class&nbsp;variables<br>
+READANS&nbsp;and&nbsp;PAUSANS<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg&nbsp;-&nbsp;string&nbsp;containing&nbsp;message&nbsp;to&nbsp;put&nbsp;in&nbsp;pause&nbsp;dialog&nbsp;box</tt></dd></dl>
+
+<dl><dt><a name="Matrix-SU_OFF"><strong>SU_OFF</strong></a>(self)</dt><dd><tt><a href="#Genesis">Genesis</a>&nbsp;SU_OFF&nbsp;command&nbsp;-&nbsp;eq&nbsp;to&nbsp;running&nbsp;SU_OFF&nbsp;in&nbsp;csh</tt></dd></dl>
+
+<dl><dt><a name="Matrix-SU_ON"><strong>SU_ON</strong></a>(self)</dt><dd><tt>The&nbsp;<a href="#Genesis">Genesis</a>&nbsp;SU_ON&nbsp;command&nbsp;-&nbsp;eq.&nbsp;to&nbsp;running&nbsp;SU_ON&nbsp;in&nbsp;csh</tt></dd></dl>
+
+<dl><dt><a name="Matrix-VOF"><strong>VOF</strong></a>(self)</dt><dd><tt><a href="#Genesis">Genesis</a>&nbsp;VOF&nbsp;command&nbsp;-&nbsp;turns&nbsp;on&nbsp;script&nbsp;halting&nbsp;on&nbsp;errors&nbsp;-&nbsp;eq&nbsp;to&nbsp;running&nbsp;VOF&nbsp;in&nbsp;csh</tt></dd></dl>
+
+<dl><dt><a name="Matrix-VON"><strong>VON</strong></a>(self)</dt><dd><tt><a href="#Genesis">Genesis</a>&nbsp;VON&nbsp;command&nbsp;-&nbsp;turns&nbsp;off&nbsp;script&nbsp;halting&nbsp;on&nbsp;errors-&nbsp;eq&nbsp;to&nbsp;running&nbsp;VON&nbsp;in&nbsp;csh</tt></dd></dl>
+
+<dl><dt><a name="Matrix-__del__"><strong>__del__</strong></a>(self)</dt><dd><tt>Called&nbsp;when&nbsp;class&nbsp;is&nbsp;cleaned&nbsp;up&nbsp;by&nbsp;python</tt></dd></dl>
+
+<dl><dt><a name="Matrix-blank"><strong>blank</strong></a>(self)</dt><dd><tt>Cleans&nbsp;out&nbsp;the&nbsp;return&nbsp;values</tt></dd></dl>
+
+<dl><dt><a name="Matrix-clean"><strong>clean</strong></a>(self, strip_me, badchars)</dt><dd><tt>Internal&nbsp;-&nbsp;strips&nbsp;a&nbsp;string&nbsp;(strip_me)&nbsp;of&nbsp;given&nbsp;(badchars)&nbsp;on&nbsp;either&nbsp;edge&nbsp;-&nbsp;used&nbsp;in&nbsp;parsing</tt></dd></dl>
+
+<dl><dt><a name="Matrix-convertToNumber"><strong>convertToNumber</strong></a>(self, value)</dt><dd><tt>Utility&nbsp;function&nbsp;-&nbsp;converts&nbsp;string&nbsp;to&nbsp;a&nbsp;number&nbsp;returns&nbsp;integer&nbsp;if&nbsp;<br>
+possible&nbsp;-&nbsp;otherwise&nbsp;returns&nbsp;a&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value&nbsp;-&nbsp;string&nbsp;to&nbsp;be&nbsp;converted</tt></dd></dl>
+
+<dl><dt><a name="Matrix-dbutil"><strong>dbutil</strong></a>(self, *args)</dt><dd><tt>Runs&nbsp;the&nbsp;dbutil&nbsp;command&nbsp;with&nbsp;the&nbsp;specified&nbsp;arguments&nbsp;-&nbsp;returns&nbsp;lines&nbsp;from&nbsp;the&nbsp;response&nbsp;as<br>
+array&nbsp;of&nbsp;strings<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;args&nbsp;-&nbsp;arguments&nbsp;for&nbsp;dbutil&nbsp;command</tt></dd></dl>
+
+<dl><dt><a name="Matrix-error"><strong>error</strong></a>(self, msg, severity<font color="#909090">=0</font>)</dt><dd><tt>Basic&nbsp;error&nbsp;handler<br>
+msg&nbsp;-&nbsp;string&nbsp;containing&nbsp;error&nbsp;message<br>
+severity&nbsp;-&nbsp;integer.&nbsp;&nbsp;If&nbsp;greater&nbsp;than&nbsp;one&nbsp;script&nbsp;exits</tt></dd></dl>
+
+<dl><dt><a name="Matrix-normalize"><strong>normalize</strong></a>(self)</dt><dd><tt>Normalize&nbsp;the&nbsp;path&nbsp;to&nbsp;GENESIS_EDIR,&nbsp;and&nbsp;make&nbsp;sure&nbsp;the&nbsp;environment&nbsp;is&nbsp;set</tt></dd></dl>
+
+<dl><dt><a name="Matrix-parseDispInfo"><strong>parseDispInfo</strong></a>(self, infoList)</dt><dd><tt>Parses&nbsp;output&nbsp;from&nbsp;info&nbsp;command&nbsp;that&nbsp;was&nbsp;run&nbsp;in&nbsp;display&nbsp;mode.&nbsp;Incomplete</tt></dd></dl>
+
+<dl><dt><a name="Matrix-parseFeatureInfo"><strong>parseFeatureInfo</strong></a>(self, infoList)</dt><dd><tt>Internal&nbsp;-&nbsp;Parses&nbsp;output&nbsp;from&nbsp;the&nbsp;info&nbsp;command&nbsp;when&nbsp;it&nbsp;writes&nbsp;out&nbsp;features.&nbsp;&nbsp;Uses&nbsp;the&nbsp;genFeatures.py<br>
+module&nbsp;and&nbsp;parses&nbsp;the&nbsp;information&nbsp;from&nbsp;this&nbsp;command&nbsp;(-d&nbsp;FEATURES)&nbsp;into&nbsp;class&nbsp;objects.</tt></dd></dl>
+
+<dl><dt><a name="Matrix-parseInfo"><strong>parseInfo</strong></a>(self, infoList)</dt><dd><tt>Internal&nbsp;-&nbsp;parses&nbsp;the&nbsp;output&nbsp;from&nbsp;the&nbsp;info&nbsp;command&nbsp;into&nbsp;a&nbsp;dictionary&nbsp;-&nbsp;returns&nbsp;dictionary</tt></dd></dl>
+
+<dl><dt><a name="Matrix-printFeatureDict"><strong>printFeatureDict</strong></a>(self, features_dict)</dt><dd><tt>Used&nbsp;for&nbsp;debugging&nbsp;purposes,&nbsp;this&nbsp;prints&nbsp;out&nbsp;a&nbsp;dictionary&nbsp;created&nbsp;with&nbsp;the&nbsp;parseFeatureInfo&nbsp;command<br>
+features_dict&nbsp;-&nbsp;dictionary&nbsp;returned&nbsp;by&nbsp;method&nbsp;parseFeatureInfo</tt></dd></dl>
+
+<dl><dt><a name="Matrix-sendCmd"><strong>sendCmd</strong></a>(self, cmd, args<font color="#909090">=''</font>)</dt><dd><tt>Send&nbsp;a&nbsp;command&nbsp;to&nbsp;STDOUT&nbsp;-&nbsp;This&nbsp;is&nbsp;where&nbsp;<a href="#Genesis">Genesis</a>&nbsp;will&nbsp;<br>
+see&nbsp;a&nbsp;command&nbsp;-&nbsp;used&nbsp;by&nbsp;CMD,&nbsp;DO_INFO,&nbsp;etc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cmd&nbsp;-&nbsp;the&nbsp;command&nbsp;root&nbsp;in&nbsp;CSH&nbsp;script&nbsp;form<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;args&nbsp;-&nbsp;any&nbsp;arguments&nbsp;to&nbsp;the&nbsp;initial&nbsp;command&nbsp;CMD&nbsp;xxx...</tt></dd></dl>
+
+<dl><dt><a name="Matrix-write"><strong>write</strong></a>(self, msg)</dt><dd><tt>Very&nbsp;basic&nbsp;output&nbsp;writer<br>
+msg&nbsp;-&nbsp;string&nbsp;to&nbsp;write&nbsp;to&nbsp;STDOUT</tt></dd></dl>
+
+<hr>
+Data and other attributes inherited from <a href="genClasses.html#Genesis">Genesis</a>:<br>
+<dl><dt><strong>colors</strong> = {'hex': {'document': '9BDBDB', 'drill': '9BB4BF', 'mixed': 'F2E086', 'power_ground': 'DBAD00', 'rout': 'D8D8D8', 'signal': 'FCC64D', 'silk_screen': 'FFFFFF', 'solder_mask': '00A57C', 'solder_paste': 'FFFFCE'}, 'rgb': {'document': (155, 219, 219), 'drill': (155, 180, 191), 'mixed': (242, 224, 134), 'power_ground': (219, 173, 0), 'rout': (216, 216, 216), 'signal': (252, 198, 55), 'silk_screen': (255, 255, 255), 'solder_mask': (0, 165, 124), 'solder_paste': (255, 255, 206)}}</dl>
+
+<hr>
+Methods inherited from <a href="genCommands.html#MatrixCmds">genCommands.MatrixCmds</a>:<br>
+<dl><dt><a name="Matrix-addLayer"><strong>addLayer</strong></a>(self, name, index, context<font color="#909090">='board'</font>, type<font color="#909090">='signal'</font>, polarity<font color="#909090">='positive'</font>)</dt><dd><tt>Add&nbsp;a&nbsp;row&nbsp;/layer&nbsp;to&nbsp;the&nbsp;matrix<br>
+name&nbsp;-&nbsp;name&nbsp;of&nbsp;layer<br>
+index&nbsp;-&nbsp;row&nbsp;number&nbsp;to&nbsp;use<br>
+context&nbsp;-&nbsp;context&nbsp;of&nbsp;layer&nbsp;(default&nbsp;to&nbsp;board)<br>
+type&nbsp;-&nbsp;type&nbsp;of&nbsp;layer&nbsp;(default&nbsp;to&nbsp;signal)<br>
+polarity&nbsp;-&nbsp;polarity&nbsp;of&nbsp;layer&nbsp;(default&nbsp;to&nbsp;positive)</tt></dd></dl>
+
+<dl><dt><a name="Matrix-copyRow"><strong>copyRow</strong></a>(self, name, newName, context<font color="#909090">='misc'</font>, newRow<font color="#909090">=3</font>, overwrite<font color="#909090">=0</font>)</dt><dd><tt>Copy&nbsp;a&nbsp;row&nbsp;from&nbsp;one&nbsp;location&nbsp;to&nbsp;another&nbsp;in&nbsp;the&nbsp;matrix.&nbsp;&nbsp;If&nbsp;newRow&nbsp;not&nbsp;indicated,&nbsp;copies<br>
+to&nbsp;the&nbsp;end&nbsp;of&nbsp;the&nbsp;matrix.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;-&nbsp;name&nbsp;of&nbsp;row<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;newName&nbsp;-&nbsp;name&nbsp;of&nbsp;new&nbsp;row<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;context&nbsp;-&nbsp;context&nbsp;of&nbsp;new&nbsp;row&nbsp;(default&nbsp;to&nbsp;misc)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;newRow&nbsp;-&nbsp;number&nbsp;of&nbsp;new&nbsp;row&nbsp;if&nbsp;you&nbsp;need&nbsp;it&nbsp;to&nbsp;be&nbsp;in&nbsp;a&nbsp;certain&nbsp;place<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;overwrite&nbsp;-&nbsp;overwrite&nbsp;row&nbsp;by&nbsp;same&nbsp;name&nbsp;as&nbsp;newName&nbsp;with&nbsp;this&nbsp;copy&nbsp;(defaults&nbsp;to&nbsp;0)</tt></dd></dl>
+
+<dl><dt><a name="Matrix-deleteRow"><strong>deleteRow</strong></a>(self, name)</dt><dd><tt>Delete&nbsp;a&nbsp;row&nbsp;from&nbsp;the&nbsp;matrix<br>
+name&nbsp;-&nbsp;name&nbsp;of&nbsp;row</tt></dd></dl>
+
+<dl><dt><a name="Matrix-modifyRow"><strong>modifyRow</strong></a>(self, currentName, row<font color="#909090">=0</font>, name<font color="#909090">=''</font>, context<font color="#909090">=''</font>, type<font color="#909090">=''</font>, polarity<font color="#909090">=''</font>)</dt><dd><tt>Change&nbsp;the&nbsp;attributes&nbsp;of&nbsp;a&nbsp;row.&nbsp;&nbsp;You&nbsp;only&nbsp;need&nbsp;assign&nbsp;values&nbsp;for&nbsp;the&nbsp;things&nbsp;you&nbsp;want&nbsp;<br>
+to&nbsp;change.&nbsp;&nbsp;Be&nbsp;sure&nbsp;to&nbsp;use&nbsp;the&nbsp;key&nbsp;value&nbsp;pair&nbsp;in&nbsp;the&nbsp;parameters&nbsp;list.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;currentName&nbsp;-&nbsp;name&nbsp;of&nbsp;current&nbsp;row&nbsp;to&nbsp;modify.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(optional&nbsp;below)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;row&nbsp;-&nbsp;new&nbsp;row&nbsp;(defaults&nbsp;to&nbsp;leaving&nbsp;it&nbsp;in&nbsp;same&nbsp;place&nbsp;(indicated&nbsp;by&nbsp;0)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;-&nbsp;new&nbsp;name<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;context&nbsp;-&nbsp;new&nbsp;context<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type&nbsp;-&nbsp;new&nbsp;type<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;polarity&nbsp;-&nbsp;new&nbsp;polarity</tt></dd></dl>
+
+<dl><dt><a name="Matrix-removeLayer"><strong>removeLayer</strong></a>(self, lay)</dt><dd><tt>Remove&nbsp;a&nbsp;layer&nbsp;from&nbsp;the&nbsp;matrix<br>
+lay&nbsp;-&nbsp;name&nbsp;of&nbsp;layer</tt></dd></dl>
+
+<dl><dt><a name="Matrix-returnRows"><strong>returnRows</strong></a>(self, context<font color="#909090">=''</font>, type<font color="#909090">=''</font>, polarity<font color="#909090">=''</font>, side<font color="#909090">=''</font>, names<font color="#909090">=1</font>)</dt><dd><tt>Return&nbsp;all&nbsp;the&nbsp;rows&nbsp;matching&nbsp;certain&nbsp;criteria.&nbsp;Defaults&nbsp;to&nbsp;returning&nbsp;names<br>
+can&nbsp;use&nbsp;'|'&nbsp;to&nbsp;separate&nbsp;multiple&nbsp;specs&nbsp;for&nbsp;each&nbsp;type&nbsp;(or)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;context&nbsp;(optional)&nbsp;-&nbsp;return&nbsp;with&nbsp;certain&nbsp;context<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type&nbsp;(optional)&nbsp;-&nbsp;return&nbsp;with&nbsp;certain&nbsp;type<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;polarity&nbsp;(optional)&nbsp;-&nbsp;return&nbsp;with&nbsp;certain&nbsp;polarity<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;side&nbsp;(optional)&nbsp;-&nbsp;return&nbsp;with&nbsp;certain&nbsp;side&nbsp;(top&nbsp;or&nbsp;bottom)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;names&nbsp;(optional)&nbsp;-&nbsp;defaults&nbsp;to&nbsp;1,&nbsp;meaning&nbsp;names&nbsp;are&nbsp;returned.&nbsp;0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;means&nbsp;row&nbsp;numbers&nbsp;are&nbsp;returned</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="MatrixCellInfo">class <strong>MatrixCellInfo</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>This&nbsp;class&nbsp;defines&nbsp;an&nbsp;object&nbsp;which&nbsp;describes&nbsp;a&nbsp;layer's<br>
+matrix&nbsp;information.&nbsp;&nbsp;This&nbsp;object&nbsp;may&nbsp;only&nbsp;be&nbsp;a&nbsp;child&nbsp;of&nbsp;a&nbsp;layer<br>
+object.&nbsp;&nbsp;Object&nbsp;in&nbsp;layer&nbsp;class&nbsp;is&nbsp;self.<strong>cell</strong><br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="MatrixCellInfo-__init__"><strong>__init__</strong></a>(self, parent)</dt></dl>
+
+<dl><dt><a name="MatrixCellInfo-parse"><strong>parse</strong></a>(self)</dt><dd><tt>Run&nbsp;by&nbsp;__init__&nbsp;method&nbsp;-&nbsp;parses&nbsp;matrix&nbsp;info&nbsp;into&nbsp;the&nbsp;object</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Step">class <strong>Step</strong></a>(<a href="genClasses.html#Genesis">Genesis</a>, <a href="genClasses.html#ExtraStuff">ExtraStuff</a>, <a href="genCommands.html#StepCmds">genCommands.StepCmds</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>This&nbsp;class&nbsp;defines&nbsp;a&nbsp;step&nbsp;instance.&nbsp;&nbsp;It&nbsp;is&nbsp;automatically&nbsp;instantiated&nbsp;as&nbsp;a&nbsp;<br>
+member&nbsp;of&nbsp;the&nbsp;job.steps&nbsp;dictionary&nbsp;when&nbsp;the&nbsp;job.steps&nbsp;attribute&nbsp;is&nbsp;accessed.&nbsp;&nbsp;<br>
+<a href="genCommands.html#StepCmds">StepCmds</a>&nbsp;is&nbsp;a&nbsp;subclass&nbsp;that&nbsp;is&nbsp;set&nbsp;up&nbsp;in&nbsp;genCommands.py&nbsp;containing&nbsp;commands&nbsp;for&nbsp;Steps.<br>
+The&nbsp;step&nbsp;class&nbsp;allows&nbsp;for&nbsp;operations&nbsp;at&nbsp;the&nbsp;step&nbsp;level&nbsp;and&nbsp;is&nbsp;a&nbsp;gateway&nbsp;to&nbsp;the&nbsp;graphic<br>
+editor&nbsp;functions&nbsp;and&nbsp;checklists,&nbsp;as&nbsp;well&nbsp;as&nbsp;layer&nbsp;manipulation&nbsp;(not&nbsp;the&nbsp;matrix&nbsp;-&nbsp;that<br>
+is&nbsp;at&nbsp;the&nbsp;job&nbsp;level)<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="genClasses.html#Step">Step</a></dd>
+<dd><a href="genClasses.html#Genesis">Genesis</a></dd>
+<dd><a href="genClasses.html#ExtraStuff">ExtraStuff</a></dd>
+<dd><a href="genCommands.html#StepCmds">genCommands.StepCmds</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Step-COM"><strong>COM</strong></a>(self, args)</dt><dd><tt>Overloading&nbsp;method,&nbsp;to&nbsp;set&nbsp;group&nbsp;automatically&nbsp;-&nbsp;in&nbsp;the&nbsp;graphic&nbsp;editor</tt></dd></dl>
+
+<dl><dt><a name="Step-__getattr__"><strong>__getattr__</strong></a>(self, name)</dt><dd><tt>Hook&nbsp;to&nbsp;generate&nbsp;attributes&nbsp;as&nbsp;they're&nbsp;requested&nbsp;-&nbsp;it&nbsp;is&nbsp;run&nbsp;automatically&nbsp;upon&nbsp;<br>
+initial&nbsp;request&nbsp;of&nbsp;an&nbsp;attribute.&nbsp;e.g.&nbsp;&lt;class&nbsp;instance&gt;.attribute&nbsp;<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;attribute&nbsp;is&nbsp;in&nbsp;this&nbsp;method,&nbsp;it&nbsp;is&nbsp;handled&nbsp;by&nbsp;methods&nbsp;defined&nbsp;here,&nbsp;<br>
+otherwise&nbsp;the&nbsp;<a href="#Genesis">Genesis</a>&nbsp;job&nbsp;object&nbsp;associated&nbsp;with&nbsp;this&nbsp;instance&nbsp;is&nbsp;inspected&nbsp;<br>
+for&nbsp;a&nbsp;corresponding&nbsp;<a href="#Genesis">Genesis</a>&nbsp;attribute;&nbsp;the&nbsp;value&nbsp;of&nbsp;which&nbsp;is&nbsp;stored&nbsp;in&nbsp;the&nbsp;<br>
+instance&nbsp;attribute.<br>
+&nbsp;<br>
+Special&nbsp;Attributes&nbsp;Supported:&nbsp;&nbsp;info,&nbsp;profile,&nbsp;layers,&nbsp;sr,&nbsp;datum,&nbsp;checks</tt></dd></dl>
+
+<dl><dt><a name="Step-__init__"><strong>__init__</strong></a>(self, job, name)</dt></dl>
+
+<dl><dt><a name="Step-getChecks"><strong>getChecks</strong></a>(self)</dt><dd><tt>Builds&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;all&nbsp;the&nbsp;checklists&nbsp;in&nbsp;the&nbsp;step.&nbsp;&nbsp;It&nbsp;points&nbsp;to&nbsp;checklist<br>
+classes,&nbsp;as&nbsp;defined&nbsp;in&nbsp;this&nbsp;module</tt></dd></dl>
+
+<dl><dt><a name="Step-getDatum"><strong>getDatum</strong></a>(self)</dt><dd><tt>Creates&nbsp;datum&nbsp;dictionary.&nbsp;&nbsp;&lt;inst&gt;.datum['x']&nbsp;or&nbsp;['y']</tt></dd></dl>
+
+<dl><dt><a name="Step-getInfo"><strong>getInfo</strong></a>(self)</dt><dd><tt>Build&nbsp;the&nbsp;self.<strong>info</strong>&nbsp;dictionary...&nbsp;Doesn't&nbsp;do&nbsp;a&nbsp;full&nbsp;command&nbsp;(excluding&nbsp;-d&nbsp;from&nbsp;info&nbsp;command)&nbsp;<br>
+because&nbsp;it&nbsp;does&nbsp;LIMITS,&nbsp;which&nbsp;takes&nbsp;forever!&nbsp;&nbsp;Returns&nbsp;&lt;inst&gt;.info</tt></dd></dl>
+
+<dl><dt><a name="Step-getLayers"><strong>getLayers</strong></a>(self)</dt><dd><tt>Builds&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;all&nbsp;the&nbsp;layers&nbsp;in&nbsp;the&nbsp;step.&nbsp;&nbsp;This&nbsp;dictionary&nbsp;<br>
+points&nbsp;to&nbsp;<a href="#Layer">Layer</a>&nbsp;classes&nbsp;as&nbsp;defined&nbsp;in&nbsp;this&nbsp;module.</tt></dd></dl>
+
+<dl><dt><a name="Step-getProfile"><strong>getProfile</strong></a>(self)</dt><dd><tt>Retrieves&nbsp;profile&nbsp;limits&nbsp;and&nbsp;places&nbsp;in&nbsp;&lt;inst&gt;.profile&nbsp;class.&nbsp;Access<br>
+values&nbsp;by&nbsp;&lt;stepinst&gt;.profile.xmin&nbsp;(xmax,&nbsp;ymin,&nbsp;ymax,&nbsp;xsize,&nbsp;ysize,&nbsp;xcenter,&nbsp;ycenter)</tt></dd></dl>
+
+<dl><dt><a name="Step-getSr"><strong>getSr</strong></a>(self)</dt><dd><tt>Builds&nbsp;&lt;inst&gt;.sr&nbsp;object&nbsp;and&nbsp;returns&nbsp;it.&nbsp;&nbsp;This&nbsp;is&nbsp;the&nbsp;step&nbsp;&amp;&nbsp;repeat&nbsp;limits.<br>
+The&nbsp;numbers&nbsp;it&nbsp;generates&nbsp;are&nbsp;accessed&nbsp;in&nbsp;dot&nbsp;notation&nbsp;as&nbsp;well&nbsp;(like&nbsp;profile)<br>
+(srLimits:L&nbsp;xmin,&nbsp;xmax,&nbsp;ymin,&nbsp;ymax,&nbsp;eBorder,&nbsp;wBorder,&nbsp;nBorder,&nbsp;sBorder,&nbsp;table)<br>
+(Table&nbsp;contains&nbsp;list&nbsp;entries,&nbsp;each&nbsp;with&nbsp;access&nbsp;to&nbsp;each&nbsp;instance&nbsp;using&nbsp;dot&nbsp;<br>
+notation&nbsp;-&nbsp;step,&nbsp;xanchor,&nbsp;yanchor,&nbsp;xdist,&nbsp;ydist,&nbsp;xnum,&nbsp;ynum,&nbsp;angle,&nbsp;mirror,&nbsp;<br>
+xmin,&nbsp;xmax,&nbsp;ymin,&nbsp;ymax.&nbsp;&nbsp;Accessed&nbsp;as&nbsp;sr.table[x].xmax,&nbsp;etc.</tt></dd></dl>
+
+<dl><dt><a name="Step-isLayer"><strong>isLayer</strong></a>(self, layer_name<font color="#909090">='misc'</font>)</dt><dd><tt>Method&nbsp;to&nbsp;check&nbsp;for&nbsp;a&nbsp;single&nbsp;layer.&nbsp;&nbsp;Sometimes&nbsp;faster&nbsp;than&nbsp;doing&nbsp;a&nbsp;key&nbsp;search&nbsp;on&nbsp;the<br>
+layers&nbsp;dictionary&nbsp;&nbsp;Returns&nbsp;1&nbsp;if&nbsp;exists,&nbsp;0&nbsp;if&nbsp;not.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;layer_name&nbsp;=&nbsp;String&nbsp;representing&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;layer</tt></dd></dl>
+
+<dl><dt><a name="Step-setGroup"><strong>setGroup</strong></a>(self)</dt><dd><tt>Sets&nbsp;AUX&nbsp;group&nbsp;to&nbsp;current&nbsp;editor</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="genClasses.html#Genesis">Genesis</a>:<br>
+<dl><dt><a name="Step-AUX"><strong>AUX</strong></a>(self, args)</dt><dd><tt><a href="#Genesis">Genesis</a>&nbsp;AUX&nbsp;command&nbsp;-&nbsp;returns&nbsp;STATUS.&nbsp;&nbsp;Sets&nbsp;class&nbsp;variables&nbsp;READANS&nbsp;<br>
+and&nbsp;COMANS,&nbsp;returns&nbsp;STATUS<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;args&nbsp;-&nbsp;string&nbsp;containing&nbsp;arguments</tt></dd></dl>
+
+<dl><dt><a name="Step-DISP_INFO"><strong>DISP_INFO</strong></a>(self, args)</dt><dd><tt>This&nbsp;is&nbsp;similar&nbsp;to&nbsp;the&nbsp;DO_INFO&nbsp;but&nbsp;is&nbsp;run&nbsp;in&nbsp;'display'&nbsp;mode&nbsp;and&nbsp;is&nbsp;parsed&nbsp;differently&nbsp;<br>
+-&nbsp;this&nbsp;method&nbsp;is&nbsp;not&nbsp;complete</tt></dd></dl>
+
+<dl><dt><a name="Step-DO_INFO"><strong>DO_INFO</strong></a>(self, args)</dt><dd><tt>This&nbsp;is&nbsp;the&nbsp;command&nbsp;COM&nbsp;info,...&nbsp;&nbsp;returns&nbsp;a&nbsp;dictionary&nbsp;with&nbsp;all&nbsp;the&nbsp;information&nbsp;in&nbsp;the&nbsp;<br>
+output&nbsp;file&nbsp;from&nbsp;the&nbsp;info&nbsp;command.&nbsp;&nbsp;Each&nbsp;array&nbsp;of&nbsp;information&nbsp;is&nbsp;accessed&nbsp;by&nbsp;a&nbsp;key&nbsp;to&nbsp;the<br>
+dictionary&nbsp;that&nbsp;is&nbsp;returned.&nbsp;LIMITATION:&nbsp;Any&nbsp;string&nbsp;resembling&nbsp;a&nbsp;number&nbsp;will&nbsp;be&nbsp;converted<br>
+to&nbsp;a&nbsp;number.&nbsp;&nbsp;This&nbsp;means&nbsp;that&nbsp;a&nbsp;layer&nbsp;with&nbsp;the&nbsp;name&nbsp;'1.'&nbsp;or&nbsp;'1'&nbsp;will&nbsp;be&nbsp;returned&nbsp;later&nbsp;as<br>
+the&nbsp;float&nbsp;1.0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;args&nbsp;-&nbsp;arguments&nbsp;to&nbsp;the&nbsp;info&nbsp;command&nbsp;as&nbsp;a&nbsp;string</tt></dd></dl>
+
+<dl><dt><a name="Step-INFO"><strong>INFO</strong></a>(self, args)</dt><dd><tt>This&nbsp;is&nbsp;similar&nbsp;to&nbsp;the&nbsp;<a href="#Genesis">Genesis</a>&nbsp;command&nbsp;<a href="#Step-COM">COM</a>(info,...)&nbsp;Returns&nbsp;list&nbsp;of&nbsp;strings&nbsp;which<br>
+are&nbsp;lines&nbsp;from&nbsp;the&nbsp;output&nbsp;file<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;args&nbsp;-&nbsp;string&nbsp;containing&nbsp;all&nbsp;the&nbsp;arguments&nbsp;to&nbsp;the&nbsp;info&nbsp;command&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(that&nbsp;would&nbsp;be&nbsp;after&nbsp;the&nbsp;info,_*_)</tt></dd></dl>
+
+<dl><dt><a name="Step-MOUSE"><strong>MOUSE</strong></a>(self, msg, mode<font color="#909090">='p'</font>)</dt><dd><tt><a href="#Genesis">Genesis</a>&nbsp;MOUSE&nbsp;command&nbsp;-&nbsp;pauses&nbsp;to&nbsp;allow&nbsp;user&nbsp;to&nbsp;select&nbsp;a&nbsp;location&nbsp;with&nbsp;the&nbsp;mouse&nbsp;-&nbsp;<br>
+returns&nbsp;STATUS&nbsp;as&nbsp;integer.&nbsp;&nbsp;Sets&nbsp;class&nbsp;variables&nbsp;READANS&nbsp;and&nbsp;MOUSEANS&nbsp;to&nbsp;mouse&nbsp;location<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg&nbsp;-&nbsp;message&nbsp;to&nbsp;put&nbsp;in&nbsp;dialog&nbsp;box<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mode&nbsp;-&nbsp;set&nbsp;to&nbsp;character&nbsp;'p'&nbsp;or&nbsp;'r'&nbsp;&nbsp;p&nbsp;means&nbsp;to&nbsp;return&nbsp;a&nbsp;point,&nbsp;and&nbsp;r&nbsp;a&nbsp;rectangle&nbsp;(two&nbsp;points)</tt></dd></dl>
+
+<dl><dt><a name="Step-PAUSE"><strong>PAUSE</strong></a>(self, msg)</dt><dd><tt><a href="#Genesis">Genesis</a>&nbsp;PAUSE&nbsp;command&nbsp;-&nbsp;pauses&nbsp;script&nbsp;with&nbsp;box,&nbsp;and&nbsp;allows&nbsp;user&nbsp;to&nbsp;interact&nbsp;with&nbsp;<br>
+<a href="#Genesis">Genesis</a>&nbsp;before&nbsp;continuing&nbsp;-&nbsp;returns&nbsp;STATUS&nbsp;(as&nbsp;integer),&nbsp;sets&nbsp;class&nbsp;variables<br>
+READANS&nbsp;and&nbsp;PAUSANS<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg&nbsp;-&nbsp;string&nbsp;containing&nbsp;message&nbsp;to&nbsp;put&nbsp;in&nbsp;pause&nbsp;dialog&nbsp;box</tt></dd></dl>
+
+<dl><dt><a name="Step-SU_OFF"><strong>SU_OFF</strong></a>(self)</dt><dd><tt><a href="#Genesis">Genesis</a>&nbsp;SU_OFF&nbsp;command&nbsp;-&nbsp;eq&nbsp;to&nbsp;running&nbsp;SU_OFF&nbsp;in&nbsp;csh</tt></dd></dl>
+
+<dl><dt><a name="Step-SU_ON"><strong>SU_ON</strong></a>(self)</dt><dd><tt>The&nbsp;<a href="#Genesis">Genesis</a>&nbsp;SU_ON&nbsp;command&nbsp;-&nbsp;eq.&nbsp;to&nbsp;running&nbsp;SU_ON&nbsp;in&nbsp;csh</tt></dd></dl>
+
+<dl><dt><a name="Step-VOF"><strong>VOF</strong></a>(self)</dt><dd><tt><a href="#Genesis">Genesis</a>&nbsp;VOF&nbsp;command&nbsp;-&nbsp;turns&nbsp;on&nbsp;script&nbsp;halting&nbsp;on&nbsp;errors&nbsp;-&nbsp;eq&nbsp;to&nbsp;running&nbsp;VOF&nbsp;in&nbsp;csh</tt></dd></dl>
+
+<dl><dt><a name="Step-VON"><strong>VON</strong></a>(self)</dt><dd><tt><a href="#Genesis">Genesis</a>&nbsp;VON&nbsp;command&nbsp;-&nbsp;turns&nbsp;off&nbsp;script&nbsp;halting&nbsp;on&nbsp;errors-&nbsp;eq&nbsp;to&nbsp;running&nbsp;VON&nbsp;in&nbsp;csh</tt></dd></dl>
+
+<dl><dt><a name="Step-__del__"><strong>__del__</strong></a>(self)</dt><dd><tt>Called&nbsp;when&nbsp;class&nbsp;is&nbsp;cleaned&nbsp;up&nbsp;by&nbsp;python</tt></dd></dl>
+
+<dl><dt><a name="Step-blank"><strong>blank</strong></a>(self)</dt><dd><tt>Cleans&nbsp;out&nbsp;the&nbsp;return&nbsp;values</tt></dd></dl>
+
+<dl><dt><a name="Step-clean"><strong>clean</strong></a>(self, strip_me, badchars)</dt><dd><tt>Internal&nbsp;-&nbsp;strips&nbsp;a&nbsp;string&nbsp;(strip_me)&nbsp;of&nbsp;given&nbsp;(badchars)&nbsp;on&nbsp;either&nbsp;edge&nbsp;-&nbsp;used&nbsp;in&nbsp;parsing</tt></dd></dl>
+
+<dl><dt><a name="Step-convertToNumber"><strong>convertToNumber</strong></a>(self, value)</dt><dd><tt>Utility&nbsp;function&nbsp;-&nbsp;converts&nbsp;string&nbsp;to&nbsp;a&nbsp;number&nbsp;returns&nbsp;integer&nbsp;if&nbsp;<br>
+possible&nbsp;-&nbsp;otherwise&nbsp;returns&nbsp;a&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value&nbsp;-&nbsp;string&nbsp;to&nbsp;be&nbsp;converted</tt></dd></dl>
+
+<dl><dt><a name="Step-dbutil"><strong>dbutil</strong></a>(self, *args)</dt><dd><tt>Runs&nbsp;the&nbsp;dbutil&nbsp;command&nbsp;with&nbsp;the&nbsp;specified&nbsp;arguments&nbsp;-&nbsp;returns&nbsp;lines&nbsp;from&nbsp;the&nbsp;response&nbsp;as<br>
+array&nbsp;of&nbsp;strings<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;args&nbsp;-&nbsp;arguments&nbsp;for&nbsp;dbutil&nbsp;command</tt></dd></dl>
+
+<dl><dt><a name="Step-error"><strong>error</strong></a>(self, msg, severity<font color="#909090">=0</font>)</dt><dd><tt>Basic&nbsp;error&nbsp;handler<br>
+msg&nbsp;-&nbsp;string&nbsp;containing&nbsp;error&nbsp;message<br>
+severity&nbsp;-&nbsp;integer.&nbsp;&nbsp;If&nbsp;greater&nbsp;than&nbsp;one&nbsp;script&nbsp;exits</tt></dd></dl>
+
+<dl><dt><a name="Step-normalize"><strong>normalize</strong></a>(self)</dt><dd><tt>Normalize&nbsp;the&nbsp;path&nbsp;to&nbsp;GENESIS_EDIR,&nbsp;and&nbsp;make&nbsp;sure&nbsp;the&nbsp;environment&nbsp;is&nbsp;set</tt></dd></dl>
+
+<dl><dt><a name="Step-parseDispInfo"><strong>parseDispInfo</strong></a>(self, infoList)</dt><dd><tt>Parses&nbsp;output&nbsp;from&nbsp;info&nbsp;command&nbsp;that&nbsp;was&nbsp;run&nbsp;in&nbsp;display&nbsp;mode.&nbsp;Incomplete</tt></dd></dl>
+
+<dl><dt><a name="Step-parseFeatureInfo"><strong>parseFeatureInfo</strong></a>(self, infoList)</dt><dd><tt>Internal&nbsp;-&nbsp;Parses&nbsp;output&nbsp;from&nbsp;the&nbsp;info&nbsp;command&nbsp;when&nbsp;it&nbsp;writes&nbsp;out&nbsp;features.&nbsp;&nbsp;Uses&nbsp;the&nbsp;genFeatures.py<br>
+module&nbsp;and&nbsp;parses&nbsp;the&nbsp;information&nbsp;from&nbsp;this&nbsp;command&nbsp;(-d&nbsp;FEATURES)&nbsp;into&nbsp;class&nbsp;objects.</tt></dd></dl>
+
+<dl><dt><a name="Step-parseInfo"><strong>parseInfo</strong></a>(self, infoList)</dt><dd><tt>Internal&nbsp;-&nbsp;parses&nbsp;the&nbsp;output&nbsp;from&nbsp;the&nbsp;info&nbsp;command&nbsp;into&nbsp;a&nbsp;dictionary&nbsp;-&nbsp;returns&nbsp;dictionary</tt></dd></dl>
+
+<dl><dt><a name="Step-printFeatureDict"><strong>printFeatureDict</strong></a>(self, features_dict)</dt><dd><tt>Used&nbsp;for&nbsp;debugging&nbsp;purposes,&nbsp;this&nbsp;prints&nbsp;out&nbsp;a&nbsp;dictionary&nbsp;created&nbsp;with&nbsp;the&nbsp;parseFeatureInfo&nbsp;command<br>
+features_dict&nbsp;-&nbsp;dictionary&nbsp;returned&nbsp;by&nbsp;method&nbsp;parseFeatureInfo</tt></dd></dl>
+
+<dl><dt><a name="Step-sendCmd"><strong>sendCmd</strong></a>(self, cmd, args<font color="#909090">=''</font>)</dt><dd><tt>Send&nbsp;a&nbsp;command&nbsp;to&nbsp;STDOUT&nbsp;-&nbsp;This&nbsp;is&nbsp;where&nbsp;<a href="#Genesis">Genesis</a>&nbsp;will&nbsp;<br>
+see&nbsp;a&nbsp;command&nbsp;-&nbsp;used&nbsp;by&nbsp;CMD,&nbsp;DO_INFO,&nbsp;etc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cmd&nbsp;-&nbsp;the&nbsp;command&nbsp;root&nbsp;in&nbsp;CSH&nbsp;script&nbsp;form<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;args&nbsp;-&nbsp;any&nbsp;arguments&nbsp;to&nbsp;the&nbsp;initial&nbsp;command&nbsp;CMD&nbsp;xxx...</tt></dd></dl>
+
+<dl><dt><a name="Step-write"><strong>write</strong></a>(self, msg)</dt><dd><tt>Very&nbsp;basic&nbsp;output&nbsp;writer<br>
+msg&nbsp;-&nbsp;string&nbsp;to&nbsp;write&nbsp;to&nbsp;STDOUT</tt></dd></dl>
+
+<hr>
+Data and other attributes inherited from <a href="genClasses.html#Genesis">Genesis</a>:<br>
+<dl><dt><strong>colors</strong> = {'hex': {'document': '9BDBDB', 'drill': '9BB4BF', 'mixed': 'F2E086', 'power_ground': 'DBAD00', 'rout': 'D8D8D8', 'signal': 'FCC64D', 'silk_screen': 'FFFFFF', 'solder_mask': '00A57C', 'solder_paste': 'FFFFCE'}, 'rgb': {'document': (155, 219, 219), 'drill': (155, 180, 191), 'mixed': (242, 224, 134), 'power_ground': (219, 173, 0), 'rout': (216, 216, 216), 'signal': (252, 198, 55), 'silk_screen': (255, 255, 255), 'solder_mask': (0, 165, 124), 'solder_paste': (255, 255, 206)}}</dl>
+
+<hr>
+Methods inherited from <a href="genClasses.html#ExtraStuff">ExtraStuff</a>:<br>
+<dl><dt><a name="Step-getGenesisAttr"><strong>getGenesisAttr</strong></a>(self, name)</dt><dd><tt>Retrieve&nbsp;string&nbsp;associated&nbsp;with&nbsp;a&nbsp;certain&nbsp;attribute</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="genCommands.html#StepCmds">genCommands.StepCmds</a>:<br>
+<dl><dt><a name="Step-addArc"><strong>addArc</strong></a>(self, xs, ys, xe, ye, xc, yc, symbol, direction, polarity<font color="#909090">='positive'</font>, attributes<font color="#909090">='no'</font>)</dt><dd><tt>Add&nbsp;an&nbsp;arc&nbsp;to&nbsp;the&nbsp;selected&nbsp;layers&nbsp;in&nbsp;this&nbsp;step.&nbsp;&nbsp;xs/ys&nbsp;-&nbsp;start,&nbsp;xe/ye&nbsp;-&nbsp;end,&nbsp;xc/yc,&nbsp;center<br>
+direction&nbsp;is&nbsp;'CW'&nbsp;or&nbsp;'CCW'.&nbsp;&nbsp;All&nbsp;are&nbsp;mandatory&nbsp;except&nbsp;polarity,&nbsp;which&nbsp;defaults&nbsp;to&nbsp;pos,&nbsp;and&nbsp;<br>
+attributes,&nbsp;defaulting&nbsp;to&nbsp;no.&nbsp;&nbsp;NOTE:&nbsp;This&nbsp;is&nbsp;precise&nbsp;only&nbsp;to&nbsp;sixth&nbsp;decimal</tt></dd></dl>
+
+<dl><dt><a name="Step-addAttr"><strong>addAttr</strong></a>(self, attr, attrVal<font color="#909090">=''</font>, valType<font color="#909090">='int'</font>)</dt><dd><tt>Add&nbsp;attribute&nbsp;to&nbsp;attribute&nbsp;list<br>
+valType&nbsp;determines&nbsp;what&nbsp;attrVal&nbsp;should&nbsp;be<br>
+valType&nbsp;:&nbsp;default&nbsp;is&nbsp;'int',&nbsp;also&nbsp;'float',&nbsp;'text',&nbsp;'option'</tt></dd></dl>
+
+<dl><dt><a name="Step-addLine"><strong>addLine</strong></a>(self, xs, ys, xe, ye, symbol, polarity<font color="#909090">='positive'</font>, attributes<font color="#909090">='no'</font>)</dt><dd><tt>Add&nbsp;a&nbsp;line&nbsp;to&nbsp;the&nbsp;selected&nbsp;layers&nbsp;in&nbsp;this&nbsp;step.&nbsp;&nbsp;The&nbsp;arguments&nbsp;are&nbsp;self&nbsp;explanatory.&nbsp;<br>
+All&nbsp;are&nbsp;mandatory&nbsp;except&nbsp;polarity,&nbsp;which&nbsp;defaults&nbsp;to&nbsp;pos,&nbsp;and&nbsp;attributes,&nbsp;defaulting&nbsp;to&nbsp;no.<br>
+NOTE:&nbsp;This&nbsp;is&nbsp;precise&nbsp;only&nbsp;to&nbsp;sixth&nbsp;decimal</tt></dd></dl>
+
+<dl><dt><a name="Step-addPad"><strong>addPad</strong></a>(self, x, y, symbol, polarity<font color="#909090">='positive'</font>, angle<font color="#909090">=0</font>, mirror<font color="#909090">='no'</font>, nx<font color="#909090">=1</font>, ny<font color="#909090">=1</font>, dx<font color="#909090">=0</font>, dy<font color="#909090">=0</font>, xscale<font color="#909090">=1</font>, yscale<font color="#909090">=1</font>, attributes<font color="#909090">='no'</font>)</dt><dd><tt>Add&nbsp;a&nbsp;pad&nbsp;to&nbsp;the&nbsp;selected&nbsp;layers&nbsp;in&nbsp;this&nbsp;step.&nbsp;&nbsp;The&nbsp;arguments&nbsp;are&nbsp;self&nbsp;explanatory.&nbsp;<br>
+All&nbsp;are&nbsp;optional&nbsp;except&nbsp;x,&nbsp;y,&nbsp;and&nbsp;symbol.&nbsp;NOTE:&nbsp;This&nbsp;is&nbsp;precise&nbsp;only&nbsp;to&nbsp;sixth&nbsp;decimal<br>
+Also&nbsp;remember&nbsp;that&nbsp;dx&nbsp;and&nbsp;dy&nbsp;are&nbsp;in&nbsp;mils(microns)</tt></dd></dl>
+
+<dl><dt><a name="Step-addRectangle"><strong>addRectangle</strong></a>(self, xs, ys, xe, ye, polarity<font color="#909090">='positive'</font>, attributes<font color="#909090">='no'</font>)</dt><dd><tt>Add&nbsp;a&nbsp;rectangle&nbsp;to&nbsp;the&nbsp;selected&nbsp;layers&nbsp;in&nbsp;this&nbsp;step.&nbsp;&nbsp;Need&nbsp;opposing<br>
+corners&nbsp;for&nbsp;this&nbsp;to&nbsp;work.&nbsp;&nbsp;polarity&nbsp;defaults&nbsp;to&nbsp;positive,&nbsp;attributes&nbsp;to&nbsp;no.<br>
+NOTE:&nbsp;This&nbsp;is&nbsp;precise&nbsp;only&nbsp;to&nbsp;sixth&nbsp;decimal</tt></dd></dl>
+
+<dl><dt><a name="Step-addRoutChain"><strong>addRoutChain</strong></a>(self, layer, size, compensation, feed, flag<font color="#909090">=0</font>, speed<font color="#909090">=0</font>, first<font color="#909090">=0</font>, change_direction<font color="#909090">=-1</font>)</dt><dd><tt>Add&nbsp;selected&nbsp;features&nbsp;to&nbsp;a&nbsp;new&nbsp;rout&nbsp;chain.&nbsp;&nbsp;This&nbsp;try&nbsp;rout&nbsp;chain&nbsp;1,&nbsp;and&nbsp;if&nbsp;it&nbsp;fails,<br>
+to&nbsp;try&nbsp;adding&nbsp;the&nbsp;chain,&nbsp;incrementing&nbsp;the&nbsp;chain&nbsp;number,&nbsp;until&nbsp;success.&nbsp;&nbsp;It&nbsp;only&nbsp;goes&nbsp;to&nbsp;100.<br>
+Chain&nbsp;Number&nbsp;is&nbsp;returned.&nbsp;&nbsp;If&nbsp;-1&nbsp;returned,&nbsp;there&nbsp;was&nbsp;an&nbsp;error<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;layer&nbsp;-&nbsp;layer&nbsp;to&nbsp;add&nbsp;rout&nbsp;chain&nbsp;to<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;size&nbsp;(float)&nbsp;-&nbsp;size&nbsp;in&nbsp;inches&nbsp;for&nbsp;rout&nbsp;bit&nbsp;can&nbsp;be&nbsp;specified&nbsp;to&nbsp;10th&nbsp;of&nbsp;mils&nbsp;only.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;compensation&nbsp;(str)&nbsp;-&nbsp;right,&nbsp;left,&nbsp;none<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;feed&nbsp;(int)&nbsp;-&nbsp;feed&nbsp;rate<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;flag&nbsp;(int)&nbsp;-&nbsp;default&nbsp;0&nbsp;-&nbsp;flag&nbsp;number<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;speed&nbsp;(int)&nbsp;-&nbsp;default&nbsp;0&nbsp;-&nbsp;speed&nbsp;number<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;first&nbsp;(int)&nbsp;-&nbsp;default&nbsp;0&nbsp;:&nbsp;-1&nbsp;is&nbsp;not&nbsp;specified.&nbsp;&nbsp;&gt;0&nbsp;is&nbsp;the&nbsp;first&nbsp;feature&nbsp;in&nbsp;chain.&nbsp;0&nbsp;is&nbsp;first&nbsp;of<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;selected&nbsp;features&nbsp;to&nbsp;be&nbsp;added&nbsp;to&nbsp;layer&nbsp;(by&nbsp;index&nbsp;number),&nbsp;on&nbsp;up)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;change_direction&nbsp;(int)&nbsp;-&nbsp;defaults&nbsp;to&nbsp;-1&nbsp;-&nbsp;not&nbsp;sure&nbsp;what&nbsp;it&nbsp;is&nbsp;for.</tt></dd></dl>
+
+<dl><dt><a name="Step-addText"><strong>addText</strong></a>(self, x, y, text, xSize, ySize, width, mirror<font color="#909090">='no'</font>, angle<font color="#909090">=0</font>, polarity<font color="#909090">='positive'</font>, attributes<font color="#909090">='no'</font>)</dt><dd><tt>Add&nbsp;text&nbsp;to&nbsp;the&nbsp;selected&nbsp;layers&nbsp;in&nbsp;this&nbsp;step.&nbsp;&nbsp;x/y&nbsp;-&nbsp;text&nbsp;bottomleft&nbsp;corner&nbsp;(bottomright&nbsp;if&nbsp;mirror,<br>
+xSize,&nbsp;ySize&nbsp;is&nbsp;size&nbsp;in&nbsp;mil&nbsp;of&nbsp;text,&nbsp;width&nbsp;is&nbsp;line&nbsp;width&nbsp;in&nbsp;mil,&nbsp;mirror&nbsp;defaults&nbsp;to&nbsp;no,&nbsp;angle&nbsp;defaults&nbsp;to&nbsp;0<br>
+but&nbsp;can&nbsp;be&nbsp;0,90,180,270&nbsp;-polarity&nbsp;defaults&nbsp;to&nbsp;positive,&nbsp;attributes&nbsp;defaults&nbsp;to&nbsp;no.&nbsp;&nbsp;<br>
+NOTE:&nbsp;This&nbsp;is&nbsp;precise&nbsp;only&nbsp;to&nbsp;sixth&nbsp;decimal</tt></dd></dl>
+
+<dl><dt><a name="Step-affect"><strong>affect</strong></a>(self, lay)</dt><dd><tt>affect&nbsp;a&nbsp;layer&nbsp;in&nbsp;the&nbsp;graphic&nbsp;editor<br>
+lay&nbsp;-&nbsp;name&nbsp;of&nbsp;layer</tt></dd></dl>
+
+<dl><dt><a name="Step-affectFilter"><strong>affectFilter</strong></a>(self, filter)</dt><dd><tt>Affect&nbsp;by&nbsp;filter&nbsp;in&nbsp;Graphic&nbsp;Editor<br>
+filter&nbsp;-&nbsp;string&nbsp;containing&nbsp;filter&nbsp;configuration</tt></dd></dl>
+
+<dl><dt><a name="Step-buffCopy"><strong>buffCopy</strong></a>(self)</dt><dd><tt>Copy&nbsp;selected&nbsp;features&nbsp;to&nbsp;buffer</tt></dd></dl>
+
+<dl><dt><a name="Step-buffPaste"><strong>buffPaste</strong></a>(self, x<font color="#909090">=0</font>, y<font color="#909090">=0</font>)</dt><dd><tt>Paste&nbsp;from&nbsp;buffer&nbsp;to&nbsp;x&nbsp;and&nbsp;y&nbsp;location&nbsp;indicated&nbsp;(defaults&nbsp;to&nbsp;origin)</tt></dd></dl>
+
+<dl><dt><a name="Step-clearAll"><strong>clearAll</strong></a>(self)</dt><dd><tt>Clears&nbsp;all&nbsp;the&nbsp;layers&nbsp;from&nbsp;editor&nbsp;window&nbsp;(turns&nbsp;everything&nbsp;off)<br>
+this&nbsp;means&nbsp;it&nbsp;clears&nbsp;and&nbsp;unaffects&nbsp;all&nbsp;layers,&nbsp;selections,&nbsp;and&nbsp;highlights</tt></dd></dl>
+
+<dl><dt><a name="Step-clearAndReset"><strong>clearAndReset</strong></a>(self)</dt><dd><tt>Clears&nbsp;any&nbsp;selections&nbsp;in&nbsp;the&nbsp;graphic&nbsp;editor&nbsp;and&nbsp;resets&nbsp;the&nbsp;filter</tt></dd></dl>
+
+<dl><dt><a name="Step-clearSel"><strong>clearSel</strong></a>(self)</dt><dd><tt>Clears&nbsp;selections&nbsp;from&nbsp;graphic&nbsp;editor</tt></dd></dl>
+
+<dl><dt><a name="Step-close"><strong>close</strong></a>(self)</dt><dd><tt>Close&nbsp;the&nbsp;editor&nbsp;window</tt></dd></dl>
+
+<dl><dt><a name="Step-copyLayer"><strong>copyLayer</strong></a>(self, job, step, lay, dest_lay, mode<font color="#909090">='replace'</font>, invert<font color="#909090">='no'</font>)</dt><dd><tt>Copy&nbsp;a&nbsp;layer&nbsp;from&nbsp;another&nbsp;location&nbsp;to&nbsp;current&nbsp;step<br>
+job&nbsp;-&nbsp;name&nbsp;of&nbsp;source&nbsp;job<br>
+step&nbsp;-&nbsp;name&nbsp;of&nbsp;source&nbsp;step<br>
+lay&nbsp;-&nbsp;name&nbsp;of&nbsp;source&nbsp;layer<br>
+dest_lay&nbsp;-&nbsp;name&nbsp;of&nbsp;destination&nbsp;layer&nbsp;(to&nbsp;be&nbsp;created)<br>
+mode&nbsp;(defaults&nbsp;to&nbsp;'replace')&nbsp;-&nbsp;'replace'&nbsp;to&nbsp;replace,&nbsp;'append'&nbsp;to&nbsp;add&nbsp;to&nbsp;end&nbsp;of&nbsp;layer&nbsp;list<br>
+invert&nbsp;(defaults&nbsp;to&nbsp;'no')&nbsp;-&nbsp;invert&nbsp;the&nbsp;layer</tt></dd></dl>
+
+<dl><dt><a name="Step-copySel"><strong>copySel</strong></a>(self, layerName, invert<font color="#909090">='no'</font>)</dt><dd><tt>Copies&nbsp;selected&nbsp;features&nbsp;to&nbsp;a&nbsp;new&nbsp;layer<br>
+layerName&nbsp;-&nbsp;name&nbsp;of&nbsp;layer&nbsp;to&nbsp;copy&nbsp;to<br>
+invert&nbsp;-&nbsp;'yes'&nbsp;or&nbsp;'no'&nbsp;default&nbsp;to&nbsp;'no'&nbsp;-&nbsp;invert&nbsp;polarity&nbsp;of&nbsp;features<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;being&nbsp;copied.</tt></dd></dl>
+
+<dl><dt><a name="Step-copyToAffected"><strong>copyToAffected</strong></a>(self, invert<font color="#909090">='no'</font>, dx<font color="#909090">=0</font>, dy<font color="#909090">=0</font>, size<font color="#909090">=0</font>)</dt><dd><tt>Copy&nbsp;selected&nbsp;features&nbsp;to&nbsp;affected&nbsp;layers.<br>
+invert&nbsp;(default&nbsp;to&nbsp;'no')&nbsp;-&nbsp;'yes'&nbsp;or&nbsp;'no'&nbsp;indicates&nbsp;if&nbsp;features'&nbsp;polarity&nbsp;inverted<br>
+dx,dy&nbsp;-&nbsp;x&nbsp;and&nbsp;y&nbsp;shift&nbsp;for&nbsp;copied&nbsp;features<br>
+size&nbsp;-&nbsp;resize&nbsp;features&nbsp;by&nbsp;this&nbsp;amount&nbsp;when&nbsp;copied</tt></dd></dl>
+
+<dl><dt><a name="Step-copyToLayer"><strong>copyToLayer</strong></a>(self, lay, invert<font color="#909090">='no'</font>, dx<font color="#909090">=0</font>, dy<font color="#909090">=0</font>, size<font color="#909090">=0</font>)</dt><dd><tt>Copy&nbsp;selected&nbsp;features&nbsp;to&nbsp;a&nbsp;specific&nbsp;layer.&nbsp;&nbsp;See&nbsp;<a href="#Step-copyToAffected">copyToAffected</a>()&nbsp;for&nbsp;options</tt></dd></dl>
+
+<dl><dt><a name="Step-createCheck"><strong>createCheck</strong></a>(self, checkName)</dt><dd><tt>Create&nbsp;a&nbsp;new&nbsp;checklist<br>
+checkName&nbsp;-&nbsp;name&nbsp;of&nbsp;new&nbsp;checklist</tt></dd></dl>
+
+<dl><dt><a name="Step-createLayer"><strong>createLayer</strong></a>(self, name, context<font color="#909090">='misc'</font>, laytype<font color="#909090">='document'</font>, polarity<font color="#909090">='positive'</font>)</dt><dd><tt>Create&nbsp;a&nbsp;blank&nbsp;layer.<br>
+name&nbsp;-&nbsp;new&nbsp;layer&nbsp;name<br>
+context&nbsp;-&nbsp;(defaults&nbsp;to&nbsp;'misc')&nbsp;context&nbsp;of&nbsp;layer&nbsp;(board,misc)<br>
+laytype&nbsp;-&nbsp;(defaults&nbsp;to&nbsp;'document)&nbsp;type&nbsp;of&nbsp;layer&nbsp;(document,&nbsp;signal,&nbsp;etc...)<br>
+polarity&nbsp;-&nbsp;(defaults&nbsp;to&nbsp;positive)&nbsp;polarity&nbsp;of&nbsp;layer&nbsp;(positive,&nbsp;negative)</tt></dd></dl>
+
+<dl><dt><a name="Step-deleteCheck"><strong>deleteCheck</strong></a>(self, checkName)</dt><dd><tt>Delete&nbsp;a&nbsp;checklist<br>
+checkName&nbsp;-&nbsp;name&nbsp;of&nbsp;checklist&nbsp;to&nbsp;delete</tt></dd></dl>
+
+<dl><dt><a name="Step-display"><strong>display</strong></a>(self, lay, work<font color="#909090">=1</font>)</dt><dd><tt>Displays&nbsp;the&nbsp;layer&nbsp;in&nbsp;color&nbsp;1,&nbsp;makes&nbsp;it&nbsp;work&nbsp;layer&nbsp;by&nbsp;default<br>
+lay&nbsp;-&nbsp;string&nbsp;containing&nbsp;layer&nbsp;name<br>
+work&nbsp;-&nbsp;integer&nbsp;0=don't&nbsp;make&nbsp;work&nbsp;layer&nbsp;&nbsp;1=make&nbsp;work&nbsp;layer</tt></dd></dl>
+
+<dl><dt><a name="Step-display_layer"><strong>display_layer</strong></a>(self, lay, num, work<font color="#909090">=0</font>, display<font color="#909090">='yes'</font>)</dt><dd><tt>Display&nbsp;layer&nbsp;in&nbsp;editor.<br>
+lay&nbsp;-&nbsp;string&nbsp;containing&nbsp;layer&nbsp;name<br>
+num&nbsp;-&nbsp;integer&nbsp;(1-4)&nbsp;indicating&nbsp;color&nbsp;to&nbsp;display<br>
+work&nbsp;-&nbsp;defaults&nbsp;to&nbsp;0,&nbsp;see&nbsp;<a href="#Step-display">display</a>()<br>
+display&nbsp;-&nbsp;'yes'&nbsp;to&nbsp;display&nbsp;layer,&nbsp;'no'&nbsp;to&nbsp;clear&nbsp;layer.&nbsp;&nbsp;default:&nbsp;'yes'</tt></dd></dl>
+
+<dl><dt><a name="Step-featureSelected"><strong>featureSelected</strong></a>(self)</dt><dd><tt>return&nbsp;number&nbsp;of&nbsp;selected&nbsp;features.&nbsp;&nbsp;Can&nbsp;be&nbsp;used&nbsp;as&nbsp;boolean&nbsp;as&nbsp;well<br>
+returns&nbsp;zero&nbsp;if&nbsp;no&nbsp;features&nbsp;selected,&nbsp;#&nbsp;features&nbsp;if&nbsp;there&nbsp;are</tt></dd></dl>
+
+<dl><dt><a name="Step-importCheck"><strong>importCheck</strong></a>(self, checkName, replace<font color="#909090">=0</font>)</dt><dd><tt>get&nbsp;checklist&nbsp;from&nbsp;library&nbsp;-&nbsp;replace&nbsp;if&nbsp;indicated<br>
+checkName&nbsp;-&nbsp;name&nbsp;of&nbsp;checklist&nbsp;to&nbsp;replace<br>
+replace&nbsp;-&nbsp;defaults&nbsp;to&nbsp;0,&nbsp;if&nbsp;&gt;&nbsp;0,&nbsp;existing&nbsp;checklist&nbsp;is&nbsp;replaced</tt></dd></dl>
+
+<dl><dt><a name="Step-inputAuto"><strong>inputAuto</strong></a>(self, path, report_path<font color="#909090">=''</font>, report_filename<font color="#909090">=''</font>, copy_to_job<font color="#909090">='no'</font>)</dt><dd><tt>Run&nbsp;the&nbsp;input&nbsp;screen&nbsp;on&nbsp;a&nbsp;specific&nbsp;path.&nbsp;&nbsp;Save&nbsp;the&nbsp;report&nbsp;to&nbsp;another&nbsp;specific&nbsp;path.<br>
+path&nbsp;-&nbsp;path&nbsp;to&nbsp;look&nbsp;for&nbsp;input&nbsp;data<br>
+report_path&nbsp;-&nbsp;path&nbsp;in&nbsp;which&nbsp;to&nbsp;save&nbsp;report&nbsp;data<br>
+report_filename&nbsp;(optional)&nbsp;&nbsp;will&nbsp;use&nbsp;jobname_inp.txt&nbsp;if&nbsp;not&nbsp;specified<br>
+copy_to_job&nbsp;(optional)&nbsp;"yes"&nbsp;or&nbsp;"no"&nbsp;to&nbsp;tell&nbsp;if&nbsp;you&nbsp;want&nbsp;to&nbsp;copy&nbsp;input&nbsp;files&nbsp;to&nbsp;job&nbsp;input&nbsp;directory</tt></dd></dl>
+
+<dl><dt><a name="Step-mergeLayers"><strong>mergeLayers</strong></a>(self, sourceLayer, destLayer, invert<font color="#909090">='no'</font>)</dt><dd><tt>Merge&nbsp;the&nbsp;selected&nbsp;layers</tt></dd></dl>
+
+<dl><dt><a name="Step-open"><strong>open</strong></a>(self, iconic<font color="#909090">='No'</font>)</dt><dd><tt>Open&nbsp;the&nbsp;step&nbsp;in&nbsp;graphic&nbsp;editor.<br>
+iconic&nbsp;-&nbsp;string&nbsp;"Yes"&nbsp;or&nbsp;"No"&nbsp;indicating&nbsp;whether&nbsp;to&nbsp;open&nbsp;step&nbsp;as&nbsp;an&nbsp;icon&nbsp;only</tt></dd></dl>
+
+<dl><dt><a name="Step-refSelectFilter"><strong>refSelectFilter</strong></a>(self, refLay, include_syms<font color="#909090">=''</font>, exclude_syms<font color="#909090">=''</font>, mode<font color="#909090">='touch'</font>, reset<font color="#909090">=0</font>)</dt><dd><tt>Select&nbsp;by&nbsp;reference,&nbsp;using&nbsp;filter&nbsp;(so&nbsp;you&nbsp;better&nbsp;reset&nbsp;the&nbsp;filter&nbsp;if&nbsp;you&nbsp;need&nbsp;to!)<br>
+refLay&nbsp;-&nbsp;reference&nbsp;layer<br>
+include_syms&nbsp;(optional)&nbsp;-&nbsp;symbols&nbsp;to&nbsp;include&nbsp;in&nbsp;selection<br>
+exclude_syms&nbsp;(optional)&nbsp;-&nbsp;symbols&nbsp;to&nbsp;exclude&nbsp;from&nbsp;selection<br>
+mode&nbsp;(optional)&nbsp;-&nbsp;defaults&nbsp;to&nbsp;'touch'<br>
+reset&nbsp;(optional)&nbsp;-&nbsp;defaults&nbsp;to&nbsp;0&nbsp;(0&nbsp;=&nbsp;DON'T&nbsp;reset&nbsp;filter,&nbsp;1&nbsp;=&nbsp;reset&nbsp;filter)</tt></dd></dl>
+
+<dl><dt><a name="Step-removeLayer"><strong>removeLayer</strong></a>(self, lay)</dt><dd><tt>Remove&nbsp;a&nbsp;layer<br>
+lay&nbsp;-&nbsp;name&nbsp;of&nbsp;layer</tt></dd></dl>
+
+<dl><dt><a name="Step-resetAttr"><strong>resetAttr</strong></a>(self)</dt><dd><tt>Reset&nbsp;the&nbsp;attribute&nbsp;List</tt></dd></dl>
+
+<dl><dt><a name="Step-resetFilter"><strong>resetFilter</strong></a>(self)</dt><dd><tt>Reset&nbsp;the&nbsp;selection&nbsp;filter</tt></dd></dl>
+
+<dl><dt><a name="Step-routCopy"><strong>routCopy</strong></a>(self, sourceLayer, destLayer, destType<font color="#909090">='document'</font>)</dt><dd><tt>Copy&nbsp;a&nbsp;rout&nbsp;layer&nbsp;to&nbsp;another&nbsp;layer.&nbsp;&nbsp;destType&nbsp;determines&nbsp;if&nbsp;copied&nbsp;as&nbsp;normal&nbsp;features&nbsp;or&nbsp;rout&nbsp;features<br>
+Obliterates&nbsp;the&nbsp;layer&nbsp;you&nbsp;are&nbsp;copying&nbsp;to<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;destType&nbsp;-&nbsp;'document'&nbsp;or&nbsp;'rout'</tt></dd></dl>
+
+<dl><dt><a name="Step-selectAll"><strong>selectAll</strong></a>(self)</dt><dd><tt>Select&nbsp;all&nbsp;features&nbsp;on&nbsp;affected&nbsp;layers,&nbsp;(applying&nbsp;popup&nbsp;filter)<br>
+returns&nbsp;number&nbsp;selected</tt></dd></dl>
+
+<dl><dt><a name="Step-selectDelete"><strong>selectDelete</strong></a>(self)</dt><dd><tt>Delete&nbsp;Selected&nbsp;features.</tt></dd></dl>
+
+<dl><dt><a name="Step-selectNone"><strong>selectNone</strong></a>(self)</dt><dd><tt>Unselect&nbsp;all&nbsp;features.</tt></dd></dl>
+
+<dl><dt><a name="Step-selectRectangle"><strong>selectRectangle</strong></a>(self, xs, ys, xe, ye, intersect<font color="#909090">='no'</font>, reset<font color="#909090">=0</font>)</dt><dd><tt>Select&nbsp;all&nbsp;features&nbsp;in&nbsp;a&nbsp;rectangle<br>
+xs,&nbsp;ys,&nbsp;xe,&nbsp;ye&nbsp;-&nbsp;start&nbsp;and&nbsp;end&nbsp;x,y&nbsp;coordinates<br>
+intersect&nbsp;-&nbsp;if&nbsp;'yes'&nbsp;selects&nbsp;symbols&nbsp;intersected&nbsp;by&nbsp;rectangle&nbsp;but&nbsp;not&nbsp;fully&nbsp;inside<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;defaults&nbsp;to&nbsp;'no'<br>
+reset&nbsp;-&nbsp;see&nbsp;<a href="#Step-selectSymbol">selectSymbol</a>()</tt></dd></dl>
+
+<dl><dt><a name="Step-selectSymbol"><strong>selectSymbol</strong></a>(self, symbolName<font color="#909090">=''</font>, reset<font color="#909090">=0</font>, clear<font color="#909090">=0</font>)</dt><dd><tt>Select&nbsp;the&nbsp;Symbol&nbsp;indicated&nbsp;in&nbsp;the&nbsp;string&nbsp;resets&nbsp;if&nbsp;told&nbsp;to,<br>
+clears&nbsp;other&nbsp;features&nbsp;if&nbsp;told&nbsp;to.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;symbolName&nbsp;-&nbsp;Symbol&nbsp;to&nbsp;select<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;reset&nbsp;-&nbsp;resets&nbsp;filter&nbsp;if&nbsp;you&nbsp;don't&nbsp;want&nbsp;this&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;action&nbsp;to&nbsp;be&nbsp;affected&nbsp;by&nbsp;pre-existing&nbsp;filter&nbsp;settings.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;defaults&nbsp;to&nbsp;NOT&nbsp;reset&nbsp;(integer&nbsp;0&nbsp;=&nbsp;no&nbsp;reset,&nbsp;1&nbsp;=&nbsp;reset)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;clear&nbsp;-&nbsp;Clear&nbsp;all&nbsp;selected&nbsp;features&nbsp;first&nbsp;(&nbsp;0&nbsp;=&nbsp;don't&nbsp;clear,&nbsp;1&nbsp;=&nbsp;clear)</tt></dd></dl>
+
+<dl><dt><a name="Step-setAttrFilter"><strong>setAttrFilter</strong></a>(self, attr)</dt><dd><tt>Set&nbsp;an&nbsp;attribute&nbsp;in&nbsp;the&nbsp;attribute&nbsp;filter<br>
+attr&nbsp;-&nbsp;name&nbsp;of&nbsp;attribute</tt></dd></dl>
+
+<dl><dt><a name="Step-setChainPlunge"><strong>setChainPlunge</strong></a>(self, layer, chain, len1, len2, intType<font color="#909090">='corner'</font>, mode<font color="#909090">='wrap'</font>, inl_mode<font color="#909090">='straight'</font>, start_of_chain<font color="#909090">='yes'</font>, apply_to<font color="#909090">='all'</font>, len3<font color="#909090">=0.0</font>, len4<font color="#909090">=0.0</font>, val1<font color="#909090">=0</font>, val2<font color="#909090">=0</font>, ang1<font color="#909090">=0</font>, ang2<font color="#909090">=0</font>, ifeed<font color="#909090">=0</font>, ofeed<font color="#909090">=0</font>)</dt><dd><tt>Set&nbsp;up&nbsp;the&nbsp;plunge&nbsp;for&nbsp;a&nbsp;rout&nbsp;chain.&nbsp;&nbsp;Lots&nbsp;and&nbsp;lots&nbsp;of&nbsp;options.&nbsp;&nbsp;For&nbsp;now,&nbsp;you&nbsp;can&nbsp;look&nbsp;at&nbsp;<br>
+the&nbsp;code&nbsp;yourself.</tt></dd></dl>
+
+<dl><dt><a name="Step-setGenesisAttr"><strong>setGenesisAttr</strong></a>(self, name, value)</dt><dd><tt>Set&nbsp;step&nbsp;attribute&nbsp;to&nbsp;a&nbsp;value,&nbsp;update&nbsp;Python&nbsp;attribute&nbsp;value.<br>
+name&nbsp;-&nbsp;string&nbsp;containing&nbsp;name&nbsp;of&nbsp;attribute<br>
+value&nbsp;-&nbsp;string/int/float&nbsp;containing&nbsp;value&nbsp;of&nbsp;attribute<br>
+&nbsp;&nbsp;NOTE:&nbsp;&nbsp;Value&nbsp;may&nbsp;be&nbsp;cast&nbsp;to&nbsp;string&nbsp;upon&nbsp;retreival</tt></dd></dl>
+
+<dl><dt><a name="Step-setSymbolFilter"><strong>setSymbolFilter</strong></a>(self, syms)</dt><dd><tt>Set&nbsp;a&nbsp;symbol&nbsp;on&nbsp;which&nbsp;to&nbsp;filter<br>
+syms&nbsp;-&nbsp;symbol&nbsp;name</tt></dd></dl>
+
+<dl><dt><a name="Step-unaffect"><strong>unaffect</strong></a>(self, lay)</dt><dd><tt>un-affect&nbsp;a&nbsp;layer&nbsp;in&nbsp;the&nbsp;graphic&nbsp;editor<br>
+lay&nbsp;-&nbsp;name&nbsp;of&nbsp;layer</tt></dd></dl>
+
+<dl><dt><a name="Step-zoomHome"><strong>zoomHome</strong></a>(self)</dt><dd><tt>Zoom&nbsp;out&nbsp;to&nbsp;profile&nbsp;view/home</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Top">class <strong>Top</strong></a>(<a href="genClasses.html#Genesis">Genesis</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>This&nbsp;class&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;find&nbsp;out&nbsp;status&nbsp;about&nbsp;<a href="#Genesis">Genesis</a>&nbsp;on&nbsp;the&nbsp;main&nbsp;DB&nbsp;level,&nbsp;and&nbsp;do&nbsp;top&nbsp;level&nbsp;functions<br>
+What&nbsp;jobs&nbsp;are&nbsp;open,&nbsp;etc.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Top-__init__"><strong>__init__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Top-__str__"><strong>__str__</strong></a>(self)</dt><dd><tt>Returns&nbsp;string&nbsp;describing&nbsp;class&nbsp;-&nbsp;also&nbsp;what&nbsp;is&nbsp;printed&nbsp;if&nbsp;print&nbsp;method&nbsp;called&nbsp;on&nbsp;class&nbsp;object</tt></dd></dl>
+
+<dl><dt><a name="Top-createJob"><strong>createJob</strong></a>(self, name, db_name)</dt><dd><tt>Create&nbsp;a&nbsp;<a href="#Genesis">Genesis</a>&nbsp;job&nbsp;by&nbsp;the&nbsp;name&nbsp;given.&nbsp;&nbsp;Return&nbsp;a&nbsp;job&nbsp;class&nbsp;instance&nbsp;by&nbsp;that&nbsp;name.<br>
+<a href="#Job">Job</a>&nbsp;must&nbsp;be&nbsp;opened&nbsp;after&nbsp;this&nbsp;call.&nbsp;&nbsp;It&nbsp;will&nbsp;be&nbsp;closed&nbsp;and&nbsp;checked&nbsp;in&nbsp;initially.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;-&nbsp;name&nbsp;of&nbsp;new&nbsp;<a href="#Genesis">Genesis</a>&nbsp;job&nbsp;entity<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;db_name&nbsp;-&nbsp;name&nbsp;of&nbsp;database&nbsp;in&nbsp;which&nbsp;to&nbsp;put&nbsp;it</tt></dd></dl>
+
+<dl><dt><a name="Top-currentJob"><strong>currentJob</strong></a>(self)</dt><dd><tt>If&nbsp;in&nbsp;a&nbsp;job,&nbsp;this&nbsp;method&nbsp;returns&nbsp;that&nbsp;job&nbsp;as&nbsp;a&nbsp;string</tt></dd></dl>
+
+<dl><dt><a name="Top-currentStep"><strong>currentStep</strong></a>(self)</dt><dd><tt>If&nbsp;in&nbsp;a&nbsp;step,&nbsp;return&nbsp;the&nbsp;step&nbsp;name&nbsp;as&nbsp;a&nbsp;string</tt></dd></dl>
+
+<dl><dt><a name="Top-deleteJob"><strong>deleteJob</strong></a>(self, name)</dt><dd><tt>Delete&nbsp;a&nbsp;<a href="#Genesis">Genesis</a>&nbsp;job&nbsp;by&nbsp;the&nbsp;name&nbsp;given.&nbsp;&nbsp;Return&nbsp;status&nbsp;of&nbsp;command.<br>
+returns&nbsp;-1&nbsp;if&nbsp;no&nbsp;such&nbsp;job.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;-&nbsp;name&nbsp;of&nbsp;existing&nbsp;job</tt></dd></dl>
+
+<dl><dt><a name="Top-getUser"><strong>getUser</strong></a>(self)</dt><dd><tt>Returns&nbsp;the&nbsp;name,&nbsp;as&nbsp;a&nbsp;string,&nbsp;of&nbsp;the&nbsp;current&nbsp;user</tt></dd></dl>
+
+<dl><dt><a name="Top-importJob"><strong>importJob</strong></a>(self, name, import_dir, db_name)</dt><dd><tt>Import&nbsp;an&nbsp;ODB++/Valor&nbsp;format&nbsp;job&nbsp;-&nbsp;returns&nbsp;status.<br>
+name&nbsp;-&nbsp;name&nbsp;to&nbsp;give&nbsp;new&nbsp;job<br>
+import_dir&nbsp;-&nbsp;directory&nbsp;from&nbsp;which&nbsp;to&nbsp;import<br>
+db_name&nbsp;-&nbsp;database&nbsp;it&nbsp;will&nbsp;reside&nbsp;in</tt></dd></dl>
+
+<dl><dt><a name="Top-listJobs"><strong>listJobs</strong></a>(self)</dt><dd><tt>Returns&nbsp;a&nbsp;list&nbsp;of&nbsp;jobs&nbsp;in&nbsp;the&nbsp;databases.,&nbsp;as&nbsp;a&nbsp;list&nbsp;of&nbsp;strings</tt></dd></dl>
+
+<dl><dt><a name="Top-openJobs"><strong>openJobs</strong></a>(self)</dt><dd><tt>Returns&nbsp;a&nbsp;list&nbsp;of&nbsp;open&nbsp;jobs,&nbsp;as&nbsp;a&nbsp;list&nbsp;of&nbsp;strings</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="genClasses.html#Genesis">Genesis</a>:<br>
+<dl><dt><a name="Top-AUX"><strong>AUX</strong></a>(self, args)</dt><dd><tt><a href="#Genesis">Genesis</a>&nbsp;AUX&nbsp;command&nbsp;-&nbsp;returns&nbsp;STATUS.&nbsp;&nbsp;Sets&nbsp;class&nbsp;variables&nbsp;READANS&nbsp;<br>
+and&nbsp;COMANS,&nbsp;returns&nbsp;STATUS<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;args&nbsp;-&nbsp;string&nbsp;containing&nbsp;arguments</tt></dd></dl>
+
+<dl><dt><a name="Top-COM"><strong>COM</strong></a>(self, args)</dt><dd><tt><a href="#Genesis">Genesis</a>&nbsp;COM&nbsp;command&nbsp;-&nbsp;all&nbsp;important&nbsp;command&nbsp;to&nbsp;issue&nbsp;script&nbsp;commands&nbsp;-&nbsp;returns&nbsp;STATUS<br>
+and&nbsp;sets&nbsp;READANS&nbsp;as&nbsp;the&nbsp;command&nbsp;response&nbsp;raw&nbsp;input.&nbsp;&nbsp;COMANS&nbsp;is&nbsp;the&nbsp;parsed&nbsp;READANS.&nbsp;&nbsp;These&nbsp;are<br>
+class&nbsp;variables<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;args&nbsp;-&nbsp;string&nbsp;containing&nbsp;arguments&nbsp;for&nbsp;COM&nbsp;command&nbsp;(everything&nbsp;after&nbsp;COM)</tt></dd></dl>
+
+<dl><dt><a name="Top-DISP_INFO"><strong>DISP_INFO</strong></a>(self, args)</dt><dd><tt>This&nbsp;is&nbsp;similar&nbsp;to&nbsp;the&nbsp;DO_INFO&nbsp;but&nbsp;is&nbsp;run&nbsp;in&nbsp;'display'&nbsp;mode&nbsp;and&nbsp;is&nbsp;parsed&nbsp;differently&nbsp;<br>
+-&nbsp;this&nbsp;method&nbsp;is&nbsp;not&nbsp;complete</tt></dd></dl>
+
+<dl><dt><a name="Top-DO_INFO"><strong>DO_INFO</strong></a>(self, args)</dt><dd><tt>This&nbsp;is&nbsp;the&nbsp;command&nbsp;COM&nbsp;info,...&nbsp;&nbsp;returns&nbsp;a&nbsp;dictionary&nbsp;with&nbsp;all&nbsp;the&nbsp;information&nbsp;in&nbsp;the&nbsp;<br>
+output&nbsp;file&nbsp;from&nbsp;the&nbsp;info&nbsp;command.&nbsp;&nbsp;Each&nbsp;array&nbsp;of&nbsp;information&nbsp;is&nbsp;accessed&nbsp;by&nbsp;a&nbsp;key&nbsp;to&nbsp;the<br>
+dictionary&nbsp;that&nbsp;is&nbsp;returned.&nbsp;LIMITATION:&nbsp;Any&nbsp;string&nbsp;resembling&nbsp;a&nbsp;number&nbsp;will&nbsp;be&nbsp;converted<br>
+to&nbsp;a&nbsp;number.&nbsp;&nbsp;This&nbsp;means&nbsp;that&nbsp;a&nbsp;layer&nbsp;with&nbsp;the&nbsp;name&nbsp;'1.'&nbsp;or&nbsp;'1'&nbsp;will&nbsp;be&nbsp;returned&nbsp;later&nbsp;as<br>
+the&nbsp;float&nbsp;1.0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;args&nbsp;-&nbsp;arguments&nbsp;to&nbsp;the&nbsp;info&nbsp;command&nbsp;as&nbsp;a&nbsp;string</tt></dd></dl>
+
+<dl><dt><a name="Top-INFO"><strong>INFO</strong></a>(self, args)</dt><dd><tt>This&nbsp;is&nbsp;similar&nbsp;to&nbsp;the&nbsp;<a href="#Genesis">Genesis</a>&nbsp;command&nbsp;<a href="#Top-COM">COM</a>(info,...)&nbsp;Returns&nbsp;list&nbsp;of&nbsp;strings&nbsp;which<br>
+are&nbsp;lines&nbsp;from&nbsp;the&nbsp;output&nbsp;file<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;args&nbsp;-&nbsp;string&nbsp;containing&nbsp;all&nbsp;the&nbsp;arguments&nbsp;to&nbsp;the&nbsp;info&nbsp;command&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(that&nbsp;would&nbsp;be&nbsp;after&nbsp;the&nbsp;info,_*_)</tt></dd></dl>
+
+<dl><dt><a name="Top-MOUSE"><strong>MOUSE</strong></a>(self, msg, mode<font color="#909090">='p'</font>)</dt><dd><tt><a href="#Genesis">Genesis</a>&nbsp;MOUSE&nbsp;command&nbsp;-&nbsp;pauses&nbsp;to&nbsp;allow&nbsp;user&nbsp;to&nbsp;select&nbsp;a&nbsp;location&nbsp;with&nbsp;the&nbsp;mouse&nbsp;-&nbsp;<br>
+returns&nbsp;STATUS&nbsp;as&nbsp;integer.&nbsp;&nbsp;Sets&nbsp;class&nbsp;variables&nbsp;READANS&nbsp;and&nbsp;MOUSEANS&nbsp;to&nbsp;mouse&nbsp;location<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg&nbsp;-&nbsp;message&nbsp;to&nbsp;put&nbsp;in&nbsp;dialog&nbsp;box<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mode&nbsp;-&nbsp;set&nbsp;to&nbsp;character&nbsp;'p'&nbsp;or&nbsp;'r'&nbsp;&nbsp;p&nbsp;means&nbsp;to&nbsp;return&nbsp;a&nbsp;point,&nbsp;and&nbsp;r&nbsp;a&nbsp;rectangle&nbsp;(two&nbsp;points)</tt></dd></dl>
+
+<dl><dt><a name="Top-PAUSE"><strong>PAUSE</strong></a>(self, msg)</dt><dd><tt><a href="#Genesis">Genesis</a>&nbsp;PAUSE&nbsp;command&nbsp;-&nbsp;pauses&nbsp;script&nbsp;with&nbsp;box,&nbsp;and&nbsp;allows&nbsp;user&nbsp;to&nbsp;interact&nbsp;with&nbsp;<br>
+<a href="#Genesis">Genesis</a>&nbsp;before&nbsp;continuing&nbsp;-&nbsp;returns&nbsp;STATUS&nbsp;(as&nbsp;integer),&nbsp;sets&nbsp;class&nbsp;variables<br>
+READANS&nbsp;and&nbsp;PAUSANS<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg&nbsp;-&nbsp;string&nbsp;containing&nbsp;message&nbsp;to&nbsp;put&nbsp;in&nbsp;pause&nbsp;dialog&nbsp;box</tt></dd></dl>
+
+<dl><dt><a name="Top-SU_OFF"><strong>SU_OFF</strong></a>(self)</dt><dd><tt><a href="#Genesis">Genesis</a>&nbsp;SU_OFF&nbsp;command&nbsp;-&nbsp;eq&nbsp;to&nbsp;running&nbsp;SU_OFF&nbsp;in&nbsp;csh</tt></dd></dl>
+
+<dl><dt><a name="Top-SU_ON"><strong>SU_ON</strong></a>(self)</dt><dd><tt>The&nbsp;<a href="#Genesis">Genesis</a>&nbsp;SU_ON&nbsp;command&nbsp;-&nbsp;eq.&nbsp;to&nbsp;running&nbsp;SU_ON&nbsp;in&nbsp;csh</tt></dd></dl>
+
+<dl><dt><a name="Top-VOF"><strong>VOF</strong></a>(self)</dt><dd><tt><a href="#Genesis">Genesis</a>&nbsp;VOF&nbsp;command&nbsp;-&nbsp;turns&nbsp;on&nbsp;script&nbsp;halting&nbsp;on&nbsp;errors&nbsp;-&nbsp;eq&nbsp;to&nbsp;running&nbsp;VOF&nbsp;in&nbsp;csh</tt></dd></dl>
+
+<dl><dt><a name="Top-VON"><strong>VON</strong></a>(self)</dt><dd><tt><a href="#Genesis">Genesis</a>&nbsp;VON&nbsp;command&nbsp;-&nbsp;turns&nbsp;off&nbsp;script&nbsp;halting&nbsp;on&nbsp;errors-&nbsp;eq&nbsp;to&nbsp;running&nbsp;VON&nbsp;in&nbsp;csh</tt></dd></dl>
+
+<dl><dt><a name="Top-__del__"><strong>__del__</strong></a>(self)</dt><dd><tt>Called&nbsp;when&nbsp;class&nbsp;is&nbsp;cleaned&nbsp;up&nbsp;by&nbsp;python</tt></dd></dl>
+
+<dl><dt><a name="Top-blank"><strong>blank</strong></a>(self)</dt><dd><tt>Cleans&nbsp;out&nbsp;the&nbsp;return&nbsp;values</tt></dd></dl>
+
+<dl><dt><a name="Top-clean"><strong>clean</strong></a>(self, strip_me, badchars)</dt><dd><tt>Internal&nbsp;-&nbsp;strips&nbsp;a&nbsp;string&nbsp;(strip_me)&nbsp;of&nbsp;given&nbsp;(badchars)&nbsp;on&nbsp;either&nbsp;edge&nbsp;-&nbsp;used&nbsp;in&nbsp;parsing</tt></dd></dl>
+
+<dl><dt><a name="Top-convertToNumber"><strong>convertToNumber</strong></a>(self, value)</dt><dd><tt>Utility&nbsp;function&nbsp;-&nbsp;converts&nbsp;string&nbsp;to&nbsp;a&nbsp;number&nbsp;returns&nbsp;integer&nbsp;if&nbsp;<br>
+possible&nbsp;-&nbsp;otherwise&nbsp;returns&nbsp;a&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value&nbsp;-&nbsp;string&nbsp;to&nbsp;be&nbsp;converted</tt></dd></dl>
+
+<dl><dt><a name="Top-dbutil"><strong>dbutil</strong></a>(self, *args)</dt><dd><tt>Runs&nbsp;the&nbsp;dbutil&nbsp;command&nbsp;with&nbsp;the&nbsp;specified&nbsp;arguments&nbsp;-&nbsp;returns&nbsp;lines&nbsp;from&nbsp;the&nbsp;response&nbsp;as<br>
+array&nbsp;of&nbsp;strings<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;args&nbsp;-&nbsp;arguments&nbsp;for&nbsp;dbutil&nbsp;command</tt></dd></dl>
+
+<dl><dt><a name="Top-error"><strong>error</strong></a>(self, msg, severity<font color="#909090">=0</font>)</dt><dd><tt>Basic&nbsp;error&nbsp;handler<br>
+msg&nbsp;-&nbsp;string&nbsp;containing&nbsp;error&nbsp;message<br>
+severity&nbsp;-&nbsp;integer.&nbsp;&nbsp;If&nbsp;greater&nbsp;than&nbsp;one&nbsp;script&nbsp;exits</tt></dd></dl>
+
+<dl><dt><a name="Top-normalize"><strong>normalize</strong></a>(self)</dt><dd><tt>Normalize&nbsp;the&nbsp;path&nbsp;to&nbsp;GENESIS_EDIR,&nbsp;and&nbsp;make&nbsp;sure&nbsp;the&nbsp;environment&nbsp;is&nbsp;set</tt></dd></dl>
+
+<dl><dt><a name="Top-parseDispInfo"><strong>parseDispInfo</strong></a>(self, infoList)</dt><dd><tt>Parses&nbsp;output&nbsp;from&nbsp;info&nbsp;command&nbsp;that&nbsp;was&nbsp;run&nbsp;in&nbsp;display&nbsp;mode.&nbsp;Incomplete</tt></dd></dl>
+
+<dl><dt><a name="Top-parseFeatureInfo"><strong>parseFeatureInfo</strong></a>(self, infoList)</dt><dd><tt>Internal&nbsp;-&nbsp;Parses&nbsp;output&nbsp;from&nbsp;the&nbsp;info&nbsp;command&nbsp;when&nbsp;it&nbsp;writes&nbsp;out&nbsp;features.&nbsp;&nbsp;Uses&nbsp;the&nbsp;genFeatures.py<br>
+module&nbsp;and&nbsp;parses&nbsp;the&nbsp;information&nbsp;from&nbsp;this&nbsp;command&nbsp;(-d&nbsp;FEATURES)&nbsp;into&nbsp;class&nbsp;objects.</tt></dd></dl>
+
+<dl><dt><a name="Top-parseInfo"><strong>parseInfo</strong></a>(self, infoList)</dt><dd><tt>Internal&nbsp;-&nbsp;parses&nbsp;the&nbsp;output&nbsp;from&nbsp;the&nbsp;info&nbsp;command&nbsp;into&nbsp;a&nbsp;dictionary&nbsp;-&nbsp;returns&nbsp;dictionary</tt></dd></dl>
+
+<dl><dt><a name="Top-printFeatureDict"><strong>printFeatureDict</strong></a>(self, features_dict)</dt><dd><tt>Used&nbsp;for&nbsp;debugging&nbsp;purposes,&nbsp;this&nbsp;prints&nbsp;out&nbsp;a&nbsp;dictionary&nbsp;created&nbsp;with&nbsp;the&nbsp;parseFeatureInfo&nbsp;command<br>
+features_dict&nbsp;-&nbsp;dictionary&nbsp;returned&nbsp;by&nbsp;method&nbsp;parseFeatureInfo</tt></dd></dl>
+
+<dl><dt><a name="Top-sendCmd"><strong>sendCmd</strong></a>(self, cmd, args<font color="#909090">=''</font>)</dt><dd><tt>Send&nbsp;a&nbsp;command&nbsp;to&nbsp;STDOUT&nbsp;-&nbsp;This&nbsp;is&nbsp;where&nbsp;<a href="#Genesis">Genesis</a>&nbsp;will&nbsp;<br>
+see&nbsp;a&nbsp;command&nbsp;-&nbsp;used&nbsp;by&nbsp;CMD,&nbsp;DO_INFO,&nbsp;etc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cmd&nbsp;-&nbsp;the&nbsp;command&nbsp;root&nbsp;in&nbsp;CSH&nbsp;script&nbsp;form<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;args&nbsp;-&nbsp;any&nbsp;arguments&nbsp;to&nbsp;the&nbsp;initial&nbsp;command&nbsp;CMD&nbsp;xxx...</tt></dd></dl>
+
+<dl><dt><a name="Top-write"><strong>write</strong></a>(self, msg)</dt><dd><tt>Very&nbsp;basic&nbsp;output&nbsp;writer<br>
+msg&nbsp;-&nbsp;string&nbsp;to&nbsp;write&nbsp;to&nbsp;STDOUT</tt></dd></dl>
+
+<hr>
+Data and other attributes inherited from <a href="genClasses.html#Genesis">Genesis</a>:<br>
+<dl><dt><strong>colors</strong> = {'hex': {'document': '9BDBDB', 'drill': '9BB4BF', 'mixed': 'F2E086', 'power_ground': 'DBAD00', 'rout': 'D8D8D8', 'signal': 'FCC64D', 'silk_screen': 'FFFFFF', 'solder_mask': '00A57C', 'solder_paste': 'FFFFCE'}, 'rgb': {'document': (155, 219, 219), 'drill': (155, 180, 191), 'mixed': (242, 224, 134), 'power_ground': (219, 173, 0), 'rout': (216, 216, 216), 'signal': (252, 198, 55), 'silk_screen': (255, 255, 255), 'solder_mask': (0, 165, 124), 'solder_paste': (255, 255, 206)}}</dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__author__</strong> = 'Mike J. Hopkins'<br>
+<strong>__credits__</strong> = ' Daniel R. Gowans, for contributions to content.... an excellent scripting interface to Genesis 2000'<br>
+<strong>__date__</strong> = '18 August 2004'<br>
+<strong>__version__</strong> = '$Revision: 1.4.1 $'<br>
+<strong>example_data</strong> = "<font color="#c040c0">\n</font>### Layer - 01sp features data ###<font color="#c040c0">\n</font>#L 11.575 16...' 1;.nomenclature,.canned_text,.drill=non_plated<font color="#c040c0">\n</font>"</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#7799ee">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Author</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#7799ee"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Mike&nbsp;J.&nbsp;Hopkins</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#7799ee">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Credits</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#7799ee"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">&nbsp;Daniel&nbsp;R.&nbsp;Gowans,&nbsp;for&nbsp;contributions&nbsp;to&nbsp;content.<br>
+Frontline&nbsp;PCB,&nbsp;for&nbsp;an&nbsp;excellent&nbsp;scripting&nbsp;interface&nbsp;to&nbsp;Genesis&nbsp;2000</td></tr></table>
+</body></html>

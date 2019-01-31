@@ -1,0 +1,163 @@
+
+<!doctype html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module genPersist</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>genPersist</strong></big></big> (version 1.4.1, 18 August 2004)</font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:///M|/projects/genesis-python/1.4.1/genpersist.py">m:\projects\genesis-python\1.4.1\genpersist.py</a></font></td></tr></table>
+    <p><tt>Modules&nbsp;for&nbsp;joining&nbsp;Genesis&nbsp;2000&nbsp;scripting&nbsp;and&nbsp;the&nbsp;Python&nbsp;scripting&nbsp;language.<br>
+&nbsp;<br>
+This&nbsp;module&nbsp;provides&nbsp;a&nbsp;persistency&nbsp;framework&nbsp;for&nbsp;the&nbsp;Genesis-Python&nbsp;interface.<br>
+Arbitrary&nbsp;Python&nbsp;objects&nbsp;may&nbsp;be&nbsp;stored&nbsp;directly&nbsp;into&nbsp;the&nbsp;Genesis&nbsp;job&nbsp;structure...placed<br>
+into&nbsp;a&nbsp;storage&nbsp;bucket,&nbsp;which&nbsp;ends&nbsp;up&nbsp;being&nbsp;the&nbsp;misc&nbsp;directory...<br>
+&nbsp;<br>
+This&nbsp;arbitrary&nbsp;Python&nbsp;object&nbsp;can&nbsp;then&nbsp;be&nbsp;read&nbsp;back&nbsp;into&nbsp;memory&nbsp;during&nbsp;a&nbsp;later<br>
+session,&nbsp;thus&nbsp;providing&nbsp;a&nbsp;simple&nbsp;multi-session&nbsp;persistency&nbsp;model.&nbsp;&nbsp;One&nbsp;of&nbsp;the&nbsp;storage<br>
+formats&nbsp;is&nbsp;XML,&nbsp;used&nbsp;if&nbsp;the&nbsp;bucket&nbsp;is&nbsp;instantiated&nbsp;as&nbsp;an&nbsp;instance&nbsp;of&nbsp;<a href="#XmlBucket">XmlBucket</a>.<br>
+By&nbsp;default,&nbsp;the&nbsp;<a href="#XmlBucket">XmlBucket</a>&nbsp;is&nbsp;used&nbsp;if&nbsp;gnosis.xml.pickle&nbsp;is&nbsp;installed.&nbsp;&nbsp;You&nbsp;may&nbsp;choose<br>
+to&nbsp;modify&nbsp;that&nbsp;behaviour,&nbsp;however.<br>
+&nbsp;<br>
+This&nbsp;model&nbsp;provides&nbsp;NO&nbsp;concurrency&nbsp;control,&nbsp;as&nbsp;it&nbsp;should&nbsp;generally&nbsp;not&nbsp;be&nbsp;needed.<br>
+&nbsp;<br>
+Usage:<br>
+&gt;&gt;&gt;&nbsp;job&nbsp;=&nbsp;genClasses.Job('test_job')<br>
+&gt;&gt;&gt;&nbsp;job.open()<br>
+&gt;&gt;&gt;&nbsp;myDict&nbsp;=&nbsp;{'thiskey':&nbsp;22.354,&nbsp;'thatkey':&nbsp;16.402,&nbsp;'otherkey':&nbsp;(1,0,0,3)}<br>
+&gt;&gt;&gt;&nbsp;job.bucket.put(myDict,&nbsp;'map_dict')<br>
+&nbsp;<br>
+&nbsp;<br>
+...&nbsp;days&nbsp;later&nbsp;...<br>
+&nbsp;<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;job&nbsp;=&nbsp;genClasses.Job('test_job')<br>
+&gt;&gt;&gt;&nbsp;job.open()<br>
+&gt;&gt;&gt;&nbsp;myDict&nbsp;=&nbsp;job.bucket.get('map_dict')<br>
+&gt;&gt;&gt;&nbsp;print&nbsp;myDict<br>
+{'thiskey':&nbsp;22.354,&nbsp;'thatkey':&nbsp;16.402,&nbsp;'otherkey':&nbsp;(1,0,0,3)}<br>
+&nbsp;<br>
+NOTES:&nbsp;<br>
+-&nbsp;Some&nbsp;special&nbsp;Python&nbsp;objects&nbsp;are&nbsp;not&nbsp;supported&nbsp;by&nbsp;this&nbsp;persistence&nbsp;model...specifically,<br>
+&nbsp;&nbsp;genClasses.Job&nbsp;objects&nbsp;cannot&nbsp;be&nbsp;saved&nbsp;due&nbsp;to&nbsp;their&nbsp;special&nbsp;handling&nbsp;of&nbsp;__getattr__&nbsp;calls.<br>
+&nbsp;<br>
+-&nbsp;In&nbsp;order&nbsp;to&nbsp;use&nbsp;the&nbsp;<a href="#XmlBucket">XmlBucket</a>&nbsp;class,&nbsp;the&nbsp;gnosis.xml&nbsp;modules&nbsp;must&nbsp;be&nbsp;installed.&nbsp;&nbsp;You&nbsp;can&nbsp;get<br>
+&nbsp;&nbsp;them&nbsp;from&nbsp;<a href="http://www.gnosis.cx/download/Gnosis_Utils-current.tar.gz">http://www.gnosis.cx/download/Gnosis_Utils-current.tar.gz</a>&nbsp;and&nbsp;installed&nbsp;using&nbsp;distutils.<br>
+&nbsp;&nbsp;(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;e.g.&nbsp;untar&nbsp;the&nbsp;stuff,&nbsp;cd&nbsp;to&nbsp;the&nbsp;directory&nbsp;and&nbsp;run&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;python&nbsp;setup.py&nbsp;build<br>
+&nbsp;&nbsp;&nbsp;&nbsp;python&nbsp;setup.py&nbsp;install<br>
+&nbsp;&nbsp;)</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#fffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="os.html">os</a><br>
+</td><td width="25%" valign=top><a href="cPickle.html">cPickle</a><br>
+</td><td width="25%" valign=top><a href="string.html">string</a><br>
+</td><td width="25%" valign=top><a href="gnosis.xml.pickle.html">gnosis.xml.pickle</a><br>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="genPersist.html#Bucket">Bucket</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="genPersist.html#XmlBucket">XmlBucket</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Bucket">class <strong>Bucket</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>The&nbsp;basic&nbsp;unit&nbsp;of&nbsp;persistency.&nbsp;&nbsp;This&nbsp;class&nbsp;represents&nbsp;a&nbsp;storage&nbsp;bucket,<br>
+which&nbsp;may&nbsp;have&nbsp;many&nbsp;objects&nbsp;stored&nbsp;within&nbsp;it.&nbsp;&nbsp;Those&nbsp;objects&nbsp;may&nbsp;be&nbsp;of&nbsp;various<br>
+types.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Bucket-__init__"><strong>__init__</strong></a>(self, job)</dt><dd><tt>Needs&nbsp;the&nbsp;genClasses.Job&nbsp;object&nbsp;instance&nbsp;passed&nbsp;in&nbsp;as&nbsp;a&nbsp;parameter</tt></dd></dl>
+
+<dl><dt><a name="Bucket-exists"><strong>exists</strong></a>(self, name)</dt><dd><tt>This&nbsp;(public)&nbsp;method&nbsp;checks&nbsp;to&nbsp;see&nbsp;if&nbsp;the&nbsp;name&nbsp;already&nbsp;exists<br>
+Returns&nbsp;0&nbsp;if&nbsp;not,&nbsp;1&nbsp;if&nbsp;it&nbsp;exists...</tt></dd></dl>
+
+<dl><dt><a name="Bucket-get"><strong>get</strong></a>(self, name, raw<font color="#909090">=0</font>)</dt><dd><tt>This&nbsp;method&nbsp;gets&nbsp;an&nbsp;object&nbsp;out&nbsp;of&nbsp;the&nbsp;bucket&nbsp;<br>
+If&nbsp;the&nbsp;name&nbsp;does&nbsp;not&nbsp;exist,&nbsp;this&nbsp;method&nbsp;returns&nbsp;1<br>
+Optional&nbsp;raw&nbsp;parameter&nbsp;will&nbsp;return&nbsp;the&nbsp;data&nbsp;raw&nbsp;(e.g.&nbsp;pickled)</tt></dd></dl>
+
+<dl><dt><a name="Bucket-put"><strong>put</strong></a>(self, obj, name, overwrite<font color="#909090">=0</font>)</dt><dd><tt>This&nbsp;method&nbsp;provides&nbsp;a&nbsp;way&nbsp;to&nbsp;place&nbsp;the&nbsp;object&nbsp;into&nbsp;the&nbsp;bucket<br>
+usage:&nbsp;job.bucket.<a href="#Bucket-put">put</a>(obj,&nbsp;'cur_state')<br>
+If&nbsp;the&nbsp;name&nbsp;already&nbsp;exists,&nbsp;and&nbsp;overwrite&nbsp;is&nbsp;set&nbsp;to&nbsp;0&nbsp;(default)&nbsp;then<br>
+this&nbsp;method&nbsp;will&nbsp;return&nbsp;1</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="XmlBucket">class <strong>XmlBucket</strong></a>(<a href="genPersist.html#Bucket">Bucket</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Subclass&nbsp;of&nbsp;<a href="#Bucket">Bucket</a>,&nbsp;implementing&nbsp;xml.pickle&nbsp;instead&nbsp;of&nbsp;standard&nbsp;cPickle&nbsp;<br>
+This&nbsp;Class&nbsp;can&nbsp;only&nbsp;store&nbsp;Instance&nbsp;objects&nbsp;(e.g.&nbsp;classes).&nbsp;&nbsp;<br>
+If&nbsp;you&nbsp;want&nbsp;to&nbsp;store&nbsp;regular&nbsp;objects&nbsp;like&nbsp;dictionaries,&nbsp;just&nbsp;wrap&nbsp;them&nbsp;up&nbsp;as<br>
+in&nbsp;an&nbsp;instance&nbsp;of&nbsp;the&nbsp;genClasses.Empty&nbsp;class&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;obj&nbsp;=&nbsp;genClasses.Empty()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;obj.dict&nbsp;=&nbsp;myPreviousDict<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;job.bucket.<a href="#XmlBucket-put">put</a>(obj,&nbsp;'mydict')<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="XmlBucket-__init__"><strong>__init__</strong></a>(self, job)</dt></dl>
+
+<hr>
+Methods inherited from <a href="genPersist.html#Bucket">Bucket</a>:<br>
+<dl><dt><a name="XmlBucket-exists"><strong>exists</strong></a>(self, name)</dt><dd><tt>This&nbsp;(public)&nbsp;method&nbsp;checks&nbsp;to&nbsp;see&nbsp;if&nbsp;the&nbsp;name&nbsp;already&nbsp;exists<br>
+Returns&nbsp;0&nbsp;if&nbsp;not,&nbsp;1&nbsp;if&nbsp;it&nbsp;exists...</tt></dd></dl>
+
+<dl><dt><a name="XmlBucket-get"><strong>get</strong></a>(self, name, raw<font color="#909090">=0</font>)</dt><dd><tt>This&nbsp;method&nbsp;gets&nbsp;an&nbsp;object&nbsp;out&nbsp;of&nbsp;the&nbsp;bucket&nbsp;<br>
+If&nbsp;the&nbsp;name&nbsp;does&nbsp;not&nbsp;exist,&nbsp;this&nbsp;method&nbsp;returns&nbsp;1<br>
+Optional&nbsp;raw&nbsp;parameter&nbsp;will&nbsp;return&nbsp;the&nbsp;data&nbsp;raw&nbsp;(e.g.&nbsp;pickled)</tt></dd></dl>
+
+<dl><dt><a name="XmlBucket-put"><strong>put</strong></a>(self, obj, name, overwrite<font color="#909090">=0</font>)</dt><dd><tt>This&nbsp;method&nbsp;provides&nbsp;a&nbsp;way&nbsp;to&nbsp;place&nbsp;the&nbsp;object&nbsp;into&nbsp;the&nbsp;bucket<br>
+usage:&nbsp;job.bucket.<a href="#XmlBucket-put">put</a>(obj,&nbsp;'cur_state')<br>
+If&nbsp;the&nbsp;name&nbsp;already&nbsp;exists,&nbsp;and&nbsp;overwrite&nbsp;is&nbsp;set&nbsp;to&nbsp;0&nbsp;(default)&nbsp;then<br>
+this&nbsp;method&nbsp;will&nbsp;return&nbsp;1</tt></dd></dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>ENGINE</strong> = 'XML'<br>
+<strong>__author__</strong> = 'Mike J. Hopkins'<br>
+<strong>__credits__</strong> = ' Guido ... and David Mertz for gnosis.xml.pickle'<br>
+<strong>__date__</strong> = '18 August 2004'<br>
+<strong>__version__</strong> = '$Revision: 1.4.1 $'</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#7799ee">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Author</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#7799ee"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Mike&nbsp;J.&nbsp;Hopkins</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#7799ee">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Credits</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#7799ee"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">&nbsp;Guido&nbsp;...&nbsp;and&nbsp;David&nbsp;Mertz&nbsp;for&nbsp;gnosis.xml.pickle</td></tr></table>
+</body></html>
