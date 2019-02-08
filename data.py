@@ -1,16 +1,4 @@
-#!/bin/env python
-
-
-import di_targets as di
-from pprint import pprint as pp
-
-
-
-#interface_genesis = di.di_interface()
-
-#pp( interface_genesis.layer_list() )
-
-mock_list=[
+mock_list = [
     ['drill', 'drill', '9BB4BF'],
     ['csm', 'solder_mask', '00A57C'],
     ['l1comp', 'mixed', 'F2E086'],
@@ -41,4 +29,15 @@ mock_list=[
     ['d60mb16-19', 'drill', '9BB4BF'],
     ['mvonly1-20', 'drill', '9BB4BF'],
     ['csink-bot', 'drill', '9BB4BF']
+]
+
+cases = [
+    "1. Inner Layer DI Fiducial Targets",
+    "2. Outer Layer DI Targets",
+    "3. Sub-Outer Layer DI Targets for Laser/CDD stacked vias",
+    "4. Outer Layers DI Targets for COMBO: drill + drill vf",
+    "5. Outer Layers DI Targets for COMBO: drill + Laser",
+    "6. Outer Layers DI Tgs for triple COMBO: drill + vf + Laser",
+    "7. Solder Msk / Sel Gold DI Targets",
+    "8. Jobs with no targets or DI targets"
 ]
