@@ -5,14 +5,27 @@ import data
 class panel1(wx.Panel):
     def __init__(self, parent):
         """Constructor"""
-        wx.Panel.__init__(self, parent = parent)
+        wx.Panel.__init__(self, parent = parent, size = (300,300))
 
         # ---------------- Grid section ---------------- #
         mock = data.mock_list
+        
+        # Get mock length
         rows = len(mock);
         print("Mock lenght = " + str(rows))
-        myGrid = grid.Grid(self)
-        myGrid.CreateGrid(rows, 5)
+        # declare grid
+        myGrid = grid.Grid(self, -1, size=(1,1))
+
+        # Init grid
+        myGrid.CreateGrid(rows, 4)
+
+        # Set columns names
+        for i in range(0, 4):
+            myGrid.SetColLabelValue(i, ("Target set " + str(i+1)))
+        
+        # Set rows names
+        for j in range(0, rows):
+            myGrid.SetRowLabelValue(j, (mock[j][0]))
 
         sizer = wx.BoxSizer(wx.VERTICAL)
         sizer.Add(myGrid, 1, wx.EXPAND)
@@ -27,10 +40,11 @@ class panel2(wx.Panel):
 
         self.label = wx.StaticText(self, label = "Target set", pos = (150, 10))
 
-        # Adding label, combobox's and binding methods to eax combo
+        # Adding label, combobox's and binding methods to each combo
         for i in range(1, 5):
             self.label = wx.StaticText(self, label = str(i), pos = (5, i * 30))
-            self.combo = wx.ComboBox(self, choices = data.cases, pos = (20, i * 30), name = "Combo "+ str(i))
+            # self.combo = wx.ComboBox(self, choices = data.cases, pos = (20, i * 30), name = "Combo "+ str(i))
+            self.combo = wx.Choice(self, choices = data.cases, pos = (20, i * 30), name = "Combo "+ str(i))
             # self.Bind(wx.EVT_COMBOBOX, self.OnCombo)
         print('end of loop')
 
@@ -51,7 +65,6 @@ class panel2(wx.Panel):
         # Clear selected combos and checkboxes
         def onReset(self, event):
             print("Pending")
-        
 
 class MyFrame(wx.Frame):
     def __init__(self):
@@ -69,7 +82,6 @@ class MyFrame(wx.Frame):
         sizer.Add(splitter, 1, wx.EXPAND)
         self.SetSizer(sizer)
         
-
         # ---------- Old MyFrame's constructor ----------- #
         #super(MyFrame, self).__init__(parent, title = title)
 
