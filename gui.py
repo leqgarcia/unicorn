@@ -11,13 +11,22 @@ class panel1(wx.Panel):
         mock = data.mock_list
         
         # Get mock length
-        rows = len(mock);
+        rows = len(mock)
         print("Mock lenght = " + str(rows))
         # declare grid
         myGrid = grid.Grid(self, -1, size=(1,1))
 
         # Init grid
         myGrid.CreateGrid(rows, 4)
+        # ---- pasted code ---- #
+        
+        attr = grid.GridCellAttr()
+        attr.SetEditor(grid.GridCellBoolEditor())
+        attr.SetRenderer(grid.GridCellBoolRenderer())
+        for i in range(0, 4):
+            myGrid.SetColAttr(i, attr)
+            myGrid.SetColSize(i, 30)
+        # ---- end pasted code ---- #
 
         # Set columns names
         for i in range(0, 4):
