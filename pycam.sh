@@ -1,8 +1,8 @@
 #!/Python25/python.exe
 
-echo "xxxxxxxxxxxxxxxxxxx"
-echo "    XaaS Auto"
-echo "xxxxxxxxxxxxxxxxxxx"
+echo "^^^^^^^^^^^^^^^^^^^"
+echo "XaaS Auto (c) MMIXX"
+echo "vvvvvvvvvvvvvvvvvvv"
 
 echo $PWD 
 

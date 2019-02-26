@@ -56,18 +56,24 @@ class JobCmds:
         # if already open, checkout if indicated, check back in if indicated
         if self.COMANS == 'yes':
             print "Job already open, not opening"
+
         if (lock > 0):
-                self.COM('check_inout,mode=out,type=job,job=' + self.name)
+            self.COM('check_inout,mode=out,type=job,job=' + self.name)
         else:
             self.COM('check_inout,mode=test,type=job,job=' + self.name)
+
         if not (self.COMANS == 'no'):
-                self.COM('check_inout,mode=in,type=job,job=' + self.name)
+            self.COM('check_inout,mode=in,type=job,job=' + self.name)
         else:
-                STR = 'open_job,job=%s' % (self.name)
+            STR = 'open_job,job=%s' % (self.name)
+            self.COM(STR)
+            self.group = self.COMANS
+
+        STR = 'clipb_open_job,job=%s,update_clipboard=view_job'  % (self.name)
         self.COM(STR)
-        self.group = self.COMANS
+
         if ((self.STATUS < 1) and (lock > 0) ):
-                self.COM('check_inout,mode=out,type=job,job=' + self.name)
+            self.COM('check_inout,mode=out,type=job,job=' + self.name)
 
         return self.STATUS
 
@@ -133,9 +139,9 @@ class JobCmds:
 
     def setGenesisAttr(self, name, value):
         """ Set job attribute to a value, update Python attribute value.
-                name - string containing name of attribute
-                value - string/int/float containing value of attribute
-                  NOTE:  Value may be cast to string upon retreival"""
+        name - string containing name of attribute
+        value - string/int/float containing value of attribute
+        NOTE:  Value may be cast to string upon retreival"""
 
         STR = 'set_attribute,type=job,job=%s,name1=,name2=,name3=,attribute=%s,value=%s,units=inch' % (self.name,name,str(value))
         self.COM(STR)
@@ -343,7 +349,7 @@ class StepCmds:
 
         if reset:
             self.resetFilter()
-        STR = '''sel_ref_feat,layers=%s,use=filter,mode=%s,
+        STR = r'''sel_ref_feat,layers=%s,use=filter,mode=%s,
         f_types=line\;pad\;surface\;arc\;text,polarity=positive\;negative,
         include_syms=%s,exclude_syms=%s'''
         STR = STR % (refLay,mode,include_syms,exclude_syms)
@@ -655,11 +661,11 @@ class MatrixCmds:
 
     def addLayer(self, name, index, context='board', type='signal', polarity='positive'):
         """Add a row /layer to the matrix
-               name - name of layer
-               index - row number to use
-               context - context of layer (default to board)
-               type - type of layer (default to signal)
-               polarity - polarity of layer (default to positive)"""
+        name - name of layer
+        index - row number to use
+        context - context of layer (default to board)
+        type - type of layer (default to signal)
+        polarity - polarity of layer (default to positive)"""
 
         STR = 'matrix_insert_row,job=' + self.job.name + ',matrix=matrix,row=' + str(index)
         self.COM(STR)

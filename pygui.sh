@@ -4,9 +4,10 @@ echo "xxxxxxxxxxxxxxxxxxx"
 echo "    XaaS Auto"
 echo "xxxxxxxxxxxxxxxxxxx"
 
-echo $PWD 
+echo $PWD
 
 set AUTOROOT=W:/pycam
+set AUTOROOT=$PWD
 
 
 
@@ -14,4 +15,4 @@ cd $AUTOROOT
 
 
 
-C:/Python25/python.exe autocam.py
+C:/Python25/python.exe gui.py
