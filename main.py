@@ -2,6 +2,8 @@ import wx
 
 from mainwindow import MainWindow
 from xa_DIscript import DI_Script
+from pprint import pprint as pp
+
 
 from colorsys import rgb_to_hls, hls_to_rgb
 
@@ -25,24 +27,50 @@ di = DI_Script()
 
 
 def cmd_exit(events):
+    print events
     exit(0)
-
-
-def cmd_save(events):
-    pass
 
 
 def init(window):
     w = MainWindow
     if True:
         w = window
-    w.cmd_exit.Bind(wx.EVT_LEFT_DOWN, cmd_exit)
-
-    w.cmd_save.Bind(wx.EVT_LEFT_DOWN, cmd_save)
-
-    w.SetPosition((0, 0))
 
     g = w.g_layers
+
+    def cmd_save(event):
+        app_data = {}
+        row_data = []
+        for i in xrange(g.NumberRows):
+            j = i % 4
+            g.SetCellValue(i, j+1, "1")
+
+        for i in xrange(g.NumberRows):
+            single_row = []
+            for j in xrange(g.NumberCols):
+                single_row.append(g.GetCellValue(i, j).encode('ascii', 'ignore'))
+            row_data.append(single_row)
+
+        app_data ={
+            'layer_data': row_data,
+            'target_set_data': [
+                w.c_set_a.GetSelection(),
+                w.c_set_b.GetSelection(),
+                w.c_set_c.GetSelection(),
+                w.c_set_d.GetSelection(),
+            ]
+        }
+
+        print w.c_set_a.GetSelection()
+
+        event.Skip()
+
+        pp(app_data)
+
+    w.cmd_exit.Bind(wx.EVT_LEFT_DOWN, cmd_exit)
+    w.cmd_save.Bind(wx.EVT_LEFT_DOWN, cmd_save)
+    w.SetPosition((0, 0))
+
 
     # Virtual event handlers, override them in your derived class
     def on_mouse(event):
@@ -95,8 +123,8 @@ def init(window):
     def on_check_box(evt):
         after_check_box(evt.IsChecked())
 
-    def after_check_box(isChecked):
-        print 'after CheckBox', g.GridCursorRow, isChecked
+    def after_check_box(is_checked):
+        print 'after CheckBox', g.GridCursorRow, is_checked
 
     g.Bind(wx.grid.EVT_GRID_CELL_LEFT_CLICK, on_mouse)
     g.Bind(wx.grid.EVT_GRID_SELECT_CELL, on_cell_selected)
