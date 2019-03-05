@@ -6,7 +6,6 @@ from genClasses import g
 from pprint import pprint as pp
 
 
-
 class di_interface(object):
     def __init__(self):
         if os.environ.has_key('JOB'):
